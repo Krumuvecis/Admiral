@@ -5,9 +5,16 @@ import graphicsEngine.windows.WindowUpdater;
 
 import graphics.Window;
 
-//TODO: add javadoc
+/**
+ * Main class of this application.
+ * Run main(args) to run this.
+ */
 public class Main {
-    //TODO: add javadoc
+    /**
+     * Main method of this application.
+     *
+     * @param args Command-line arguments (none needed nor supported).
+     */
     public static void main(String[] args) {
         //init some static data here
         startGraphics();

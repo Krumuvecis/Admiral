@@ -20,7 +20,7 @@ public class PlayPage extends CommonPage {
         this(null, null);
     }
 
-    //TODO: add javadoc
+
     public PlayPage(@Nullable List<ActionListener> actionListenerList,
                     @Nullable SimpleColorScheme colors) {
         super(actionListenerList, colors);
