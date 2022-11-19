@@ -13,3 +13,5 @@ An admiral simulator
 ## Notes
 
 UI needs some polishing, but it'll do for now
+
+<i><b>DON'T OPEN THE MENU</b></i>

@@ -17,8 +17,14 @@ import java.awt.event.ActionListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//TODO: add javadocs
+/**
+ * The window for this application
+ * TODO: finish javadocs
+ */
 public class Window extends MultiPageWindow {
+    /**
+     * For determining the "enabled" state of non-overlay listeners
+     */
     public boolean pageListenersEnabled;
 
     //TODO: add javadoc
@@ -83,24 +89,28 @@ public class Window extends MultiPageWindow {
         }};
     }
 
+    //TODO: add javadoc
     @Override
     public void setActivePage(@Nullable String key) {
         super.setActivePage(key);
         hideOverlay();
     }
 
+    //TODO: add javadoc
     @Override
     public void showOverlay() {
         setPageListenersEnabled(false);
         super.showOverlay();
     }
 
+    //TODO: add javadoc
     @Override
     public void hideOverlay() {
         super.hideOverlay();
         setPageListenersEnabled(true);
     }
 
+    //TODO: add javadoc
     @Override
     public void toggleOverlay() {
         togglePageListenersEnabled();
