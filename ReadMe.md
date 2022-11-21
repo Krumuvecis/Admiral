@@ -1,17 +1,27 @@
 # Admiral
 
-## Abstarct
+## Abstract
 
-An admiral simulator
+An admiral simulator.
 
-*A fine example of drunken programming*
+<!--
+[![](https://jitpack.io/v/Krumuvecis/<projname>.svg)](https://jitpack.io/#Krumuvecis/<projname>)
+-->
 
-*Drunk as a proper sailor, yo; an admiral at that*
+by [Krumuvecis](https://github.com/Krumuvecis)
 
-*99 bottles hang on the wall, 99 bottles of rum; take one off, turn it around, 98 battles for rum*
+
+## Requirements
+
+* JDK: 18
+* Maven compiler: 18
+* Maven Surefire: 3.0.0-M7
+* jetbrains annotations: 23.0.0
+* [GraphicsEngine](https://github.com/KruMF/GraphicsEngine) : 0.8.12
+
 
 ## Notes
 
-UI needs some polishing, but it'll do for now
+UI needs some polishing, but it'll do for now.
 
-<i><b>DON'T OPEN THE MENU</b></i>
+Work is under progress, expect changes.
