@@ -2,6 +2,7 @@ package graphics;
 
 import graphics.common.MenuOverlay;
 import graphics.common.HeaderButtonListener;
+import graphics.common.OverlayButtonListener;
 import graphics.playPage.PlayPage;
 import graphics.startingPage.StartingPage;
 
@@ -34,7 +35,7 @@ public class Window extends MultiPageWindow {
         setActivePage(StartingPage.getStaticPageKey());
         setIcon(graphicsEngine.Utilities.getSampleIcon());
 
-        setOverlay(new MenuOverlay(null));
+        setOverlay(new MenuOverlay(new OverlayButtonListener(this)));
     }
 
     /**

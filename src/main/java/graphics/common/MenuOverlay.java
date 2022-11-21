@@ -13,6 +13,6 @@ public class MenuOverlay extends SimpleOverlay {
     public MenuOverlay(@Nullable ActionListener actionListener) {
         super(null);
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        //add(new ButtonListener.Button(actionListener));
+        add(new OverlayButtonListener.Button_HideOverlay(actionListener));
     }
 }
