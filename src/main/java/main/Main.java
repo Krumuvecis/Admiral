@@ -1,5 +1,7 @@
 package main;
 
+import DelayCalculator.DelayOptions;
+import DelayCalculator.PreferenceType;
 import graphicsEngine.GraphicsAdapter;
 import graphicsEngine.windows.WindowUpdater;
 
@@ -35,7 +37,9 @@ public class Main {
 
     private static void startGraphics() {
         new GraphicsAdapter() {{
-            newWindow(new WindowUpdater(new Window(this)));
+            newWindow(
+                    new WindowUpdater(new Window(this),
+                    new DelayOptions(PreferenceType.FPS, 60)));
         }};
     }
 
