@@ -1,9 +1,9 @@
-package admiralMainTest;
+package mainTests;
 
 import main.Main;
 
 /**
- * A dummy test that launches the main method itself (argumentless).
+ * Testing the main method argumentless - intended way to launch this for an average user.
  */
 public class MainTest {
     /**
