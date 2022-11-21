@@ -13,7 +13,9 @@ import org.jetbrains.annotations.Nullable;
 
 //TODO: add javadocs
 public class DrawPanel extends DynamicPanel {
-    private static final Color BACKGROUND_COLOR = new Color(50, 100, 150);
+    private static final Color
+            BACKGROUND_COLOR = new Color(100, 100, 100),
+            FIELD_COLOR = new Color(50, 100, 150);
 
     private Window window;
     private final ObserverInfo observerInfo;
@@ -29,20 +31,33 @@ public class DrawPanel extends DynamicPanel {
         addMouseListener(observerInfo.getNewMouseListener());
     }
 
+    @NotNull Dimension getPanelCenter() {
+        @NotNull Dimension panelSize = this.getSize();
+        return new Dimension(
+                panelSize.width / 2,
+                panelSize.height / 2);
+    }
+
     //TODO: add javadoc
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Dimension panelSize = this.getSize();
-        g.setColor(Color.red);
-        g.drawLine(0, 0, panelSize.width, panelSize.height);
+        @NotNull Dimension drawCenter = getPanelCenter();
+        drawTestLine(g, this.getSize());
         if (observerInfo == null) {
             drawUninitializedObserver(g);
         } else {
-            drawClickPoints(g);
+            drawField(g, drawCenter);
+            drawClickPoints(g, drawCenter);
             drawKeyInfo(g);
             drawMouseInfo(g);
         }
+    }
+
+    private void drawTestLine(@NotNull Graphics g,
+                              @NotNull Dimension drawSize) {
+        g.setColor(Color.red);
+        g.drawLine(0, 0, drawSize.width, drawSize.height);
     }
 
     private void drawUninitializedObserver(@NotNull Graphics g) {
@@ -71,15 +86,29 @@ public class DrawPanel extends DynamicPanel {
         g.drawString("zoom: " + observerInfo.zoom, mousePos[0], mousePos[1] + 15);
     }
 
-    private void drawClickPoints(@NotNull Graphics g) {
-        int radius = 10;
+    private void drawClickPoints(@NotNull Graphics g,
+                                 @NotNull Dimension drawCenter) {
+        int
+                unscaledRadius = 30,
+                radius = unscaledRadius / observerInfo.zoom;
+
         g.setColor(new Color(100, 70, 0));
         for (int[] point : StaticData.clickPoints) {
             g.fillOval(
-                    point[0] - radius / 2,
-                    point[1] - radius / 2,
+                    drawCenter.width + (point[0] - observerInfo.observerPos[0]) / observerInfo.zoom - radius / 2,
+                    drawCenter.height + (point[1] - observerInfo.observerPos[1]) / observerInfo.zoom - radius / 2,
                     radius,
                     radius);
         }
+    }
+
+    private void drawField(@NotNull Graphics g,
+                           @NotNull Dimension drawCenter) {
+        g.setColor(FIELD_COLOR);
+        g.fillRect(
+                drawCenter.width - (observerInfo.observerPos[0] / observerInfo.zoom),
+                drawCenter.height - (observerInfo.observerPos[1] / observerInfo.zoom),
+                StaticData.fieldSize[0] / observerInfo.zoom,
+                StaticData.fieldSize[1] / observerInfo.zoom);
     }
 }

@@ -2,6 +2,7 @@ package graphics.playPage;
 
 import staticData.StaticData;
 
+import java.awt.*;
 import java.awt.event.*;
 
 import org.jetbrains.annotations.NotNull;
@@ -11,12 +12,19 @@ public class ObserverInfo {
     private static final int INITIAL_ZOOM = 5, ZOOM_INCREMENT = 1;
 
     private final DrawPanel drawPanel;
-    final int @NotNull [] mousePos = new int[2];
+    final int @NotNull []
+            mousePos = new int[2],
+            observerPos = getInitialObserverPos();
 
     int zoom = INITIAL_ZOOM;
 
     ObserverInfo(@NotNull DrawPanel drawPanel) {
         this.drawPanel = drawPanel;
+    }
+
+    private int @NotNull [] getInitialObserverPos() {
+        int @NotNull [] fieldSize = StaticData.fieldSize;
+        return new int[] {fieldSize[0] / 2, fieldSize[1] / 2};
     }
 
     @NotNull MouseMotionListener getNewMouseMotionListener() {
@@ -77,7 +85,10 @@ public class ObserverInfo {
 
             private void mouseClickAction(MouseEvent e) {
                 if (drawPanel.panelActive) {
-                    StaticData.clickPoints.add(new int[] {e.getX(), e.getY()});
+                    @NotNull Dimension panelCenter = drawPanel.getPanelCenter();
+                    StaticData.clickPoints.add(new int[] {
+                            observerPos[0] + (e.getX() - panelCenter.width) * zoom,
+                            observerPos[1] + (e.getY() - panelCenter.height) * zoom});
                 }
             }
 
