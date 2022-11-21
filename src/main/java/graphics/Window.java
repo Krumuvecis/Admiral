@@ -1,6 +1,8 @@
 package graphics;
 
+import graphics.common.KeyboardListener;
 import graphics.common.MenuOverlay;
+import graphics.common.OverlayButtonListener;
 import graphics.common.HeaderButtonListener;
 import graphics.playPage.PlayPage;
 import graphics.startingPage.StartingPage;
@@ -17,18 +19,27 @@ import java.awt.event.ActionListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//TODO: add javadocs
+/**
+ * The window for this application
+ * TODO: finish javadocs
+ */
 public class Window extends MultiPageWindow {
+    public KeyboardListener keyboardListener;
+    /**
+     * For determining the "enabled" state of non-overlay listeners
+     */
     public boolean pageListenersEnabled;
 
     //TODO: add javadoc
     public Window(@NotNull WindowManager windowManager) {
         super(windowManager, config(), null, null);
+        keyboardListener = new KeyboardListener();
+        addKeyListener(keyboardListener);
         setPageListenersEnabled(true);
         setActivePage(StartingPage.getStaticPageKey());
         setIcon(graphicsEngine.Utilities.getSampleIcon());
 
-        setOverlay(new MenuOverlay(null));
+        setOverlay(new MenuOverlay(new OverlayButtonListener(this)));
     }
 
     /**
@@ -70,37 +81,51 @@ public class Window extends MultiPageWindow {
      */
     @Override
     public @NotNull List<AbstractPage> getInitialPages() {
-        return new ArrayList<>() {{
-            add(new StartingPage(getHeaderListener(), null));
-            add(new PlayPage(getHeaderListener(), null));
-        }};
-    }
-
-    private @NotNull List<ActionListener> getHeaderListener() {
         Window window = this;
         return new ArrayList<>() {{
-            add(new HeaderButtonListener(window));
+            add(new StartingPage(window, getListenerList_StartingPage(), null));
+            add(new PlayPage(window, getListenerList_PlayPage(), null));
         }};
     }
 
+    private @NotNull List<ActionListener> getListenerList_StartingPage() {
+        return new ArrayList<>() {{
+            add(getHeaderListener());
+        }};
+    }
+
+    private @NotNull List<ActionListener> getListenerList_PlayPage() {
+        return new ArrayList<>() {{
+            add(getHeaderListener());
+        }};
+    }
+
+    private @NotNull ActionListener getHeaderListener() {
+        return new HeaderButtonListener(this);
+    }
+
+    //TODO: add javadoc
     @Override
     public void setActivePage(@Nullable String key) {
         super.setActivePage(key);
         hideOverlay();
     }
 
+    //TODO: add javadoc
     @Override
     public void showOverlay() {
         setPageListenersEnabled(false);
         super.showOverlay();
     }
 
+    //TODO: add javadoc
     @Override
     public void hideOverlay() {
         super.hideOverlay();
         setPageListenersEnabled(true);
     }
 
+    //TODO: add javadoc
     @Override
     public void toggleOverlay() {
         togglePageListenersEnabled();

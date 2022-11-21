@@ -1,10 +1,11 @@
 package graphics.playPage;
 
+import graphics.Window;
 import graphics.common.CommonPage;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.parts.SimpleLabel;
 
 import java.util.List;
@@ -17,13 +18,14 @@ import org.jetbrains.annotations.Nullable;
 //TODO: add javadoc
 public class PlayPage extends CommonPage {
     private PlayPage() {
-        this(null, null);
+        this(null, null, null);
     }
 
     //TODO: add javadoc
-    public PlayPage(@Nullable List<ActionListener> actionListenerList,
+    public PlayPage(@Nullable Window window,
+                    @Nullable List<ActionListener> actionListenerList,
                     @Nullable SimpleColorScheme colors) {
-        super(actionListenerList, colors);
+        super(window, actionListenerList, colors);
     }
 
     //TODO: add javadoc
@@ -46,14 +48,19 @@ public class PlayPage extends CommonPage {
     //TODO: add javadoc
     @Override
     public @Nullable Component getPageBody() {
-        return new StaticPanel(
-                null,
-                new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
-                null) {
+        @Nullable Color
+                backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT,
+                textColor = Color.white;
+
+        return new DynamicPanel(new SimpleColorScheme(backgroundColor, textColor)) {
             {
                 setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel("Play page", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
+                add(new SimpleLabel(
+                                "Play page",
+                                getPanelColors().getSecondaryColor()),
+                        BorderLayout.NORTH);
                 //Add parts to body here
+                add(new DrawPanel(window));
             }
         };
     }

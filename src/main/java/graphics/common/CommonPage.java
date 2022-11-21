@@ -1,5 +1,7 @@
 package graphics.common;
 
+import graphics.Window;
+
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
@@ -20,12 +22,15 @@ import org.jetbrains.annotations.Nullable;
 
 //TODO: finish this and add javadoc
 public abstract class CommonPage extends HeaderAndFooterPage {
+    public final Window window;
     private HeaderButtonListener headerButtonListener;
 
     //TODO: add javadoc
-    public CommonPage(@Nullable List<ActionListener> actionListenerList,
+    public CommonPage(@Nullable Window window,
+                      @Nullable List<ActionListener> actionListenerList,
                       @Nullable SimpleColorScheme colors) {
         super(actionListenerList, null, colors, null);
+        this.window = window;
         setBodyParameters();
         addBody(getPageBody());
     }

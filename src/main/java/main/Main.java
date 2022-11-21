@@ -1,21 +1,49 @@
 package main;
 
+import DelayCalculator.DelayOptions;
+import DelayCalculator.PreferenceType;
 import graphicsEngine.GraphicsAdapter;
 import graphicsEngine.windows.WindowUpdater;
 
 import graphics.Window;
 
-//TODO: add javadoc
+import static consoleUtils.ConsoleUtils.printLine;
+
+/**
+ * Main class of this application.
+ * Run main(args) to run this.
+ */
 public class Main {
-    //TODO: add javadoc
+    public static final String DEV_MODE_ID = "dev";
+
+    /**
+     * Main method of this application.
+     * Provide first argument as DEV_MODE_ID, to run the dev mode.
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
         //init some static data here
+        if (args != null && args.length > 0 && args[0].equals(DEV_MODE_ID)) {
+            startDevMode();
+        } else {
+            startNormalMode();
+        }
+    }
+
+    private static void startNormalMode() {
         startGraphics();
     }
 
     private static void startGraphics() {
         new GraphicsAdapter() {{
-            newWindow(new WindowUpdater(new Window(this)));
+            newWindow(
+                    new WindowUpdater(new Window(this),
+                    new DelayOptions(PreferenceType.FPS, 60)));
         }};
+    }
+
+    private static void startDevMode() {
+        printLine("dev mode not ready yet");
     }
 }
