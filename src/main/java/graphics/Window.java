@@ -1,8 +1,9 @@
 package graphics;
 
+import graphics.common.KeyboardListener;
 import graphics.common.MenuOverlay;
-import graphics.common.HeaderButtonListener;
 import graphics.common.OverlayButtonListener;
+import graphics.common.HeaderButtonListener;
 import graphics.playPage.PlayPage;
 import graphics.startingPage.StartingPage;
 
@@ -23,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
  * TODO: finish javadocs
  */
 public class Window extends MultiPageWindow {
+    public KeyboardListener keyboardListener;
     /**
      * For determining the "enabled" state of non-overlay listeners
      */
@@ -31,6 +33,8 @@ public class Window extends MultiPageWindow {
     //TODO: add javadoc
     public Window(@NotNull WindowManager windowManager) {
         super(windowManager, config(), null, null);
+        keyboardListener = new KeyboardListener();
+        addKeyListener(keyboardListener);
         setPageListenersEnabled(true);
         setActivePage(StartingPage.getStaticPageKey());
         setIcon(graphicsEngine.Utilities.getSampleIcon());
@@ -77,17 +81,27 @@ public class Window extends MultiPageWindow {
      */
     @Override
     public @NotNull List<AbstractPage> getInitialPages() {
+        Window window = this;
         return new ArrayList<>() {{
-            add(new StartingPage(getHeaderListener(), null));
-            add(new PlayPage(getHeaderListener(), null));
+            add(new StartingPage(window, getListenerList_StartingPage(), null));
+            add(new PlayPage(window, getListenerList_PlayPage(), null));
         }};
     }
 
-    private @NotNull List<ActionListener> getHeaderListener() {
-        Window window = this;
+    private @NotNull List<ActionListener> getListenerList_StartingPage() {
         return new ArrayList<>() {{
-            add(new HeaderButtonListener(window));
+            add(getHeaderListener());
         }};
+    }
+
+    private @NotNull List<ActionListener> getListenerList_PlayPage() {
+        return new ArrayList<>() {{
+            add(getHeaderListener());
+        }};
+    }
+
+    private @NotNull ActionListener getHeaderListener() {
+        return new HeaderButtonListener(this);
     }
 
     //TODO: add javadoc

@@ -1,11 +1,12 @@
 package graphics.startingPage;
 
+import graphics.Window;
+import graphics.common.CommonPage;
+
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.SimpleLabel;
-
-import graphics.common.CommonPage;
 
 import java.util.List;
 import java.awt.Color;
@@ -19,13 +20,14 @@ import org.jetbrains.annotations.Nullable;
 //TODO: add javadoc
 public class StartingPage extends CommonPage {
     private StartingPage() {
-        this(null, null);
+        this(null, null, null);
     }
 
     //TODO: add javadoc
-    public StartingPage(@Nullable List<ActionListener> actionListenerList,
+    public StartingPage(@Nullable Window window,
+                        @Nullable List<ActionListener> actionListenerList,
                         @Nullable SimpleColorScheme colors) {
-        super(actionListenerList, colors);
+        super(window, actionListenerList, colors);
     }
 
     //TODO: add javadoc

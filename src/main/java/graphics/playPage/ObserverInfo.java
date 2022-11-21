@@ -1,6 +1,6 @@
 package graphics.playPage;
 
-import graphics.staticData.StaticData;
+import staticData.StaticData;
 
 import java.awt.event.*;
 
@@ -11,7 +11,8 @@ public class ObserverInfo {
     private static final int INITIAL_ZOOM = 5, ZOOM_INCREMENT = 1;
 
     private final DrawPanel drawPanel;
-    final int[] mousePos = new int[2];
+    final int @NotNull [] mousePos = new int[2];
+
     int zoom = INITIAL_ZOOM;
 
     ObserverInfo(@NotNull DrawPanel drawPanel) {

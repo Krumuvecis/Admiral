@@ -58,6 +58,7 @@ public class HeaderButtonListener implements ActionListener {
 
         protected Button_Menu(@Nullable ActionListener actionListener) {
             super("Menu", ACTION_COMMAND, actionListener);
+            setFocusable(false);
         }
     }
 
@@ -67,6 +68,7 @@ public class HeaderButtonListener implements ActionListener {
 
         protected Button_StartingPage(@Nullable ActionListener actionListener) {
             super("Starting page", ACTION_COMMAND, actionListener);
+            setFocusable(false);
         }
     }
 
@@ -76,6 +78,7 @@ public class HeaderButtonListener implements ActionListener {
 
         protected Button_PlayPage(@Nullable ActionListener actionListener) {
             super("Play page", ACTION_COMMAND, actionListener);
+            setFocusable(false);
         }
     }
 }

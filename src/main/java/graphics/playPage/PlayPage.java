@@ -1,11 +1,11 @@
 package graphics.playPage;
 
+import graphics.Window;
 import graphics.common.CommonPage;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
-import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.SimpleLabel;
 
 import java.util.List;
@@ -18,13 +18,14 @@ import org.jetbrains.annotations.Nullable;
 //TODO: add javadoc
 public class PlayPage extends CommonPage {
     private PlayPage() {
-        this(null, null);
+        this(null, null, null);
     }
 
-
-    public PlayPage(@Nullable List<ActionListener> actionListenerList,
+    //TODO: add javadoc
+    public PlayPage(@Nullable Window window,
+                    @Nullable List<ActionListener> actionListenerList,
                     @Nullable SimpleColorScheme colors) {
-        super(actionListenerList, colors);
+        super(window, actionListenerList, colors);
     }
 
     //TODO: add javadoc
@@ -54,9 +55,12 @@ public class PlayPage extends CommonPage {
         return new DynamicPanel(new SimpleColorScheme(backgroundColor, textColor)) {
             {
                 setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel("Play page", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
+                add(new SimpleLabel(
+                                "Play page",
+                                getPanelColors().getSecondaryColor()),
+                        BorderLayout.NORTH);
                 //Add parts to body here
-                add(new DrawPanel());
+                add(new DrawPanel(window));
             }
         };
     }

@@ -50,6 +50,7 @@ public class OverlayButtonListener implements ActionListener {
 
         protected Button_HideOverlay(@Nullable ActionListener actionListener) {
             super("Back", ACTION_COMMAND, actionListener);
+            setFocusable(false);
         }
     }
 }
