@@ -11,19 +11,16 @@ import org.jetbrains.annotations.NotNull;
 public class ObserverInfo {
     private static final int[] ZOOM_LIMITS = new int[] {1, 10};
     private static final int INITIAL_ZOOM = 5, ZOOM_INCREMENT = 1;
-
     private final DrawPanel drawPanel;
-    private final ObserverKeyboardChecker keyboardChecker;
     final int @NotNull []
             mousePos = new int[2],
             observerPos = getInitialObserverPos();
-
     int zoom = INITIAL_ZOOM;
 
     ObserverInfo(Window window,
                  @NotNull DrawPanel drawPanel) {
         this.drawPanel = drawPanel;
-        keyboardChecker = new ObserverKeyboardChecker(window);
+        ObserverKeyboardChecker keyboardChecker = new ObserverKeyboardChecker(window);
         keyboardChecker.start();
     }
 
