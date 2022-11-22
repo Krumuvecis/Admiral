@@ -23,6 +23,22 @@ public class StaticData {
     }};
 
     static {
-        new Cell.CellUpdater(cells, cellCount).start();
+        new Cell.CellUpdater(cellCount).start();
+    }
+
+    public static @NotNull Cell getCell(int x, int y) {
+        if (x < 0) {
+            x += cellCount[0];
+        }
+        if (y < 0) {
+            y += cellCount[1];
+        }
+        if (x >= cellCount[0]) {
+            x -= cellCount[0];
+        }
+        if (y >= cellCount[1]) {
+            y -= cellCount[1];
+        }
+        return cells.get(x).get(y);
     }
 }

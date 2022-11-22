@@ -1,5 +1,6 @@
 package graphics.playPage;
 
+import consoleUtils.NumberFormatter;
 import graphics.Window;
 import staticData.Cell;
 import staticData.StaticData;
@@ -54,6 +55,19 @@ public class DrawPanel extends DynamicPanel {
             drawCenterMarker(g, drawCenter);
             drawKeyInfo(g);
             drawMouseInfo(g);
+
+            //show total pressure
+            double pressure = 0;
+            int imax = StaticData.cellCount[0], jmax = StaticData.cellCount[1];
+            for (int i = 0; i < imax; i++) {
+                for (int j = 0; j < jmax; j++) {
+                    pressure += StaticData.getCell(i, j).pressure;
+                }
+            }
+            g.setColor(getPanelColors().getSecondaryColor());
+            g.drawString(
+                    "Total pressure: " + NumberFormatter.doubleToString(pressure, 3),
+                    10, 130);
         }
     }
 
@@ -144,16 +158,55 @@ public class DrawPanel extends DynamicPanel {
                         fieldStart[0], cellY,
                         fieldStart[0] + fieldSize[0], cellY);
                 if (i != imax && j != jmax) {
-                    Cell cell = StaticData.cells.get(i).get(j);
-                    // draw cell {i, j} here
-                    int alpha = (int) (255 * cell.value / Cell.VALUE_MAX);
-                    g.setColor(new Color(150, 0, 50, alpha));
-                    g.fillRect(
-                            cellX, cellY,
-                            cellSize, cellSize);
+                    drawCell(
+                            g, zoom,
+                            cellX, cellY, cellSize,
+                            i, j);
                 }
             }
         }
+    }
+
+    private void drawCell(@NotNull Graphics g, int zoom,
+                          int cellX, int cellY, int cellSize,
+                          int i, int j) {
+        Cell cell = StaticData.getCell(i, j);
+
+        //draw pressure
+        int alpha = Math.max(
+                0,
+                Math.min(
+                        255,
+                        (int) (255 * Math.log(1 + Math.pow(cell.pressure / Cell.VALUE_MAX, 0.7)) / Math.log(2))));
+        g.setColor(new Color(150, 0, 50, alpha));
+        g.fillRect(
+                cellX, cellY,
+                cellSize, cellSize);
+
+        //draw wind
+        int[] cellCenter = new int[] {
+                cellX + cellSize / 2,
+                cellY + cellSize / 2};
+        int
+                lengthCoefficient = 3,
+                dx = (int) (lengthCoefficient * cell.windAmount * Math.cos(cell.windDirection) / zoom),
+                dy = (int) (lengthCoefficient * cell.windAmount * Math.sin(cell.windDirection) / zoom);
+        g.setColor(new Color(220, 200, 20));
+        g.drawLine(
+                cellCenter[0], cellCenter[1],
+                cellCenter[0] + dx, cellCenter[1] + dy);
+
+        /*
+        //draw cell pressure & wind data
+        g.setColor(Color.white);
+        g.drawString(
+                NumberFormatter.doubleToString(cell.pressure, 2),
+                cellX + 5, cellY + 20);
+        g.drawString(
+                NumberFormatter.doubleToString(cell.windAmount, 2),
+                cellX + 5, cellY + 35);
+
+        */
     }
 
     private void drawCenterMarker(@NotNull Graphics g,

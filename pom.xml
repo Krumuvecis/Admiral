@@ -16,6 +16,7 @@
 
         <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
         <graphicsEngine.version>0.8.12</graphicsEngine.version>
+        <mathUtils.version>0.2</mathUtils.version>
     </properties>
 
     <repositories>
@@ -38,10 +39,16 @@
             <version>${jetbrains.annotations.version}</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>com.github.KruMF</groupId>
             <artifactId>GraphicsEngine</artifactId>
             <version>${graphicsEngine.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.KruMF</groupId>
+            <artifactId>MathUtils</artifactId>
+            <version>${mathUtils.version}</version>
         </dependency>
     </dependencies>
 

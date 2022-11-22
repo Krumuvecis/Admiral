@@ -18,6 +18,7 @@ by [Krumuvecis](https://github.com/Krumuvecis)
 * Maven Surefire: 3.0.0-M7
 * jetbrains annotations: 23.0.0
 * [GraphicsEngine](https://github.com/KruMF/GraphicsEngine) : 0.8.12
+* [MathUtils](https://github.com/KruMF/MathUtils) : 0.2
 
 
 ## Notes

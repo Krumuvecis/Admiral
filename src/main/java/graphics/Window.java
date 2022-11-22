@@ -36,7 +36,9 @@ public class Window extends MultiPageWindow {
         keyboardListener = new KeyboardListener();
         addKeyListener(keyboardListener);
         setPageListenersEnabled(true);
-        setActivePage(StartingPage.getStaticPageKey());
+        //TODO: return back to starting page after testing
+        //setActivePage(StartingPage.getStaticPageKey());
+        setActivePage(PlayPage.getStaticPageKey());
         setIcon(graphicsEngine.Utilities.getSampleIcon());
 
         setOverlay(new MenuOverlay(new OverlayButtonListener(this)));
