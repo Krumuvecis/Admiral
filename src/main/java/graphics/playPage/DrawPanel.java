@@ -15,7 +15,8 @@ import org.jetbrains.annotations.Nullable;
 public class DrawPanel extends DynamicPanel {
     private static final Color
             BACKGROUND_COLOR = new Color(100, 100, 100),
-            FIELD_COLOR = new Color(50, 100, 150);
+            FIELD_COLOR = new Color(50, 100, 150),
+            GRID_COLOR = new Color(100, 80, 60);
 
     private final Window window;
     private final ObserverInfo observerInfo;
@@ -43,21 +44,27 @@ public class DrawPanel extends DynamicPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         @NotNull Dimension drawCenter = getPanelCenter();
-        drawTestLine(g, this.getSize());
+        drawTestLines(g, this.getSize());
         if (observerInfo == null) {
             drawUninitializedObserver(g);
         } else {
             drawField(g, drawCenter);
             drawClickPoints(g, drawCenter);
+            drawCenterMarker(g, drawCenter);
             drawKeyInfo(g);
             drawMouseInfo(g);
         }
     }
 
-    private void drawTestLine(@NotNull Graphics g,
-                              @NotNull Dimension drawSize) {
+    private void drawTestLines(@NotNull Graphics g,
+                               @NotNull Dimension drawSize) {
         g.setColor(Color.red);
-        g.drawLine(0, 0, drawSize.width, drawSize.height);
+        g.drawLine(
+                0, 0,
+                drawSize.width, drawSize.height);
+        g.drawLine(
+                drawSize.width, 0,
+                0, drawSize.height);
     }
 
     private void drawUninitializedObserver(@NotNull Graphics g) {
@@ -121,8 +128,7 @@ public class DrawPanel extends DynamicPanel {
                 fieldSize[0], fieldSize[1]);
 
         int cellSize = StaticData.cellSize / zoom;
-        Color gridColor = new Color(100, 80, 60);
-        g.setColor(gridColor);
+        g.setColor(GRID_COLOR);
         int imax = StaticData.cellCount[0];
         for(int i = 0; i <= imax; i++) {
             int cellX = fieldStart[0] + i * cellSize;
@@ -140,5 +146,20 @@ public class DrawPanel extends DynamicPanel {
                 }
             }
         }
+    }
+
+    private void drawCenterMarker(@NotNull Graphics g,
+                                  @NotNull Dimension drawCenter) {
+        g.setColor(new Color(0, 80, 60));
+        int markerSize = 20;
+        int[] center = new int[] {drawCenter.width, drawCenter.height};
+        g.drawLine( // vertical line
+                center[0], center[1] - markerSize / 2,
+                center[0], center[1] + markerSize / 2
+        );
+        g.drawLine( // horizontal line
+                center[0] - markerSize / 2, center[1],
+                center[0] + markerSize / 2, center[1]
+        );
     }
 }
