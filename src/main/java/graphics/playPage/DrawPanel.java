@@ -104,11 +104,41 @@ public class DrawPanel extends DynamicPanel {
 
     private void drawField(@NotNull Graphics g,
                            @NotNull Dimension drawCenter) {
+        int zoom = observerInfo.zoom;
+        int[]
+                fieldStart = new int[] {
+                        drawCenter.width - observerInfo.observerPos[0] / zoom,
+                        drawCenter.height - observerInfo.observerPos[1] / zoom
+                },
+                fieldSize = new int[] {
+                        StaticData.fieldSize[0] / zoom,
+                        StaticData.fieldSize[1] / zoom
+                };
+
         g.setColor(FIELD_COLOR);
         g.fillRect(
-                drawCenter.width - (observerInfo.observerPos[0] / observerInfo.zoom),
-                drawCenter.height - (observerInfo.observerPos[1] / observerInfo.zoom),
-                StaticData.fieldSize[0] / observerInfo.zoom,
-                StaticData.fieldSize[1] / observerInfo.zoom);
+                fieldStart[0], fieldStart[1],
+                fieldSize[0], fieldSize[1]);
+
+        int cellSize = StaticData.cellSize / zoom;
+        Color gridColor = new Color(100, 80, 60);
+        g.setColor(gridColor);
+        int imax = StaticData.cellCount[0];
+        for(int i = 0; i <= imax; i++) {
+            int cellX = fieldStart[0] + i * cellSize;
+            g.drawLine( // vertical line
+                    cellX, fieldStart[1],
+                    cellX, fieldStart[1] + fieldSize[1]);
+            int jmax = StaticData.cellCount[1];
+            for (int j = 0; j <= jmax; j++) {
+                int cellY = fieldStart[1] + j * cellSize;
+                g.drawLine( // horizontal line
+                        fieldStart[0], cellY,
+                        fieldStart[0] + fieldSize[0], cellY);
+                if (i != imax && j != jmax) {
+                    // draw cell {i, j} here
+                }
+            }
+        }
     }
 }

@@ -7,14 +7,14 @@ import ThreadAbstraction.AbstractUpdater;
 
 import java.awt.event.KeyEvent;
 
-import consoleUtils.ConsoleUtils;
-
 public class ObserverKeyboardChecker extends AbstractUpdater {
     private final Window window;
+    private final ObserverInfo observerInfo;
 
-    ObserverKeyboardChecker(Window window) {
+    ObserverKeyboardChecker(Window window, ObserverInfo observerInfo) {
         super(20);
         this.window = window;
+        this.observerInfo = observerInfo;
     }
 
     /**
@@ -36,16 +36,16 @@ public class ObserverKeyboardChecker extends AbstractUpdater {
         String key = KeyEvent.getKeyText(keyCode);
         switch (key) {
             case "A", "Left" -> {
-                ConsoleUtils.printLine("left");
+                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.LEFT);
             }
             case "D", "Right" -> {
-                ConsoleUtils.printLine("right");
+                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.RIGHT);
             }
             case "W", "Up" -> {
-                ConsoleUtils.printLine("up");
+                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.UP);
             }
             case "S", "Down" -> {
-                ConsoleUtils.printLine("down");
+                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.DOWN);
             }
             default -> {}
         }

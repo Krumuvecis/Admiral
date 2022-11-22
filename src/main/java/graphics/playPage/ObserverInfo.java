@@ -20,13 +20,43 @@ public class ObserverInfo {
     ObserverInfo(Window window,
                  @NotNull DrawPanel drawPanel) {
         this.drawPanel = drawPanel;
-        ObserverKeyboardChecker keyboardChecker = new ObserverKeyboardChecker(window);
+        ObserverKeyboardChecker keyboardChecker = new ObserverKeyboardChecker(window, this);
         keyboardChecker.start();
     }
 
     private int @NotNull [] getInitialObserverPos() {
         int @NotNull [] fieldSize = StaticData.fieldSize;
         return new int[] {fieldSize[0] / 2, fieldSize[1] / 2};
+    }
+
+    enum ObserverMovementDirection {
+        RIGHT,
+        LEFT,
+        DOWN,
+        UP
+    }
+
+    void moveObserver(ObserverMovementDirection direction) {
+        switch (direction) {
+            case RIGHT -> {
+                observerPos[0] += getMovementAmount();
+            }
+            case LEFT -> {
+                observerPos[0] -= getMovementAmount();
+            }
+            case DOWN -> {
+                observerPos[1] += getMovementAmount();
+            }
+            case UP -> {
+                observerPos[1] -= getMovementAmount();
+            }
+            default -> {}
+        }
+    }
+
+    int getMovementAmount() {
+        int velocity = 2;
+        return velocity * zoom;
     }
 
     @NotNull MouseMotionListener getNewMouseMotionListener() {
@@ -87,10 +117,12 @@ public class ObserverInfo {
 
             private void mouseClickAction(MouseEvent e) {
                 if (drawPanel.panelActive) {
-                    @NotNull Dimension panelCenter = drawPanel.getPanelCenter();
-                    StaticData.clickPoints.add(new int[] {
-                            observerPos[0] + (e.getX() - panelCenter.width) * zoom,
-                            observerPos[1] + (e.getY() - panelCenter.height) * zoom});
+                    if (e.getButton() == 1) { //left click
+                        @NotNull Dimension panelCenter = drawPanel.getPanelCenter();
+                        StaticData.clickPoints.add(new int[] {
+                                observerPos[0] + (e.getX() - panelCenter.width) * zoom,
+                                observerPos[1] + (e.getY() - panelCenter.height) * zoom});
+                    }
                 }
             }
 
