@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ObserverInfo {
     private static final int[] ZOOM_LIMITS = new int[] {1, 10};
-    private static final int INITIAL_ZOOM = 5, ZOOM_INCREMENT = 1;
+    private static final int INITIAL_ZOOM = 2, ZOOM_INCREMENT = 1;
     private final DrawPanel drawPanel;
     final int @NotNull []
             mousePos = new int[2],

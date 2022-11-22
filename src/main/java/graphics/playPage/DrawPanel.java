@@ -146,12 +146,11 @@ public class DrawPanel extends DynamicPanel {
                 if (i != imax && j != jmax) {
                     Cell cell = StaticData.cells.get(i).get(j);
                     // draw cell {i, j} here
-                    if (cell.state) {
-                        g.setColor(new Color(150, 0, 50, 150));
-                        g.fillRect(
-                                cellX, cellY,
-                                cellSize, cellSize);
-                    }
+                    int alpha = (int) (255 * cell.value / Cell.VALUE_MAX);
+                    g.setColor(new Color(150, 0, 50, alpha));
+                    g.fillRect(
+                            cellX, cellY,
+                            cellSize, cellSize);
                 }
             }
         }

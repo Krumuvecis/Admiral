@@ -2,9 +2,7 @@ package staticData;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Random;
 
-import ThreadAbstraction.AbstractUpdater;
 import org.jetbrains.annotations.NotNull;
 
 public class StaticData {
@@ -25,34 +23,6 @@ public class StaticData {
     }};
 
     static {
-        new CellUpdater(20).start();
-    }
-
-    private static class CellUpdater extends AbstractUpdater {
-        static double changeChance = 0.01;
-        static Random random = new Random();
-
-        CellUpdater(int delay) {
-            super(delay);
-        }
-
-        /**
-         *
-         */
-        @Override
-        public void update() {
-            for (int i = 0; i < cellCount[0]; i++) {
-                for (int j = 0; j < cellCount[1]; j++) {
-                    updateSingleCell(i, j);
-                }
-            }
-        }
-
-        private void updateSingleCell(int x, int y) {
-            Cell cell = cells.get(x).get(y);
-            if (random.nextDouble() < changeChance) {
-                cell.state = !cell.state;
-            }
-        }
+        new Cell.CellUpdater(cells, cellCount).start();
     }
 }
