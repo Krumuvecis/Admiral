@@ -25,7 +25,7 @@ public class DrawPanel extends DynamicPanel {
     DrawPanel(@Nullable Window window) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, null));
         this.window = window;
-        observerInfo = new ObserverInfo(this);
+        observerInfo = new ObserverInfo(window, this);
         addMouseMotionListener(observerInfo.getNewMouseMotionListener());
         addMouseWheelListener(observerInfo.getNewMouseWheelListener());
         addMouseListener(observerInfo.getNewMouseListener());

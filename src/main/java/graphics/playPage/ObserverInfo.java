@@ -1,5 +1,6 @@
 package graphics.playPage;
 
+import graphics.Window;
 import staticData.StaticData;
 
 import java.awt.*;
@@ -12,14 +13,18 @@ public class ObserverInfo {
     private static final int INITIAL_ZOOM = 5, ZOOM_INCREMENT = 1;
 
     private final DrawPanel drawPanel;
+    private final ObserverKeyboardChecker keyboardChecker;
     final int @NotNull []
             mousePos = new int[2],
             observerPos = getInitialObserverPos();
 
     int zoom = INITIAL_ZOOM;
 
-    ObserverInfo(@NotNull DrawPanel drawPanel) {
+    ObserverInfo(Window window,
+                 @NotNull DrawPanel drawPanel) {
         this.drawPanel = drawPanel;
+        keyboardChecker = new ObserverKeyboardChecker(window);
+        keyboardChecker.start();
     }
 
     private int @NotNull [] getInitialObserverPos() {
