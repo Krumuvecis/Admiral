@@ -35,16 +35,16 @@ public class ObserverKeyboardChecker extends AbstractUpdater {
     private void keyCheck(int keyCode) {
         String key = KeyEvent.getKeyText(keyCode);
         switch (key) {
-            case "A", "LEFT" -> {
+            case "A", "Left" -> {
                 ConsoleUtils.printLine("left");
             }
-            case "D", "RIGHT" -> {
+            case "D", "Right" -> {
                 ConsoleUtils.printLine("right");
             }
-            case "W", "UP" -> {
+            case "W", "Up" -> {
                 ConsoleUtils.printLine("up");
             }
-            case "S", "DOWN" -> {
+            case "S", "Down" -> {
                 ConsoleUtils.printLine("down");
             }
             default -> {}
