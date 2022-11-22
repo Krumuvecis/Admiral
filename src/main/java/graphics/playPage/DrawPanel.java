@@ -1,6 +1,7 @@
 package graphics.playPage;
 
 import graphics.Window;
+import staticData.Cell;
 import staticData.StaticData;
 
 import graphicsEngine.colors.SimpleColorScheme;
@@ -99,7 +100,7 @@ public class DrawPanel extends DynamicPanel {
                 unscaledRadius = 30,
                 radius = unscaledRadius / observerInfo.zoom;
 
-        g.setColor(new Color(100, 70, 0));
+        g.setColor(new Color(220, 170, 20));
         for (int[] point : StaticData.clickPoints) {
             g.fillOval(
                     drawCenter.width + (point[0] - observerInfo.observerPos[0]) / observerInfo.zoom - radius / 2,
@@ -128,21 +129,29 @@ public class DrawPanel extends DynamicPanel {
                 fieldSize[0], fieldSize[1]);
 
         int cellSize = StaticData.cellSize / zoom;
-        g.setColor(GRID_COLOR);
         int imax = StaticData.cellCount[0];
         for(int i = 0; i <= imax; i++) {
             int cellX = fieldStart[0] + i * cellSize;
+            g.setColor(GRID_COLOR);
             g.drawLine( // vertical line
                     cellX, fieldStart[1],
                     cellX, fieldStart[1] + fieldSize[1]);
             int jmax = StaticData.cellCount[1];
             for (int j = 0; j <= jmax; j++) {
                 int cellY = fieldStart[1] + j * cellSize;
+                g.setColor(GRID_COLOR);
                 g.drawLine( // horizontal line
                         fieldStart[0], cellY,
                         fieldStart[0] + fieldSize[0], cellY);
                 if (i != imax && j != jmax) {
+                    Cell cell = StaticData.cells.get(i).get(j);
                     // draw cell {i, j} here
+                    if (cell.state) {
+                        g.setColor(new Color(150, 0, 50, 150));
+                        g.fillRect(
+                                cellX, cellY,
+                                cellSize, cellSize);
+                    }
                 }
             }
         }
