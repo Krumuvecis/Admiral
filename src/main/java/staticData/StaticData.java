@@ -9,7 +9,7 @@ public class StaticData {
     public static @NotNull List<int @NotNull []> clickPoints = new ArrayList<>();
     public static int cellSize = 100;
     public static int @NotNull []
-            cellCount = new int[] {10, 10},
+            cellCount = new int[] {30, 20},
             fieldSize = new int[] {cellSize * cellCount[0], cellSize * cellCount[1]};
 
     public static @NotNull List<@NotNull List<@NotNull Cell>> cells = new ArrayList<>() {{
