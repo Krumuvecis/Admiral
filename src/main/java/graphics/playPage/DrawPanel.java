@@ -17,7 +17,7 @@ public class DrawPanel extends DynamicPanel {
             BACKGROUND_COLOR = new Color(100, 100, 100),
             FIELD_COLOR = new Color(50, 100, 150);
 
-    private Window window;
+    private final Window window;
     private final ObserverInfo observerInfo;
     boolean panelActive = false;
 
