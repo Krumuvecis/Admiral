@@ -22,11 +22,11 @@ public class Cell {
     }
 
     static class CellUpdater extends AbstractUpdater {
-        private static final int DELAY = 20;
+        private static final int DELAY = 100;
         static double
-                normalizationRate = 0.02,
-                distributionRate = 0.005,
-                suddenChangeChance = 0.001;
+                normalizationRate = 0.005,
+                distributionRate = 0.1,
+                suddenChangeChance = 0.0002;
         static Random random = new Random();
 
         private final int @NotNull [] cellCount;

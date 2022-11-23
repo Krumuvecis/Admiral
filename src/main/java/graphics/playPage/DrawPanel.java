@@ -188,7 +188,7 @@ public class DrawPanel extends DynamicPanel {
                 cellX + cellSize / 2,
                 cellY + cellSize / 2};
         int
-                lengthCoefficient = 3,
+                lengthCoefficient = 10,//3,
                 dx = (int) (lengthCoefficient * cell.windAmount * Math.cos(cell.windDirection) / zoom),
                 dy = (int) (lengthCoefficient * cell.windAmount * Math.sin(cell.windDirection) / zoom);
         g.setColor(new Color(220, 200, 20));
