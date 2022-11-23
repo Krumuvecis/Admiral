@@ -36,7 +36,9 @@ public class Window extends MultiPageWindow {
         keyboardListener = new KeyboardListener();
         addKeyListener(keyboardListener);
         setPageListenersEnabled(true);
-        setActivePage(StartingPage.getStaticPageKey());
+        //TODO: return back to starting page after testing
+        //setActivePage(StartingPage.getStaticPageKey());
+        setActivePage(PlayPage.getStaticPageKey());
         setIcon(graphicsEngine.Utilities.getSampleIcon());
 
         setOverlay(new MenuOverlay(new OverlayButtonListener(this)));
@@ -50,7 +52,7 @@ public class Window extends MultiPageWindow {
     private static @NotNull WindowConfig config() {
         String title = "Admiral";
         int[]
-                size = new int[] {600, 400},
+                size = new int[] {900, 700},
                 location = new int[] {50, 50};
         WindowConfig config = new WindowConfig(title, size, location);
         config.closeOperation = EXIT_ON_CLOSE;
