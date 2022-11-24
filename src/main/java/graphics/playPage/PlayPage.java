@@ -2,6 +2,7 @@ package graphics.playPage;
 
 import graphics.Window;
 import graphics.common.CommonPage;
+import graphics.playPage.drawPanel.DrawPanel;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
@@ -48,18 +49,11 @@ public class PlayPage extends CommonPage {
     //TODO: add javadoc
     @Override
     public @Nullable Component getPageBody() {
-        @Nullable Color
-                backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT,
-                textColor = Color.white;
-
-        return new DynamicPanel(new SimpleColorScheme(backgroundColor, textColor)) {
+        @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
+        return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
             {
                 setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel(
-                                "Play page",
-                                getPanelColors().getSecondaryColor()),
-                        BorderLayout.NORTH);
-                //Add parts to body here
+                add(new LeftPanel(), BorderLayout.WEST);
                 add(new DrawPanel(window));
             }
         };

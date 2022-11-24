@@ -13,6 +13,7 @@ import static consoleUtils.ConsoleUtils.printLine;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import staticData.StaticData;
 
 //TODO: add javadocs
 public class HeaderButtonListener implements ActionListener {
@@ -44,6 +45,8 @@ public class HeaderButtonListener implements ActionListener {
                     window.setActivePage(StartingPage.getStaticPageKey());
             case Button_PlayPage.ACTION_COMMAND ->
                     window.setActivePage(PlayPage.getStaticPageKey());
+            case Button_Pause.ACTION_COMMAND ->
+                    StaticData.pause = !StaticData.pause;
             //add new header button actions here
             default -> {
                 return false;
@@ -78,6 +81,16 @@ public class HeaderButtonListener implements ActionListener {
 
         protected Button_PlayPage(@Nullable ActionListener actionListener) {
             super("Play page", ACTION_COMMAND, actionListener);
+            setFocusable(false);
+        }
+    }
+
+    //TODO: add javadocs
+    public static class Button_Pause extends SimpleJButton {
+        public static final String ACTION_COMMAND = "pause";
+
+        protected Button_Pause(@Nullable ActionListener actionListener) {
+            super("Toggle pause", ACTION_COMMAND, actionListener);
             setFocusable(false);
         }
     }

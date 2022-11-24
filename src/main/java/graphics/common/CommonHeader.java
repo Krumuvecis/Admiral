@@ -30,5 +30,6 @@ public class CommonHeader extends AbstractHeader {
         add(new HeaderButtonListener.Button_Menu(buttonListener));
         add(new HeaderButtonListener.Button_StartingPage(buttonListener));
         add(new HeaderButtonListener.Button_PlayPage(buttonListener));
+        add(new HeaderButtonListener.Button_Pause(buttonListener));
     }
 }
