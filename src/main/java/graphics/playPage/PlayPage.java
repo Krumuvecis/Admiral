@@ -2,14 +2,18 @@ package graphics.playPage;
 
 import graphics.Window;
 import graphics.common.CommonPage;
+import graphics.playPage.observer.Observer;
+import graphics.playPage.leftPanel.LeftPanel;
+import graphics.playPage.drawPanel.DrawPanel;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
-import graphicsEngine.parts.SimpleLabel;
 
 import java.util.List;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -17,6 +21,8 @@ import org.jetbrains.annotations.Nullable;
 
 //TODO: add javadoc
 public class PlayPage extends CommonPage {
+    private Observer observer;
+
     private PlayPage() {
         this(null, null, null);
     }
@@ -48,19 +54,13 @@ public class PlayPage extends CommonPage {
     //TODO: add javadoc
     @Override
     public @Nullable Component getPageBody() {
-        @Nullable Color
-                backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT,
-                textColor = Color.white;
-
-        return new DynamicPanel(new SimpleColorScheme(backgroundColor, textColor)) {
+        observer = new Observer(window);
+        @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
+        return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
             {
                 setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel(
-                                "Play page",
-                                getPanelColors().getSecondaryColor()),
-                        BorderLayout.NORTH);
-                //Add parts to body here
-                add(new DrawPanel(window));
+                add(new LeftPanel(window, observer), BorderLayout.WEST);
+                add(new DrawPanel(observer));
             }
         };
     }

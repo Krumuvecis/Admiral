@@ -1,20 +1,21 @@
-package graphics.playPage;
+package graphics.playPage.observer;
 
 import graphics.Window;
 import graphics.common.KeyboardListener;
-
-import ThreadAbstraction.AbstractUpdater;
+import graphics.playPage.PlayPage;
 
 import java.awt.event.KeyEvent;
 
+import ThreadAbstraction.AbstractUpdater;
+
 public class ObserverKeyboardChecker extends AbstractUpdater {
     private final Window window;
-    private final ObserverInfo observerInfo;
+    private final Observer observer;
 
-    ObserverKeyboardChecker(Window window, ObserverInfo observerInfo) {
+    ObserverKeyboardChecker(Window window, Observer observer) {
         super(20);
         this.window = window;
-        this.observerInfo = observerInfo;
+        this.observer = observer;
     }
 
     /**
@@ -36,16 +37,16 @@ public class ObserverKeyboardChecker extends AbstractUpdater {
         String key = KeyEvent.getKeyText(keyCode);
         switch (key) {
             case "A", "Left" -> {
-                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.LEFT);
+                observer.movement.moveObserver(ObserverMovement.MovementDirection.LEFT);
             }
             case "D", "Right" -> {
-                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.RIGHT);
+                observer.movement.moveObserver(ObserverMovement.MovementDirection.RIGHT);
             }
             case "W", "Up" -> {
-                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.UP);
+                observer.movement.moveObserver(ObserverMovement.MovementDirection.UP);
             }
             case "S", "Down" -> {
-                observerInfo.moveObserver(ObserverInfo.ObserverMovementDirection.DOWN);
+                observer.movement.moveObserver(ObserverMovement.MovementDirection.DOWN);
             }
             default -> {}
         }

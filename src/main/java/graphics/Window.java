@@ -52,7 +52,7 @@ public class Window extends MultiPageWindow {
     private static @NotNull WindowConfig config() {
         String title = "Admiral";
         int[]
-                size = new int[] {900, 700},
+                size = new int[] {1000, 700},
                 location = new int[] {50, 50};
         WindowConfig config = new WindowConfig(title, size, location);
         config.closeOperation = EXIT_ON_CLOSE;
