@@ -70,7 +70,7 @@ class FieldPainter {
         Cell cell = StaticData.cells.getCell(i, j);
 
         //draw pressure
-        double pressure = cell.pressure;
+        double pressure = cell.getPressure();
         int alpha = Math.max(
                 0,
                 Math.min(

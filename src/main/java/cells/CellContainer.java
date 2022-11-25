@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
 public class CellContainer {
-    public static int cellSize = 100;
-    public static int @NotNull []
+    public static final int cellSize = 100;
+    public static final int @NotNull []
             cellCount = new int[] {30, 20},
             fieldSize = new int[] {cellSize * cellCount[0], cellSize * cellCount[1]};
 
@@ -22,22 +22,26 @@ public class CellContainer {
     }};
 
     public CellContainer() {
-        setInitialCells(false); //set this to true, for some pre-defined initial cells
-        new CellUpdater(this, cellCount).start();
+        setInitialCells(true); //set this to true, for some pre-defined initial cells
+        new CellUpdater(this).start();
     }
 
-    @SuppressWarnings("SameParameterValue")
+    @SuppressWarnings({"SameParameterValue", "CommentedOutCode"})
     private void setInitialCells(boolean setInitial) {
         if (setInitial) {
             getCell(
                     cellCount[0] / 2 - 1,
                     cellCount[1] / 2 - 1
-            ).newPressure = Cell.PRESSURE_MAX;
+            ).setPressure(Cell.PRESSURE_MAX);
             /*getCell(
                     cellCount[0] / 2,
                     cellCount[1] / 2 - 1
-            ).newPressure = -Cell.PRESSURE_MAX;*/
+            ).setPressure(-Cell.PRESSURE_MAX)*/
         }
+    }
+
+    public int @NotNull [] getCellCount() {
+        return cellCount;
     }
 
     public @NotNull Cell getCell(int x, int y) {

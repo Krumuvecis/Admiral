@@ -74,7 +74,7 @@ public class DrawPanel extends DynamicPanel {
         for (int i = 0; i < cellCount[0]; i++) {
             for (int j = 0; j < cellCount[1]; j++) {
                 @NotNull Cell cell = StaticData.cells.getCell(i, j);
-                totalPressure += cell.pressure;
+                totalPressure += cell.getPressure();
             }
         }
         g.setColor(getPanelColors().getSecondaryColor());
