@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  *
  */
-public class CellUpdater extends AbstractUpdater {
+class CellUpdater extends AbstractUpdater {
     private static final int DELAY = 50;
     private static final double
             inertiaFactor = 10, // inertia of medium (must be greater than 1; otherwise self-induces)

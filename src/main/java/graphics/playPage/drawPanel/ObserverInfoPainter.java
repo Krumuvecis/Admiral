@@ -2,43 +2,17 @@ package graphics.playPage.drawPanel;
 
 import staticData.StaticData;
 
-import graphics.common.KeyboardListener;
 import graphics.playPage.observer.Observer;
 
 import java.awt.*;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 class ObserverInfoPainter {
     private final @NotNull Observer observer;
 
     ObserverInfoPainter(@NotNull Observer observer) {
         this.observer = observer;
-    }
-
-    void drawKeyInfo(@NotNull Graphics g,
-                     @Nullable KeyboardListener keyboardListener,
-                     @NotNull Color textColor) {
-        int[] textPosition = new int[] {10, 25};
-        int dt = 15;
-        g.setColor(textColor);
-        g.drawString("Pressed keys:", textPosition[0], textPosition[1]);
-
-        if (keyboardListener == null) {
-            g.drawString(
-                    "Keyboard listener not initialized.",
-                    textPosition[0],
-                    textPosition[1] + dt);
-        } else {
-            for (int i = 0; i < keyboardListener.pressedKeys.size(); i++) {
-                int key = keyboardListener.pressedKeys.get(i);
-                g.drawString(
-                        (i + 1) + " - " + key,
-                        textPosition[0],
-                        textPosition[1] + dt * (i + 1));
-            }
-        }
     }
 
     void drawMouseInfo(@NotNull Graphics g,

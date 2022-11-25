@@ -31,8 +31,10 @@ public abstract class CommonPage extends HeaderAndFooterPage {
                       @Nullable SimpleColorScheme colors) {
         super(actionListenerList, null, colors, null);
         this.window = window;
-        setBodyParameters();
-        addBody(getPageBody());
+        if (window != null) {
+            setBodyParameters();
+            addBody(getPageBody());
+        }
     }
 
     /**

@@ -1,10 +1,5 @@
 package graphics.playPage.drawPanel;
 
-import staticData.StaticData;
-import cells.CellContainer;
-import cells.Cell;
-
-import graphics.Window;
 import graphics.playPage.observer.Observer;
 import graphics.playPage.observer.MouseListeners;
 
@@ -12,8 +7,6 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
 import java.awt.*;
-
-import consoleUtils.NumberFormatter;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,17 +20,13 @@ public class DrawPanel extends DynamicPanel {
                     BACKGROUND_BRIGHTNESS,
                     BACKGROUND_BRIGHTNESS),
             TEXT_COLOR = null; // default - white
-    private final Window window;
-    private final @NotNull Observer observer;
     private final @NotNull ObserverInfoPainter observerInfoPainter;
     private final @NotNull FieldPainter fieldPainter;
     public boolean panelActive = false;
 
     //TODO: add javadoc
-    public DrawPanel(@Nullable Window window) {
+    public DrawPanel(@NotNull Observer observer) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
-        this.window = window;
-        observer = new Observer(window, this);
         MouseListeners.addListeners(this, observer);
 
         observerInfoPainter = new ObserverInfoPainter(observer);
@@ -65,27 +54,7 @@ public class DrawPanel extends DynamicPanel {
         fieldPainter.drawField(g, drawCenter);
         observerInfoPainter.drawClickPoints(g, drawCenter);
         drawCenterMarker(g, drawCenter);
-        observerInfoPainter.drawKeyInfo(g, window.keyboardListener, getPanelColors().getSecondaryColor());
         observerInfoPainter.drawMouseInfo(g, getPanelColors().getSecondaryColor());
-
-        //show total pressure
-        double totalPressure = 0;
-        int @NotNull [] cellCount = CellContainer.cellCount;
-        for (int i = 0; i < cellCount[0]; i++) {
-            for (int j = 0; j < cellCount[1]; j++) {
-                @NotNull Cell cell = StaticData.cells.getCell(i, j);
-                totalPressure += cell.getPressure();
-            }
-        }
-        g.setColor(getPanelColors().getSecondaryColor());
-        g.drawString(
-                "Total pressure: " + NumberFormatter.doubleToString(totalPressure, 3),
-                10, 130);
-
-        //draw pause status
-        g.drawString(
-                "pause: " + StaticData.pause,
-                10, 145);
     }
 
     private void drawTestLines(@NotNull Graphics g,
