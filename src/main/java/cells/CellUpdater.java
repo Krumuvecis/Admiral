@@ -7,7 +7,7 @@ import ThreadAbstraction.AbstractUpdater;
 import org.jetbrains.annotations.NotNull;
 
 /**
- *
+ * TODO: add javadocs
  */
 class CellUpdater extends AbstractUpdater {
     private static final int DELAY = 50;
@@ -20,10 +20,7 @@ class CellUpdater extends AbstractUpdater {
             pressureCalculator,
             pressureRefresher;
 
-    /**
-     *
-     * @param cellContainer
-     */
+    //
     public CellUpdater(@NotNull CellContainer cellContainer) {
         super(DELAY);
         windCalculator = new WindCalculator(cellContainer, pressureToWindCoefficient);
@@ -32,7 +29,7 @@ class CellUpdater extends AbstractUpdater {
     }
 
     /**
-     *
+     * TODO: add javadoc
      */
     @Override
     public void update() {

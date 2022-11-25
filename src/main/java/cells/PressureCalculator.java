@@ -4,20 +4,18 @@ import java.util.Random;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * TODO: add javadocs
+ */
 class PressureCalculator extends AbstractCellCycler {
     private static final @NotNull Random RANDOM = new Random();
-    private static final double
-            suddenChangeChance = 0.00005; // changeable
+    private static final double suddenChangeChance = 0.00005; // changeable
     private final double windToPressureCoefficient;
 
     @SuppressWarnings("FieldCanBeLocal")
     private final boolean randomizePressures = true;
 
-    /**
-     *
-     * @param cells
-     * @param windToPressureCoefficient
-     */
+    //
     PressureCalculator(@NotNull CellContainer cells,
                        double windToPressureCoefficient) {
         super(cells);

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * TODO: add javadocs
+ */
 public class StaticData {
     public static @NotNull List<int @NotNull []> clickPoints = new ArrayList<>();
 

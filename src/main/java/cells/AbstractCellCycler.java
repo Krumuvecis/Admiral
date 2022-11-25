@@ -2,14 +2,13 @@ package cells;
 
 import org.jetbrains.annotations.NotNull;
 
-//
+/**
+ * TODO: add javadocs
+ */
 abstract class AbstractCellCycler {
     private final @NotNull CellContainer cells;
 
-    /**
-     *
-     * @param cells
-     */
+    //
     AbstractCellCycler(@NotNull CellContainer cells) {
         this.cells = cells;
     }

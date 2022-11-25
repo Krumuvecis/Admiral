@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * TODO: add javadocs
+ */
 public class CellContainer {
     private static final int @NotNull [] cellCount = new int[] {30, 20};
     public static final int cellSize = 100;
@@ -22,6 +25,7 @@ public class CellContainer {
         }
     }};
 
+    //
     public CellContainer() {
         setInitialCells(true); //set this to true, for some pre-defined initial cells
         new CellUpdater(this).start();
@@ -41,10 +45,12 @@ public class CellContainer {
         }
     }
 
+    //
     public int @NotNull [] getCellCount() {
         return cellCount;
     }
 
+    //
     public @NotNull Cell getCell(int x, int y) {
         if (x < 0) {
             x += cellCount[0];
@@ -61,6 +67,7 @@ public class CellContainer {
         return cells.get(x).get(y);
     }
 
+    //
     public double getTotalPressure() {
         double totalPressure = 0;
         int @NotNull [] cellCount = getCellCount();

@@ -4,13 +4,16 @@ import java.util.Random;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * TODO: add javadocs
+ */
 class WindCalculator extends AbstractCellCycler {
     private static final @NotNull Random RANDOM = new Random();
-    private static final double
-            ORTHOGONAL_NEIGHBOUR_SUM = 4 * (1 + 1 / Math.sqrt(2)); // don't change this!
+    private static final double ORTHOGONAL_NEIGHBOUR_SUM = 4 * (1 + 1 / Math.sqrt(2));
 
     private final double pressureToWindCoefficient;
 
+    //
     WindCalculator(@NotNull CellContainer cells,
                    double pressureToWindCoefficient) {
         super(cells);

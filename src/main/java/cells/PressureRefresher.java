@@ -2,10 +2,11 @@ package cells;
 
 import org.jetbrains.annotations.NotNull;
 
-//
+/**
+ * TODO: add javadocs
+ */
 class PressureRefresher extends AbstractCellCycler {
     //
-
     PressureRefresher(@NotNull CellContainer cells) {
         super(cells);
     }
