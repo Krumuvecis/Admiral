@@ -1,5 +1,7 @@
 package cells;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * TODO: finish this javadoc
  */
@@ -8,7 +10,8 @@ public class Cell {
             PRESSURE_MAX = 20, //used in randomization and initial cells
             WIND_MAX = 50; //unused
     private static final double
-            pressureDampeningFactor = 0.07; // changeable
+            pressureDampeningFactor = 0.07, // changeable
+            windDampeningFactor = 0.01; // changeable
 
     private double
             pressure, //actual pressure
@@ -73,5 +76,29 @@ public class Cell {
      */
     void updatePressure() {
         pressure = newPressure;
+    }
+
+    static double @NotNull [] getWindProjections(double magnitude, double angle) {
+        return new double[] {
+                magnitude * Math.cos(angle),
+                magnitude * Math.sin(angle)};
+    }
+
+    //
+    void increaseWind(double @NotNull [] deltaProjections) {
+        double @NotNull [] oldWind = getWindProjections(windAmount, windDirection);
+        setWind(new double[] {
+                oldWind[0] + deltaProjections[0],
+                oldWind[1] + deltaProjections[1]});
+    }
+
+    private void setWind(double @NotNull [] projections) {
+        windAmount = Math.hypot(projections[0], projections[1]);
+        windDirection = mathUtils.Trigonometry.getAngle(projections[0], projections[1]);
+    }
+
+    //
+    void dampenWind() {
+        windAmount = windAmount * (1 - windDampeningFactor);
     }
 }

@@ -9,17 +9,18 @@ import org.jetbrains.annotations.NotNull;
  */
 class PressureCalculator extends AbstractCellCycler {
     private static final @NotNull Random RANDOM = new Random();
-    private static final double suddenChangeChance = 0.00005; // changeable
-    private final double windToPressureCoefficient;
+    private static final double suddenChangeChance = 0.00002; // changeable
+
+    private final @NotNull BarokineticSettings barokineticSettings;
 
     @SuppressWarnings("FieldCanBeLocal")
     private final boolean randomizePressures = true;
 
     //
     PressureCalculator(@NotNull CellContainer cells,
-                       double windToPressureCoefficient) {
+                       @NotNull BarokineticSettings barokineticSettings) {
         super(cells);
-        this.windToPressureCoefficient = windToPressureCoefficient;
+        this.barokineticSettings = barokineticSettings;
     }
 
     /**
@@ -41,20 +42,19 @@ class PressureCalculator extends AbstractCellCycler {
                 if (i == 0 && j == 0) {
                     continue;
                 }
-                double neighbourAngle = mathUtils.Trigonometry.getAngle(i, j);
                 @NotNull Cell neighbour = cells.getCell(x + i, y + j);
-
-                double windProjectionOnNeighbour = magnitude * Math.cos(neighbourAngle - windAngle);
-                double distanceCorrectedProjection = windProjectionOnNeighbour / Math.hypot(i, j);
-
-                double particularPressureChange = distanceCorrectedProjection * windToPressureCoefficient;
+                double
+                        neighbourAngle = mathUtils.Trigonometry.getAngle(i, j),
+                        windProjectionOnNeighbour = magnitude * Math.cos(neighbourAngle - windAngle),
+                        distanceCorrectedProjection = windProjectionOnNeighbour / Math.hypot(i, j),
+                        particularPressureChange = distanceCorrectedProjection * barokineticSettings.windToPressureCoefficient;
 
                 cell.increasePressure(-particularPressureChange);
                 neighbour.increasePressure(particularPressureChange);
             }
         }
         cell.dampenPressure();
-        randomizePressure(cell);
+        //randomizePressure(cell);
     }
 
     private void randomizePressure(Cell cell) {

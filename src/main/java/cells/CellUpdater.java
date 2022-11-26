@@ -11,10 +11,7 @@ import org.jetbrains.annotations.NotNull;
  */
 class CellUpdater extends AbstractUpdater {
     private static final int DELAY = 50;
-    private static final double
-            inertiaFactor = 10, // inertia of medium (must be greater than 1; otherwise self-induces)
-            pressureToWindCoefficient = 1, // relative wind coefficient
-            windToPressureCoefficient = 1 / pressureToWindCoefficient / inertiaFactor; // don't change this!
+    private final @NotNull BarokineticSettings barokineticSettings;
     private final @NotNull AbstractCellCycler
             windCalculator,
             pressureCalculator,
@@ -23,8 +20,9 @@ class CellUpdater extends AbstractUpdater {
     //
     public CellUpdater(@NotNull CellContainer cellContainer) {
         super(DELAY);
-        windCalculator = new WindCalculator(cellContainer, pressureToWindCoefficient);
-        pressureCalculator = new PressureCalculator(cellContainer, windToPressureCoefficient);
+        barokineticSettings = new BarokineticSettings();
+        windCalculator = new WindCalculator(cellContainer, barokineticSettings);
+        pressureCalculator = new PressureCalculator(cellContainer, barokineticSettings);
         pressureRefresher = new PressureRefresher(cellContainer);
     }
 

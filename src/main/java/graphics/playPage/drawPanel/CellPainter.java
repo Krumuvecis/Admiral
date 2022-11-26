@@ -5,6 +5,8 @@ import cells.Cell;
 
 import java.awt.*;
 
+import consoleUtils.NumberFormatter;
+
 import org.jetbrains.annotations.NotNull;
 
 class CellPainter {
@@ -33,25 +35,27 @@ class CellPainter {
         int[] cellCenter = new int[] {
                 cellX + cellSize / 2,
                 cellY + cellSize / 2};
+        int circleRadius = 4;
+        g.setColor(new Color(220, 200, 20));
+        g.fillOval(
+                cellCenter[0] - circleRadius / 2, cellCenter[1] - circleRadius / 2,
+                circleRadius, circleRadius);
         int
-                lengthCoefficient = 30,//3,
+                lengthCoefficient = 100,//3,
                 dx = (int) (lengthCoefficient * cell.windAmount * Math.cos(cell.windDirection) / zoom),
                 dy = (int) (lengthCoefficient * cell.windAmount * Math.sin(cell.windDirection) / zoom);
-        g.setColor(new Color(220, 200, 20));
         g.drawLine(
                 cellCenter[0], cellCenter[1],
                 cellCenter[0] + dx, cellCenter[1] + dy);
 
-        /*
         //draw cell pressure & wind data
-        g.setColor(Color.white);
+        /*g.setColor(Color.white);
         g.drawString(
-                "p: " + NumberFormatter.doubleToString(cell.pressure, 2),
+                "p: " + NumberFormatter.doubleToString(cell.getPressure(), 2),
                 cellX + 3, cellY + 13);
         g.drawString(
                 "w: " + NumberFormatter.doubleToString(cell.windAmount, 2),
                 cellX + 3, cellY + 28);
-
         */
     }
 }

@@ -27,7 +27,7 @@ public class CellContainer {
 
     //
     public CellContainer() {
-        setInitialCells(true); //set this to true, for some pre-defined initial cells
+        setInitialCells(false); //set this to true, for some pre-defined initial cells
         new CellUpdater(this).start();
     }
 
