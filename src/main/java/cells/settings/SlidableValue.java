@@ -1,9 +1,9 @@
-package cells;
+package cells.settings;
 
 import org.jetbrains.annotations.NotNull;
 
 //TODO: add javadocs
-public class SlidableValue {
+class SlidableValue {
     private final double @NotNull [] range = new double[2];
     private double value;
 
@@ -25,20 +25,20 @@ public class SlidableValue {
         }
     }
 
-    public double @NotNull [] getRange() {
+    double @NotNull [] getRange() {
         return range;
     }
 
-    public void setValue(double value) {
+    void setValue(double value) {
         //defaults to lower bound, if out of range
         this.value = Math.min(range[1], Math.max(range[0], value));
     }
 
-    public double getValue() {
+    double getValue() {
         return value;
     }
 
-    public static class IncorrectRangeException extends Exception {
+    static class IncorrectRangeException extends Exception {
         private IncorrectRangeException() {
             super("Incorrect slidable variable range: minimum greater than maximum.");
         }

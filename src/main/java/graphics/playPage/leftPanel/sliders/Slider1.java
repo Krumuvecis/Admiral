@@ -9,8 +9,6 @@ import graphicsEngine.presets.panels.HorizontalPanel;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,45 +30,20 @@ public class Slider1 extends HorizontalPanel {
     }
 
     //
-    public static class MySlider extends JSlider {
+    public static class MySlider extends SimpleSlider {
         MySlider(@NotNull Color backgroundColor) {
-            super(0, 20, 10);
-            setFocusable(false);
-            setBackground(backgroundColor); //prevents flickering
-            setMinorTickSpacing(5);
-            setSnapToTicks(true);
-            setMajorTickSpacing(10);
-
-            //setPaintTrack(false);
-            setPaintTicks(true);
-            setPaintLabels(true);
-            //setVisible(true);
-            addChangeListener(new SliderListener(getValue()));
-        }
-    }
-
-    //
-    private static class SliderListener implements ChangeListener {
-
-        //
-        SliderListener(int initialValue) {
-            updateValue(initialValue);
+            super(
+                    backgroundColor,
+                    0, 20, 10,
+                    5, 10);
         }
 
         /**
-         * Invoked when the target of the listener has changed its state.
-         *
-         * @param e a ChangeEvent object
+         * TODO: finish this javadoc
+         * @param value
          */
         @Override
-        public void stateChanged(ChangeEvent e) {
-            JSlider source = (JSlider)e.getSource();
-            if (!source.getValueIsAdjusting()) {
-                updateValue(source.getValue());
-            }
-        }
-
-        private void updateValue(int value) {
+        void valueChanged(int value) {
             StaticData.sliderTestValue = value;
         }
     }

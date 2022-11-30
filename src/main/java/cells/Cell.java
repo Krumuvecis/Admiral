@@ -6,9 +6,8 @@ import org.jetbrains.annotations.NotNull;
  * TODO: finish this javadoc
  */
 public class Cell {
-    public static final double //TODO: get rid of these parameters
-            PRESSURE_MAX = 20, //used in randomization and initial cells
-            WIND_MAX = 50; //unused
+    public static final double
+            PRESSURE_MAX = 20; //used only for reference in graphics; TODO: get rid of this
     private static final double
             pressureDampeningFactor = 0.07, // changeable
             windDampeningFactor = 0.01; // changeable

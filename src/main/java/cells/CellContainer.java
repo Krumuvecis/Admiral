@@ -1,5 +1,7 @@
 package cells;
 
+import cells.settings.BarokineticSettings;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -37,14 +39,15 @@ public class CellContainer {
     @SuppressWarnings({"SameParameterValue", "CommentedOutCode", "RedundantSuppression"})
     private void setInitialCells(boolean setInitial) {
         if (setInitial) {
+            double magnitude = barokineticSettings.pressureMaxMagnitudeChange;
             getCell(
                     cellCount[0] / 2 - 1,
                     cellCount[1] / 2 - 1
-            ).setPressure(Cell.PRESSURE_MAX);
+            ).setPressure(magnitude);
             /*getCell(
                     cellCount[0] / 2,
                     cellCount[1] / 2 - 1
-            ).setPressure(-Cell.PRESSURE_MAX)*/
+            ).setPressure(-magnitude)*/
         }
     }
 

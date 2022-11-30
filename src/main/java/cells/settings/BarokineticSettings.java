@@ -1,4 +1,4 @@
-package cells;
+package cells.settings;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -10,16 +10,16 @@ public class BarokineticSettings {
     private double windToPressureCoefficient;
 
     //Wind randomization settings
-    double
+    public double
             windSuddenChangeChance = 0.00002,
             windMaxMagnitudeChange = 5;
-    boolean randomizeWinds = true;
+    public boolean randomizeWinds = true;
 
     //Pressure randomization settings
-    double
+    public double
             pressureSuddenChangeChance = 0.00002,
             pressureMaxMagnitudeChange = 20;
-    boolean randomizePressures = false;
+    public boolean randomizePressures = false;
 
     //
     public BarokineticSettings() {

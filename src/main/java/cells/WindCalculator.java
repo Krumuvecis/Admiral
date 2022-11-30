@@ -1,5 +1,7 @@
 package cells;
 
+import cells.settings.BarokineticSettings;
+
 import java.util.Random;
 
 import org.jetbrains.annotations.NotNull;
