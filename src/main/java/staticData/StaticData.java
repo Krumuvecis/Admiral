@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * TODO: add javadocs
+ * A utility class for containing common static data.
  */
 public class StaticData {
-    public static @NotNull List<int @NotNull []> clickPoints = new ArrayList<>();
-
+    //barokinetic cells
     public static @NotNull CellContainer cells = new CellContainer();
+    public static boolean pause = false; //cell-update toggle
 
-    public static boolean pause = false;
+    //UI testing
+    public static @NotNull List<int @NotNull []> clickPoints = new ArrayList<>();
     public static int sliderTestValue = 0;
 }

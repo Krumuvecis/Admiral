@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
  */
 class CellUpdater extends AbstractUpdater {
     private static final int DELAY = 50;
-    private final @NotNull BarokineticSettings barokineticSettings;
     private final @NotNull AbstractCellCycler
             windCalculator,
             pressureCalculator,
@@ -20,9 +19,8 @@ class CellUpdater extends AbstractUpdater {
     //
     public CellUpdater(@NotNull CellContainer cellContainer) {
         super(DELAY);
-        barokineticSettings = new BarokineticSettings();
-        windCalculator = new WindCalculator(cellContainer, barokineticSettings);
-        pressureCalculator = new PressureCalculator(cellContainer, barokineticSettings);
+        windCalculator = new WindCalculator(cellContainer);
+        pressureCalculator = new PressureCalculator(cellContainer);
         pressureRefresher = new PressureRefresher(cellContainer);
     }
 
@@ -32,9 +30,13 @@ class CellUpdater extends AbstractUpdater {
     @Override
     public void update() {
         if(!StaticData.pause) {
-            windCalculator.cycleCells();
-            pressureCalculator.cycleCells();
-            pressureRefresher.cycleCells();
+            barokinesis();
         }
+    }
+
+    private void barokinesis() {
+        windCalculator.cycleCells();
+        pressureCalculator.cycleCells();
+        pressureRefresher.cycleCells();
     }
 }

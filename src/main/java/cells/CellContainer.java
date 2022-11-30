@@ -15,6 +15,8 @@ public class CellContainer {
             cellSize * cellCount[0],
             cellSize * cellCount[1]};
 
+    public final @NotNull BarokineticSettings barokineticSettings;
+
     private final @NotNull List<@NotNull List<@NotNull Cell>> cells = new ArrayList<>() {{
         for (int i = 0; i < cellCount[0]; i++) {
             add(new ArrayList<>() {{
@@ -27,6 +29,7 @@ public class CellContainer {
 
     //
     public CellContainer() {
+        barokineticSettings = new BarokineticSettings();
         setInitialCells(false); //set this to true, for some pre-defined initial cells
         new CellUpdater(this).start();
     }

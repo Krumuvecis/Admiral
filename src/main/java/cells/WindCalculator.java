@@ -10,15 +10,13 @@ import org.jetbrains.annotations.NotNull;
 class WindCalculator extends AbstractCellCycler {
     private static final @NotNull Random RANDOM = new Random();
     private static final double ORTHOGONAL_NEIGHBOUR_SUM = 4 * (1 + 1 / Math.sqrt(2));
-    private static final double suddenChangeChance = 0.00002; // changeable
 
     private final @NotNull BarokineticSettings barokineticSettings;
 
     //
-    WindCalculator(@NotNull CellContainer cells,
-                   @NotNull BarokineticSettings barokineticSettings) {
+    WindCalculator(@NotNull CellContainer cells) {
         super(cells);
-        this.barokineticSettings = barokineticSettings;
+        this.barokineticSettings = cells.barokineticSettings;
     }
 
     /**
@@ -60,15 +58,15 @@ class WindCalculator extends AbstractCellCycler {
     }
 
     private void setRandomWind(@NotNull Cell cell) {
-        if (RANDOM.nextDouble() < suddenChangeChance) {
+        if (barokineticSettings.randomizeWinds
+                && RANDOM.nextDouble() < barokineticSettings.windSuddenChangeChance) {
             cell.increaseWind(getRandomWindProjections());
         }
     }
 
     private double @NotNull [] getRandomWindProjections() {
         double
-                maxMagnitudeChange = 5,
-                magnitude = maxMagnitudeChange,
+                magnitude = barokineticSettings.windMaxMagnitudeChange,
                 angle = RANDOM.nextDouble() * Math.PI * 2;
         return Cell.getWindProjections(magnitude, angle);
     }

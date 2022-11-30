@@ -9,18 +9,12 @@ import org.jetbrains.annotations.NotNull;
  */
 class PressureCalculator extends AbstractCellCycler {
     private static final @NotNull Random RANDOM = new Random();
-    private static final double suddenChangeChance = 0.00002; // changeable
-
     private final @NotNull BarokineticSettings barokineticSettings;
 
-    @SuppressWarnings("FieldCanBeLocal")
-    private final boolean randomizePressures = true;
-
     //
-    PressureCalculator(@NotNull CellContainer cells,
-                       @NotNull BarokineticSettings barokineticSettings) {
+    PressureCalculator(@NotNull CellContainer cells) {
         super(cells);
-        this.barokineticSettings = barokineticSettings;
+        this.barokineticSettings = cells.barokineticSettings;
     }
 
     /**
@@ -54,16 +48,17 @@ class PressureCalculator extends AbstractCellCycler {
             }
         }
         cell.dampenPressure();
-        //randomizePressure(cell);
+        randomizePressure(cell);
     }
 
     private void randomizePressure(Cell cell) {
-        if (randomizePressures
-                && RANDOM.nextDouble() < suddenChangeChance) {
+        if (barokineticSettings.randomizePressures
+                && RANDOM.nextDouble() < barokineticSettings.pressureSuddenChangeChance) {
+            double newPressure = barokineticSettings.pressureMaxMagnitudeChange;
             if (RANDOM.nextBoolean()) {
-                cell.setPressure(Cell.PRESSURE_MAX);
+                cell.setPressure(newPressure);
             } else {
-                cell.setPressure(-Cell.PRESSURE_MAX);
+                cell.setPressure(-newPressure);
             }
         }
     }
