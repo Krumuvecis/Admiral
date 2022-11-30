@@ -1,11 +1,13 @@
 package cells;
 
+import org.jetbrains.annotations.NotNull;
+
 //TODO: add javadocs
 public class BarokineticSettings {
-    double
+    private final @NotNull SlidableValue
             inertiaFactor, // inertia of medium (must be greater than 1; otherwise self-induces)
-            pressureToWindCoefficient, // relative wind coefficient
-            windToPressureCoefficient;
+            pressureToWindCoefficient; // relative wind coefficient
+    private double windToPressureCoefficient;
 
     //Wind randomization settings
     double
@@ -19,9 +21,53 @@ public class BarokineticSettings {
             pressureMaxMagnitudeChange = 20;
     boolean randomizePressures = false;
 
+    //
     public BarokineticSettings() {
-        inertiaFactor = 100;
-        pressureToWindCoefficient = 0.01;
-        windToPressureCoefficient = 1 / pressureToWindCoefficient / inertiaFactor; // don't change this!
+        inertiaFactor = new SlidableValue(10, 100, 100);
+        pressureToWindCoefficient = new SlidableValue(0.01, 10, 0.01);
+        setWindToPressureCoefficient();
+    }
+
+    //
+    public double getInertiaFactor() {
+        return inertiaFactor.getValue();
+    }
+
+    //
+    public double @NotNull [] getInertiaFactorRange() {
+        return inertiaFactor.getRange();
+    }
+
+    //
+    public void setInertiaFactor(double inertiaFactor) {
+        this.inertiaFactor.setValue(inertiaFactor);
+        setWindToPressureCoefficient();
+    }
+
+    //
+    public double getPressureToWindCoefficient() {
+        return pressureToWindCoefficient.getValue();
+    }
+
+    //
+    public double @NotNull [] getPressureToWindCoefficientRange() {
+        return pressureToWindCoefficient.getRange();
+    }
+
+    //
+    public void setPressureToWindCoefficient(double coefficient) {
+        pressureToWindCoefficient.setValue(coefficient);
+        setWindToPressureCoefficient();
+    }
+
+    //
+    public double getWindToPressureCoefficient() {
+        return windToPressureCoefficient;
+    }
+
+    // don't change this manually!
+    private void setWindToPressureCoefficient() {
+        double divisor = getPressureToWindCoefficient() * getInertiaFactor();
+        windToPressureCoefficient = 1 / divisor;
     }
 }

@@ -29,7 +29,8 @@ class PressureCalculator extends AbstractCellCycler {
         @NotNull Cell cell = cells.getCell(x, y);
         double
                 windAngle = cell.windDirection,
-                magnitude = cell.windAmount;
+                magnitude = cell.windAmount,
+                windToPressureCoefficient = barokineticSettings.getWindToPressureCoefficient();
 
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
@@ -41,7 +42,7 @@ class PressureCalculator extends AbstractCellCycler {
                         neighbourAngle = mathUtils.Trigonometry.getAngle(i, j),
                         windProjectionOnNeighbour = magnitude * Math.cos(neighbourAngle - windAngle),
                         distanceCorrectedProjection = windProjectionOnNeighbour / Math.hypot(i, j),
-                        particularPressureChange = distanceCorrectedProjection * barokineticSettings.windToPressureCoefficient;
+                        particularPressureChange = distanceCorrectedProjection * windToPressureCoefficient;
 
                 cell.increasePressure(-particularPressureChange);
                 neighbour.increasePressure(particularPressureChange);

@@ -51,7 +51,7 @@ class WindCalculator extends AbstractCellCycler {
             }
         }
 
-        double pressureToWindCoefficient = barokineticSettings.pressureToWindCoefficient;
+        double pressureToWindCoefficient = barokineticSettings.getPressureToWindCoefficient();
         cell.increaseWind(new double[] {
                 totalAdjacentPressureDifference[0] / ORTHOGONAL_NEIGHBOUR_SUM * pressureToWindCoefficient,
                 totalAdjacentPressureDifference[1] / ORTHOGONAL_NEIGHBOUR_SUM * pressureToWindCoefficient});
