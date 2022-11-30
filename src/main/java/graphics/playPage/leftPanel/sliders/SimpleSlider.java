@@ -13,13 +13,14 @@ abstract class SimpleSlider extends JSlider {
     //
     SimpleSlider(@NotNull Color backgroundColor,
                  int min, int max, int initial,
-                 int minorTickSpacing, int majorTickSpacing) {
+                 int majorTickSpacing, int minorTickSpacing) {
         super(min, max, initial);
         setFocusable(false);
         setBackground(backgroundColor); //prevents flickering
-        setMinorTickSpacing(minorTickSpacing);
+
         setSnapToTicks(true);
         setMajorTickSpacing(majorTickSpacing);
+        setMinorTickSpacing(minorTickSpacing);
 
         setPaintTicks(true);
         setPaintLabels(true);

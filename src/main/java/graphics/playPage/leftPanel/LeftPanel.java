@@ -1,6 +1,7 @@
 package graphics.playPage.leftPanel;
 
 import graphics.Window;
+import graphics.playPage.leftPanel.sliders.InertiaFactorSlider;
 import graphics.playPage.observer.Observer;
 import graphics.playPage.leftPanel.sliders.Slider1;
 
@@ -35,6 +36,7 @@ public class LeftPanel extends VerticalPanel {
         setLayout(layout);
         add(new LabelSection(getPanelColors()), layout);
         add(new Slider1(getPanelColors()), layout);
+        add(new InertiaFactorSlider(getPanelColors()), layout);
         add(new LeftDrawPanel(window, observer), layout);
     }
 }

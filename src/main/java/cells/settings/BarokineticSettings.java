@@ -23,7 +23,7 @@ public class BarokineticSettings {
 
     //
     public BarokineticSettings() {
-        inertiaFactor = new SlidableValue(10, 100, 100);
+        inertiaFactor = new SlidableValue(1, 100, 100);
         pressureToWindCoefficient = new SlidableValue(0.01, 10, 0.01);
         setWindToPressureCoefficient();
     }
