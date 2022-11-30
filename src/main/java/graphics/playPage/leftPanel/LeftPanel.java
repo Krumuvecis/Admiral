@@ -2,17 +2,18 @@ package graphics.playPage.leftPanel;
 
 import graphics.Window;
 import graphics.playPage.observer.Observer;
+import graphics.playPage.leftPanel.sliders.Slider1;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.parts.SimpleLabel;
 import graphicsEngine.presets.panels.VerticalPanel;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
+import javax.swing.*;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+//
 public class LeftPanel extends VerticalPanel {
     private static final int PANEL_WIDTH = 150;
     private static final int BACKGROUND_BRIGHTNESS = 80;
@@ -23,17 +24,17 @@ public class LeftPanel extends VerticalPanel {
                     BACKGROUND_BRIGHTNESS),
             TEXT_COLOR = null; // default - white
 
+    //
     public LeftPanel(@NotNull Window window,
                      @NotNull Observer observer) {
         super(
                 new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR),
                 PANEL_WIDTH,
                 null);
-        setLayout(new BorderLayout(0, 0));
-        add(new SimpleLabel(
-                        "Play page",
-                        getPanelColors().getSecondaryColor()),
-                BorderLayout.NORTH);
-        add(new LeftDrawPanel(window, observer));
+        LayoutManager layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        setLayout(layout);
+        add(new LabelSection(getPanelColors()), layout);
+        add(new Slider1(getPanelColors()), layout);
+        add(new LeftDrawPanel(window, observer), layout);
     }
 }

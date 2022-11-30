@@ -2,7 +2,6 @@ package graphics.common;
 
 import graphics.Window;
 
-import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
@@ -84,7 +83,7 @@ public abstract class CommonPage extends HeaderAndFooterPage {
         add(new DynamicPanel(
                 null,
                 new SimpleColorScheme(
-                        ColorUtilities.DEFAULT_COLOR_TRANSPARENT,
+                        null,
                         null),
                 null) {
             @Override

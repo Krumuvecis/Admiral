@@ -31,5 +31,6 @@ class FieldInfoSection extends AbstractTextSection {
         double totalPressure = StaticData.cells.getTotalPressure();
         drawLineOfText(g, textColor, sectionLocation,
                 "Total pressure: " + NumberFormatter.doubleToString(totalPressure, 3));
+        drawLineOfText(g, textColor, sectionLocation, "slider value: " + StaticData.sliderTestValue);
     }
 }

@@ -52,8 +52,8 @@ public class Window extends MultiPageWindow {
     private static @NotNull WindowConfig config() {
         String title = "Admiral";
         int[]
-                size = new int[] {1000, 700},
-                location = new int[] {50, 50};
+                size = new int[] {1000, 600},
+                location = new int[] {80, 30};
         WindowConfig config = new WindowConfig(title, size, location);
         config.closeOperation = EXIT_ON_CLOSE;
         return config;

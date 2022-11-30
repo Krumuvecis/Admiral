@@ -16,4 +16,5 @@ public class StaticData {
     public static @NotNull CellContainer cells = new CellContainer();
 
     public static boolean pause = false;
+    public static int sliderTestValue = 0;
 }
