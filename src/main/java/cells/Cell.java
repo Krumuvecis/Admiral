@@ -1,17 +1,13 @@
 package cells;
 
+import cells.settings.BarokineticSettings;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * TODO: finish this javadoc
  */
 public class Cell {
-    public static final double
-            PRESSURE_MAX = 20; //used only for reference in graphics; TODO: get rid of this
-    private static final double
-            pressureDampeningFactor = 0.07, // changeable
-            windDampeningFactor = 0.01; // changeable
-
+    private final @NotNull BarokineticSettings barokineticSettings;
     private double
             pressure, //actual pressure
             newPressure; //buffer for calculations
@@ -28,8 +24,11 @@ public class Cell {
 
     /**
      * Creates a new cell.
+     *
+     * @param barokineticSettings Barokinetic settings.
      */
-    public Cell() {
+    public Cell(@NotNull BarokineticSettings barokineticSettings) {
+        this.barokineticSettings = barokineticSettings;
         pressure = 0;
         newPressure = 0;
         windAmount = 0;
@@ -67,7 +66,7 @@ public class Cell {
      * Dampens the temporary pressure of this cell.
      */
     void dampenPressure() {
-        newPressure = newPressure * (1 - pressureDampeningFactor);
+        newPressure = newPressure * (1 - barokineticSettings.pressureDampeningFactor);
     }
 
     /**
@@ -98,6 +97,6 @@ public class Cell {
 
     //
     void dampenWind() {
-        windAmount = windAmount * (1 - windDampeningFactor);
+        windAmount = windAmount * (1 - barokineticSettings.windDampeningFactor);
     }
 }

@@ -19,19 +19,21 @@ public class CellContainer {
 
     public final @NotNull BarokineticSettings barokineticSettings;
 
-    private final @NotNull List<@NotNull List<@NotNull Cell>> cells = new ArrayList<>() {{
-        for (int i = 0; i < cellCount[0]; i++) {
-            add(new ArrayList<>() {{
-                for (int j = 0; j < cellCount[1]; j++) {
-                    add(new Cell());
-                }
-            }});
-        }
-    }};
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+    private final @NotNull List<@NotNull List<@NotNull Cell>> cells;
 
-    //
+    //TODO: add javadoc
     public CellContainer() {
         barokineticSettings = new BarokineticSettings();
+        cells = new ArrayList<>() {{
+            for (int i = 0; i < cellCount[0]; i++) {
+                add(new ArrayList<>() {{
+                    for (int j = 0; j < cellCount[1]; j++) {
+                        add(new Cell(barokineticSettings));
+                    }
+                }});
+            }
+        }};
         setInitialCells(false); //set this to true, for some pre-defined initial cells
         new CellUpdater(this).start();
     }
@@ -51,12 +53,12 @@ public class CellContainer {
         }
     }
 
-    //
+    //TODO: add javadoc
     public int @NotNull [] getCellCount() {
         return cellCount;
     }
 
-    //
+    //TODO: add javadoc
     public @NotNull Cell getCell(int x, int y) {
         if (x < 0) {
             x += cellCount[0];
@@ -73,7 +75,7 @@ public class CellContainer {
         return cells.get(x).get(y);
     }
 
-    //
+    //TODO: add javadoc
     public double getTotalPressure() {
         double totalPressure = 0;
         int @NotNull [] cellCount = getCellCount();

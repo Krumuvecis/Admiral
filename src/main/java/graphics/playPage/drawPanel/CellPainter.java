@@ -16,12 +16,14 @@ class CellPainter {
         Cell cell = StaticData.cells.getCell(i, j);
 
         //draw pressure
-        double pressure = cell.getPressure();
+        double
+                referencePressure = StaticData.cells.barokineticSettings.pressureMaxMagnitudeChange,
+                pressure = cell.getPressure();
         int alpha = Math.max(
                 0,
                 Math.min(
                         255,
-                        (int) (255 * Math.log(1 + Math.pow(Math.abs(pressure) / Cell.PRESSURE_MAX, 0.7)) / Math.log(2))));
+                        (int) (255 * Math.log(1 + Math.pow(Math.abs(pressure) / referencePressure, 0.7)) / Math.log(2))));
         if (pressure >= 0) {
             g.setColor(new Color(255, 0, 0, alpha));
         } else {
