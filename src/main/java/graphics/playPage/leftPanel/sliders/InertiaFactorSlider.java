@@ -19,7 +19,7 @@ public class InertiaFactorSlider extends SliderPanel {
     public InertiaFactorSlider(@Nullable SimpleColorScheme colors) {
         super(
                 colors,
-                StaticData.cells.barokineticSettings.getInertiaFactorRange(),
+                StaticData.cells.barokineticSettings.getInertiaFactorSlideability().getRange(),
                 StaticData.cells.barokineticSettings.getInertiaFactor(),
                 MAJOR_TICK_COUNT, MINOR_TICK_COUNT);
     }

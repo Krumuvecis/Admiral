@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 //TODO: add javadocs
 public class BarokineticSettings {
-    private final @NotNull SlidableValue
+    private final @NotNull SlideableValue
             inertiaFactor, // inertia of medium (must be greater than 1; otherwise self-induces)
             pressureToWindCoefficient; // relative wind coefficient
     private double windToPressureCoefficient;
@@ -28,8 +28,8 @@ public class BarokineticSettings {
 
     //TODO: add javadoc
     public BarokineticSettings() {
-        inertiaFactor = new SlidableValue(1, 100, 100);
-        pressureToWindCoefficient = new SlidableValue(0.01, 10, 0.01);
+        inertiaFactor = new SlideableValue(1, 100, 100);
+        pressureToWindCoefficient = new SlideableValue(0.01, 10, 0.01);
         setWindToPressureCoefficient();
     }
 
@@ -39,8 +39,8 @@ public class BarokineticSettings {
     }
 
     //TODO: add javadoc
-    public double @NotNull [] getInertiaFactorRange() {
-        return inertiaFactor.getRange();
+    public @NotNull SlideabilitySettings getInertiaFactorSlideability() {
+        return inertiaFactor.getSlideability();
     }
 
     //TODO: add javadoc
@@ -55,8 +55,8 @@ public class BarokineticSettings {
     }
 
     //TODO: add javadoc
-    public double @NotNull [] getPressureToWindCoefficientRange() {
-        return pressureToWindCoefficient.getRange();
+    public @NotNull SlideabilitySettings getPressureToWindCoefficientSlideability() {
+        return pressureToWindCoefficient.getSlideability();
     }
 
     //TODO: add javadoc
