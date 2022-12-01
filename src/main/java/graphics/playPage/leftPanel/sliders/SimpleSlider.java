@@ -7,11 +7,11 @@ import javax.swing.event.ChangeListener;
 
 import org.jetbrains.annotations.NotNull;
 
-//
+//TODO: add javadocs
 abstract class SimpleSlider extends JSlider {
     private static final boolean DEFAULT_TICK_SNAP = false;
 
-    //
+    //TODO: add javadoc
     SimpleSlider(@NotNull Color backgroundColor,
                  int min, int max, int initial,
                  int majorTickSpacing, int minorTickSpacing) {
@@ -42,6 +42,6 @@ abstract class SimpleSlider extends JSlider {
         });
     }
 
-    //
+    //TODO: add javadoc
     abstract void valueChanged(int value);
 }

@@ -1,25 +1,28 @@
-package graphics.playPage.leftPanel;
+package graphics.playPage.leftPanel.labelSection;
 
 import staticData.StaticData;
+
+import graphics.playPage.leftPanel.DynamicLabel;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.parts.SimpleLabel;
 import graphicsEngine.presets.panels.HorizontalPanel;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.Color;
+import javax.swing.BoxLayout;
 
 import consoleUtils.NumberFormatter;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//
-class LabelSection extends HorizontalPanel {
+//TODO: add javadocs
+public class LabelSection extends HorizontalPanel {
     private static final int HEIGHT = 100;
 
-    //
-    LabelSection(@Nullable SimpleColorScheme colors) {
+    //TODO: add javadoc
+    public LabelSection(@Nullable SimpleColorScheme colors) {
         super(colors, HEIGHT, null);
 
         // Prevents left-side alignment flickering; TODO: needs better solution
@@ -34,6 +37,7 @@ class LabelSection extends HorizontalPanel {
                 "Play page",
                 textColor));
         add(new DynamicLabel(textColor, background) {
+            //TODO: add javadoc
             @Override
             public @NotNull String getLabelText() {
                 return "Total pressure: "
@@ -44,6 +48,4 @@ class LabelSection extends HorizontalPanel {
         });
         // add more labels here
     }
-
-    //
 }

@@ -11,11 +11,11 @@ import javax.swing.BoxLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//
+//TODO: add javadocs
 abstract class SliderPanel extends HorizontalPanel {
     private static final int DEFAULT_HEIGHT = 100;
 
-    //
+    //TODO: add javadoc
     SliderPanel(@Nullable SimpleColorScheme colors,
                 int majorTickCount, int minorTickCount,
                 int min, int max, int initial) {
@@ -55,9 +55,9 @@ abstract class SliderPanel extends HorizontalPanel {
         return (int) Math.floor((double) majorTickSpacing / minorTickCount);
     }
 
-    //
+    //TODO: add javadoc
     abstract @NotNull String getLabelText();
 
-    //
+    //TODO: add javadoc
     abstract void valueChanged(int value);
 }

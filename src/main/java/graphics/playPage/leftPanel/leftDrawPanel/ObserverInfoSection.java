@@ -1,4 +1,4 @@
-package graphics.playPage.leftPanel;
+package graphics.playPage.leftPanel.leftDrawPanel;
 
 import graphics.Window;
 import graphics.common.KeyboardListener;
@@ -11,13 +11,13 @@ import java.awt.event.KeyEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//
+//TODO: add javadocs
 class ObserverInfoSection extends AbstractTextSection {
     private final static int MAX_LINES = 6;
     private final @NotNull Window window;
     private final @NotNull Observer observer;
 
-    //
+    //TODO: add javadoc
     ObserverInfoSection(@NotNull Window window,
                         @NotNull Observer observer) {
         super();
@@ -25,7 +25,7 @@ class ObserverInfoSection extends AbstractTextSection {
         this.observer = observer;
     }
 
-    //
+    //TODO: add javadoc
     @Override
     final void draw(@NotNull Graphics g,
               @NotNull Color textColor,
@@ -34,6 +34,7 @@ class ObserverInfoSection extends AbstractTextSection {
         drawKeyInfo(g, textColor);
     }
 
+    //TODO: add javadoc
     @Override
     final int getLastLineIndex() {
         return MAX_LINES;

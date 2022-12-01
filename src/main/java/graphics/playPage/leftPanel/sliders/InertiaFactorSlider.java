@@ -7,13 +7,13 @@ import graphicsEngine.colors.SimpleColorScheme;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//
+//TODO: add javadocs
 public class InertiaFactorSlider extends SliderPanel {
     private static final int
             MAJOR_TICK_COUNT = 3,
             MINOR_TICK_COUNT = 3;
 
-    //
+    //TODO: add javadoc
     public InertiaFactorSlider(@Nullable SimpleColorScheme colors) {
         super(
                 colors,

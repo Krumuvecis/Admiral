@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//TODO: add javadoc
+//TODO: add javadocs
 public class StartingPage extends CommonPage {
     private StartingPage() {
         this(null, null, null);

@@ -1,10 +1,12 @@
 package graphics.common;
 
-import graphics.playPage.PlayPage;
-import graphics.startingPage.StartingPage;
-import graphicsEngine.presets.SimpleJButton;
+import staticData.StaticData;
 
 import graphics.Window;
+import graphics.playPage.PlayPage;
+import graphics.startingPage.StartingPage;
+
+import graphicsEngine.presets.SimpleJButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +15,6 @@ import static consoleUtils.ConsoleUtils.printLine;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import staticData.StaticData;
 
 //TODO: add javadocs
 public class HeaderButtonListener implements ActionListener {

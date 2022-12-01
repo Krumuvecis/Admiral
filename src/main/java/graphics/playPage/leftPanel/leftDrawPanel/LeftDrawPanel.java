@@ -1,4 +1,4 @@
-package graphics.playPage.leftPanel;
+package graphics.playPage.leftPanel.leftDrawPanel;
 
 import graphics.Window;
 import graphics.playPage.observer.Observer;
@@ -13,8 +13,8 @@ import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//
-class LeftDrawPanel extends DynamicPanel {
+//TODO: add javadocs
+public class LeftDrawPanel extends DynamicPanel {
     private static final int BACKGROUND_BRIGHTNESS = 50;
     private static final @Nullable Color
             BACKGROUND_COLOR = new Color(
@@ -27,14 +27,15 @@ class LeftDrawPanel extends DynamicPanel {
             fieldInfoSection,
             observerInfoSection;
 
-    //
-    LeftDrawPanel(@NotNull Window window,
+    //TODO: add javadoc
+    public LeftDrawPanel(@NotNull Window window,
                   @NotNull Observer observer) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
         fieldInfoSection = new FieldInfoSection();
         observerInfoSection = new ObserverInfoSection(window, observer);
     }
 
+    //TODO: add javadoc
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
