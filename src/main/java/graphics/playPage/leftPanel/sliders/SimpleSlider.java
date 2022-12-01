@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 //
 abstract class SimpleSlider extends JSlider {
+    private static final boolean DEFAULT_TICK_SNAP = false;
 
     //
     SimpleSlider(@NotNull Color backgroundColor,
@@ -18,7 +19,7 @@ abstract class SimpleSlider extends JSlider {
         setFocusable(false);
         setBackground(backgroundColor); //prevents flickering
 
-        setSnapToTicks(true);
+        setSnapToTicks(DEFAULT_TICK_SNAP);
         setMajorTickSpacing(majorTickSpacing);
         setMinorTickSpacing(minorTickSpacing);
 
@@ -34,7 +35,7 @@ abstract class SimpleSlider extends JSlider {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JSlider source = (JSlider) e.getSource();
-                if (!source.getValueIsAdjusting()) {
+                if (!source.getSnapToTicks() || !source.getValueIsAdjusting()) {
                     valueChanged(source.getValue());
                 }
             }

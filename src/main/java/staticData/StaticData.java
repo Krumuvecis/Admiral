@@ -17,5 +17,4 @@ public class StaticData {
 
     //UI testing
     public static @NotNull List<int @NotNull []> clickPoints = new ArrayList<>();
-    public static int sliderTestValue = 0;
 }

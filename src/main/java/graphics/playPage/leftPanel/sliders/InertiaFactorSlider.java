@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class InertiaFactorSlider extends SliderPanel {
     private static final int
             MAJOR_TICK_COUNT = 3,
-            MINOR_TICK_COUNT = 1;
+            MINOR_TICK_COUNT = 3;
 
     //
     public InertiaFactorSlider(@Nullable SimpleColorScheme colors) {

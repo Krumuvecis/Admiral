@@ -3,7 +3,6 @@ package graphics.playPage.leftPanel;
 import graphics.Window;
 import graphics.playPage.leftPanel.sliders.InertiaFactorSlider;
 import graphics.playPage.observer.Observer;
-import graphics.playPage.leftPanel.sliders.Slider1;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.presets.panels.VerticalPanel;
@@ -35,7 +34,6 @@ public class LeftPanel extends VerticalPanel {
         LayoutManager layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
         add(new LabelSection(getPanelColors()), layout);
-        add(new Slider1(getPanelColors()), layout);
         add(new InertiaFactorSlider(getPanelColors()), layout);
         add(new LeftDrawPanel(window, observer), layout);
     }
