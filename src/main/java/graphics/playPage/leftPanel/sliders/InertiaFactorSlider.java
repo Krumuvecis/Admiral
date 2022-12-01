@@ -4,6 +4,8 @@ import staticData.StaticData;
 
 import graphicsEngine.colors.SimpleColorScheme;
 
+import consoleUtils.NumberFormatter;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,10 +19,9 @@ public class InertiaFactorSlider extends SliderPanel {
     public InertiaFactorSlider(@Nullable SimpleColorScheme colors) {
         super(
                 colors,
-                MAJOR_TICK_COUNT, MINOR_TICK_COUNT,
-                (int)StaticData.cells.barokineticSettings.getInertiaFactorRange()[0],
-                (int)StaticData.cells.barokineticSettings.getInertiaFactorRange()[1],
-                (int)StaticData.cells.barokineticSettings.getInertiaFactor());
+                StaticData.cells.barokineticSettings.getInertiaFactorRange(),
+                StaticData.cells.barokineticSettings.getInertiaFactor(),
+                MAJOR_TICK_COUNT, MINOR_TICK_COUNT);
     }
 
     /**
@@ -30,7 +31,9 @@ public class InertiaFactorSlider extends SliderPanel {
     @Override
     @NotNull String getLabelText() {
         return "Inertia factor: "
-                + (int)StaticData.cells.barokineticSettings.getInertiaFactor();
+                + NumberFormatter.doubleToString(
+                        StaticData.cells.barokineticSettings.getInertiaFactor(),
+                        2);
     }
 
     /**
@@ -38,7 +41,7 @@ public class InertiaFactorSlider extends SliderPanel {
      * @param value
      */
     @Override
-    void valueChanged(int value) {
+    void valueChanged(double value) {
         StaticData.cells.barokineticSettings.setInertiaFactor(value);
     }
 }

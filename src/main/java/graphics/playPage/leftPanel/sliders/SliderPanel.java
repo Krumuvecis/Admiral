@@ -17,8 +17,8 @@ abstract class SliderPanel extends HorizontalPanel {
 
     //TODO: add javadoc
     SliderPanel(@Nullable SimpleColorScheme colors,
-                int majorTickCount, int minorTickCount,
-                int min, int max, int initial) {
+                double @NotNull [] bounds, double initialValue,
+                int majorTickCount, int minorTickCount) {
         super(colors, DEFAULT_HEIGHT, null);
         @NotNull Color background = getPanelColors().getBaseColor();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -31,33 +31,20 @@ abstract class SliderPanel extends HorizontalPanel {
             }
         });
 
-        int
-                majorTickSpacing = getMajorTickSpacing(min, max, majorTickCount),
-                minorTickSpacing = getMinorTickSpacing(majorTickSpacing, minorTickCount);
-
         add(new SimpleSlider(
                 background,
-                min, max, initial,
-                majorTickSpacing, minorTickSpacing) {
+                bounds, initialValue,
+                majorTickCount, minorTickCount) {
             @Override
-            void valueChanged(int value) {
+            void valueChanged(double value) {
                 panel.valueChanged(value);
             }
         });
-    }
-
-    private int getMajorTickSpacing(int min, int max, int tickCount) {
-        int amplitude = max - min;
-        return (int) Math.floor((double) amplitude / tickCount);
-    }
-
-    private int getMinorTickSpacing(int majorTickSpacing, int minorTickCount) {
-        return (int) Math.floor((double) majorTickSpacing / minorTickCount);
     }
 
     //TODO: add javadoc
     abstract @NotNull String getLabelText();
 
     //TODO: add javadoc
-    abstract void valueChanged(int value);
+    abstract void valueChanged(double value);
 }

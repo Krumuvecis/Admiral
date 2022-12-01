@@ -1,30 +1,31 @@
 package graphics.playPage.leftPanel.sliders;
 
+import java.util.Hashtable;
 import java.awt.Color;
 import javax.swing.JSlider;
+import javax.swing.JLabel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import consoleUtils.NumberFormatter;
 
 import org.jetbrains.annotations.NotNull;
 
 //TODO: add javadocs
 abstract class SimpleSlider extends JSlider {
-    private static final boolean DEFAULT_TICK_SNAP = false;
+    private double tickValue;
 
-    //TODO: add javadoc
+    //new model; TODO: finish this and add javadoc
     SimpleSlider(@NotNull Color backgroundColor,
-                 int min, int max, int initial,
-                 int majorTickSpacing, int minorTickSpacing) {
-        super(min, max, initial);
+                 double[] bounds, double initialValue,
+                 int majorTickCount, int minorTickCount) {
+        super();
         setFocusable(false);
         setBackground(backgroundColor); //prevents flickering
 
-        setSnapToTicks(DEFAULT_TICK_SNAP);
-        setMajorTickSpacing(majorTickSpacing);
-        setMinorTickSpacing(minorTickSpacing);
+        setTicksAndLabels(bounds, majorTickCount, minorTickCount);
 
-        setPaintTicks(true);
-        setPaintLabels(true);
+        setInitialValue(bounds[0], initialValue);
 
         addChangeListener(new ChangeListener() {
             /**
@@ -35,13 +36,48 @@ abstract class SimpleSlider extends JSlider {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JSlider source = (JSlider) e.getSource();
-                if (!source.getSnapToTicks() || !source.getValueIsAdjusting()) {
-                    valueChanged(source.getValue());
-                }
+                valueChanged(bounds[0] + source.getValue() * getTickValue());
             }
         });
     }
 
+    private void setTicksAndLabels(double @NotNull [] bounds,
+                                   int majorTickCount, int minorTickCount) {
+        setMinorTickSpacing(1);
+        setMajorTickSpacing(minorTickCount);
+        int totalTicks = majorTickCount * minorTickCount;
+        setMaximum(totalTicks);
+        double range = Math.abs(bounds[1] - bounds[0]);
+        setTickValue(range / totalTicks);
+
+        Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
+        for (int i = 0; i <= majorTickCount; i++) {
+            int tickPosition = i * minorTickCount;
+            labelTable.put(
+                    tickPosition,
+                    new JLabel(NumberFormatter.doubleToString(
+                            bounds[0] + tickPosition * getTickValue(),
+                            2)));
+        }
+        setLabelTable(labelTable);
+
+        setPaintTicks(true);
+        setPaintLabels(true);
+    }
+
+    private void setTickValue(double value) {
+        tickValue = value;
+    }
+
+    private double getTickValue() {
+        return tickValue;
+    }
+
+    private void setInitialValue(double lowerBound, double value) {
+        setValue((int) ((value - lowerBound) / getTickValue()));
+        valueChanged(lowerBound + getValue() * getTickValue());
+    }
+
     //TODO: add javadoc
-    abstract void valueChanged(int value);
+    abstract void valueChanged(double value);
 }
