@@ -4,6 +4,7 @@ import graphics.Window;
 import graphics.playPage.observer.Observer;
 import graphics.playPage.leftPanel.labelSection.LabelSection;
 import graphics.playPage.leftPanel.sliders.InertiaFactorSlider;
+import graphics.playPage.leftPanel.sliders.PressureToWindCoefficientSlider;
 import graphics.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
 
 import graphicsEngine.colors.SimpleColorScheme;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 //TODO: add javadocs
 public class LeftPanel extends VerticalPanel {
-    private static final int PANEL_WIDTH = 150;
+    private static final int PANEL_WIDTH = 200;
     private static final int BACKGROUND_BRIGHTNESS = 80;
     private static final @Nullable Color
             BACKGROUND_COLOR = new Color(
@@ -38,6 +39,7 @@ public class LeftPanel extends VerticalPanel {
         setLayout(layout);
         add(new LabelSection(getPanelColors()), layout);
         add(new InertiaFactorSlider(getPanelColors()), layout);
+        add(new PressureToWindCoefficientSlider(getPanelColors()), layout);
         add(new LeftDrawPanel(window, observer), layout);
     }
 }

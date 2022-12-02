@@ -2,9 +2,11 @@ package cells.settings;
 
 import org.jetbrains.annotations.NotNull;
 
+//TODO: add javadocs
 public class SlideabilitySettings {
     private final double @NotNull [] range = new double[2];
 
+    //TODO: add javadoc
     SlideabilitySettings(double min, double max) {
         try {
             setRange(min, max);
@@ -13,7 +15,7 @@ public class SlideabilitySettings {
         }
     }
 
-    void setRange(double min, double max) throws IncorrectRangeException {
+    private void setRange(double min, double max) throws IncorrectRangeException {
         if (min > max) {
             throw new IncorrectRangeException();
         } else {
@@ -22,11 +24,12 @@ public class SlideabilitySettings {
         }
     }
 
+    //TODO: add javadoc
     public double @NotNull [] getRange() {
         return range;
     }
 
-    static class IncorrectRangeException extends Exception {
+    private static class IncorrectRangeException extends Exception {
         private IncorrectRangeException() {
             super("Incorrect slideable variable range: minimum greater than maximum.");
         }
