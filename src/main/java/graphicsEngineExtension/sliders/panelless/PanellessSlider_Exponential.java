@@ -1,26 +1,28 @@
-package graphics.playPage.leftPanel.sliders.abstraction;
+package graphicsEngineExtension.sliders.panelless;
 
 import java.awt.Color;
 
 import org.jetbrains.annotations.NotNull;
 
 //TODO: add javadocs
-abstract class ExponentialSlider extends SimpleSlider {
-    private double base;
+public abstract class PanellessSlider_Exponential extends PanellessSlider {
+    private double base; //Base of exponent for tick-value conversion.
 
     //TODO: add javadoc
-    ExponentialSlider(@NotNull Color backgroundColor,
-                 double[] bounds, double initialValue,
-                 int majorTickCount, int minorTickCount) {
+    public PanellessSlider_Exponential(@NotNull Color backgroundColor,
+                                       double[] bounds, double initialValue,
+                                       int majorTickCount, int minorTickCount,
+                                       int tickLabelDecimalPlaces) {
         super(
                 backgroundColor,
                 bounds, initialValue,
-                majorTickCount, minorTickCount);
+                majorTickCount, minorTickCount,
+                tickLabelDecimalPlaces);
     }
 
     //TODO: add javadoc
     @Override
-    final void setConversionConstants(int majorTickCount, int minorTickCount) {
+    public final void setConversionConstants(int majorTickCount, int minorTickCount) {
         double @NotNull [] range = getRange();
         double tickCount = majorTickCount * minorTickCount;
         base = Math.pow(
@@ -30,7 +32,7 @@ abstract class ExponentialSlider extends SimpleSlider {
 
     //TODO: add javadoc
     @Override
-    final int getTickFromValue(double value) {
+    public final int getTickFromValue(double value) {
         double @NotNull [] range = getRange();
         double
                 dividend = Math.log(value + 1 - range[0]),
@@ -41,7 +43,7 @@ abstract class ExponentialSlider extends SimpleSlider {
 
     //TODO: add javadoc
     @Override
-    final double getValueFromTick(int tick) {
+    public final double getValueFromTick(int tick) {
         return Math.pow(base, tick) - 1 + getRange()[0];
     }
 }

@@ -7,12 +7,12 @@ import consoleUtils.NumberFormatter;
 
 import graphicsEngine.colors.SimpleColorScheme;
 
+import graphicsEngineExtension.sliders.ExponentialSlider;
+
 import staticData.StaticData;
 
-import graphics.playPage.leftPanel.sliders.abstraction.ExponentialSliderPanel;
-
 //TODO: add javadocs
-public class PressureToWindCoefficientSlider extends ExponentialSliderPanel {
+public class PressureToWindCoefficientSlider extends ExponentialSlider {
     private static final int
             MAJOR_TICK_COUNT = 5,
             MINOR_TICK_COUNT = 3;

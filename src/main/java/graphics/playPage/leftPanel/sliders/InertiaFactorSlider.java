@@ -7,12 +7,12 @@ import consoleUtils.NumberFormatter;
 
 import graphicsEngine.colors.SimpleColorScheme;
 
+import graphicsEngineExtension.sliders.LinearSlider;
+
 import staticData.StaticData;
 
-import graphics.playPage.leftPanel.sliders.abstraction.LinearSliderPanel;
-
 //TODO: add javadocs
-public class InertiaFactorSlider extends LinearSliderPanel {
+public class InertiaFactorSlider extends LinearSlider {
     private static final int
             MAJOR_TICK_COUNT = 3,
             MINOR_TICK_COUNT = 3;
