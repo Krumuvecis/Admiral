@@ -1,15 +1,5 @@
 package graphics.playPage;
 
-import graphics.Window;
-import graphics.common.CommonPage;
-import graphics.playPage.observer.Observer;
-import graphics.playPage.leftPanel.LeftPanel;
-import graphics.playPage.drawPanel.DrawPanel;
-
-import graphicsEngine.colors.ColorUtilities;
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.DynamicPanel;
-
 import java.util.List;
 import java.awt.Component;
 import java.awt.BorderLayout;
@@ -18,6 +8,16 @@ import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import graphicsEngine.colors.ColorUtilities;
+import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.DynamicPanel;
+
+import graphics.Window;
+import graphics.common.CommonPage;
+import graphics.playPage.observer.Observer;
+import graphics.playPage.leftPanel.LeftPanel;
+import graphics.playPage.drawPanel.DrawPanel;
 
 //TODO: add javadocs
 public class PlayPage extends CommonPage {

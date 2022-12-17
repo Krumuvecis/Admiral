@@ -1,17 +1,17 @@
 package graphics.playPage.leftPanel.leftDrawPanel;
 
-import graphics.Window;
-import graphics.playPage.observer.Observer;
-
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.DynamicPanel;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Color;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.DynamicPanel;
+
+import graphics.Window;
+import graphics.playPage.observer.Observer;
 
 //TODO: add javadocs
 public class LeftDrawPanel extends DynamicPanel {

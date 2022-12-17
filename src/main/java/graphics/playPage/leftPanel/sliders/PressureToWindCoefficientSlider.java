@@ -1,21 +1,21 @@
 package graphics.playPage.leftPanel.sliders;
 
-import staticData.StaticData;
-
-import graphics.playPage.leftPanel.sliders.abstraction.ExponentialSliderPanel;
-
-import graphicsEngine.colors.SimpleColorScheme;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import consoleUtils.NumberFormatter;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import graphicsEngine.colors.SimpleColorScheme;
+
+import staticData.StaticData;
+
+import graphics.playPage.leftPanel.sliders.abstraction.ExponentialSliderPanel;
 
 //TODO: add javadocs
 public class PressureToWindCoefficientSlider extends ExponentialSliderPanel {
     private static final int
             MAJOR_TICK_COUNT = 5,
-            MINOR_TICK_COUNT = 1;
+            MINOR_TICK_COUNT = 3;
 
     //TODO: add javadoc
     public PressureToWindCoefficientSlider(@Nullable SimpleColorScheme colors) {

@@ -1,11 +1,5 @@
 package graphics.common;
 
-import graphicsEngine.colors.ColorUtilities;
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.panels.StaticPanel;
-import graphicsEngine.presets.SimpleOverlay;
-
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -15,14 +9,24 @@ import javax.swing.BoxLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//TODO: add javadoc
+import graphicsEngine.colors.ColorUtilities;
+import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
+import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.presets.SimpleOverlay;
+
+/**
+ * TODO: add javadocs
+ */
 public class MenuOverlay extends SimpleOverlay {
     private static final double DEFAULT_TRANSPARENCY = 0.5;
     private static final Color BACKGROUND_COLOR = new Color(
             0, 0, 0,
             (int) (255 * DEFAULT_TRANSPARENCY));
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     public MenuOverlay(@Nullable ActionListener actionListener) {
         super(BACKGROUND_COLOR);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -47,7 +51,9 @@ public class MenuOverlay extends SimpleOverlay {
         }};
     }
 
-    //TODO: add javadoc
+    /**
+     * TODO: add javadocs
+     */
     public static class ButtonContainer extends StaticPanel {
         public ButtonContainer(@Nullable ActionListener actionListener) {
             super(getSizeLimits(), getContainerColors(), getBorderProperties());

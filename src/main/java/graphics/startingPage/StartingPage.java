@@ -1,13 +1,5 @@
 package graphics.startingPage;
 
-import graphics.Window;
-import graphics.common.CommonPage;
-
-import graphicsEngine.colors.ColorUtilities;
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.StaticPanel;
-import graphicsEngine.parts.SimpleLabel;
-
 import java.util.List;
 import java.awt.Color;
 import java.awt.Component;
@@ -16,6 +8,14 @@ import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import graphicsEngine.colors.ColorUtilities;
+import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.parts.SimpleLabel;
+
+import graphics.Window;
+import graphics.common.CommonPage;
 
 //TODO: add javadocs
 public class StartingPage extends CommonPage {

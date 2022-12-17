@@ -1,10 +1,10 @@
 package cells;
 
-import staticData.StaticData;
-
 import ThreadAbstraction.AbstractUpdater;
 
 import org.jetbrains.annotations.NotNull;
+
+import staticData.StaticData;
 
 /**
  * TODO: add javadocs

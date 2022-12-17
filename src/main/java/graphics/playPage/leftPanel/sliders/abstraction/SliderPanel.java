@@ -1,14 +1,14 @@
 package graphics.playPage.leftPanel.sliders.abstraction;
 
-import graphics.playPage.leftPanel.DynamicLabel;
-
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.presets.panels.HorizontalPanel;
-
 import javax.swing.BoxLayout;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.presets.panels.HorizontalPanel;
+
+import graphics.playPage.leftPanel.DynamicLabel;
 
 //TODO: add javadocs
 public abstract class SliderPanel extends HorizontalPanel {

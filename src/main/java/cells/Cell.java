@@ -1,8 +1,8 @@
 package cells;
 
-import cells.settings.BarokineticSettings;
-
 import org.jetbrains.annotations.NotNull;
+
+import cells.settings.BarokineticSettings;
 
 /**
  * TODO: finish this javadoc

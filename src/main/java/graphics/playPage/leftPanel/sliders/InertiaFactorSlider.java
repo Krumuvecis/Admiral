@@ -1,15 +1,15 @@
 package graphics.playPage.leftPanel.sliders;
 
-import staticData.StaticData;
-
-import graphics.playPage.leftPanel.sliders.abstraction.LinearSliderPanel;
-
-import graphicsEngine.colors.SimpleColorScheme;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import consoleUtils.NumberFormatter;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import graphicsEngine.colors.SimpleColorScheme;
+
+import staticData.StaticData;
+
+import graphics.playPage.leftPanel.sliders.abstraction.LinearSliderPanel;
 
 //TODO: add javadocs
 public class InertiaFactorSlider extends LinearSliderPanel {

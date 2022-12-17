@@ -1,26 +1,30 @@
 package graphics.common;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import static consoleUtils.ConsoleUtils.printLine;
+
+import graphicsEngine.presets.SimpleJButton;
+
 import staticData.StaticData;
 
 import graphics.Window;
 import graphics.playPage.PlayPage;
 import graphics.startingPage.StartingPage;
 
-import graphicsEngine.presets.SimpleJButton;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import static consoleUtils.ConsoleUtils.printLine;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-//TODO: add javadocs
+/**
+ * TODO: add javadocs
+ */
 public class HeaderButtonListener implements ActionListener {
     private final Window window;
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     public HeaderButtonListener(@NotNull Window window) {
         this.window = window;
     }
@@ -56,7 +60,9 @@ public class HeaderButtonListener implements ActionListener {
         return true;
     }
 
-    //TODO: add javadocs
+    /**
+     * TODO: add javadocs
+     */
     public static class Button_Menu extends SimpleJButton {
         public static final String ACTION_COMMAND = "overlay_menu";
 
@@ -66,7 +72,9 @@ public class HeaderButtonListener implements ActionListener {
         }
     }
 
-    //TODO: add javadocs
+    /**
+     * TODO: add javadocs
+     */
     public static class Button_StartingPage extends SimpleJButton {
         public static final String ACTION_COMMAND = "page_starting";
 
@@ -76,7 +84,9 @@ public class HeaderButtonListener implements ActionListener {
         }
     }
 
-    //TODO: add javadocs
+    /**
+     * TODO: add javadocs
+     */
     public static class Button_PlayPage extends SimpleJButton {
         public static final String ACTION_COMMAND = "page_play";
 
@@ -86,7 +96,9 @@ public class HeaderButtonListener implements ActionListener {
         }
     }
 
-    //TODO: add javadocs
+    /**
+     * TODO: add javadocs
+     */
     public static class Button_Pause extends SimpleJButton {
         public static final String ACTION_COMMAND = "pause";
 

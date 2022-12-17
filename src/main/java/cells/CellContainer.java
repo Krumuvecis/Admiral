@@ -1,11 +1,11 @@
 package cells;
 
-import cells.settings.BarokineticSettings;
-
 import java.util.List;
 import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
+
+import cells.settings.BarokineticSettings;
 
 /**
  * TODO: add javadocs

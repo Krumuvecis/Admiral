@@ -1,17 +1,20 @@
 package graphics.playPage.observer;
 
-import graphics.Window;
-import graphics.common.KeyboardListener;
-import graphics.playPage.PlayPage;
-
 import java.awt.event.KeyEvent;
 
 import ThreadAbstraction.AbstractUpdater;
 
+import graphicsEngineExtension.KeyboardListener;
+
+import graphics.Window;
+import graphics.playPage.PlayPage;
+
+//TODO: add javadocs
 public class ObserverKeyboardChecker extends AbstractUpdater {
     private final Window window;
     private final Observer observer;
 
+    //TODO: add javadoc
     ObserverKeyboardChecker(Window window, Observer observer) {
         super(20);
         this.window = window;

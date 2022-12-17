@@ -1,9 +1,5 @@
 package graphics.common;
 
-import graphics.Window;
-
-import graphicsEngine.presets.SimpleJButton;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,11 +8,19 @@ import org.jetbrains.annotations.Nullable;
 
 import static consoleUtils.ConsoleUtils.printLine;
 
-//TODO: add javadocs
+import graphicsEngine.presets.SimpleJButton;
+
+import graphics.Window;
+
+/**
+ * TODO: add javadocs
+ */
 public class OverlayButtonListener implements ActionListener {
     private final Window window;
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     public OverlayButtonListener(@NotNull Window window) {
         this.window = window;
     }
@@ -32,6 +36,7 @@ public class OverlayButtonListener implements ActionListener {
         printLine("An overlay button has been pressed but no action set up");
     }
 
+    @SuppressWarnings("SwitchStatementWithTooFewBranches")
     private boolean actionCheck(@NotNull ActionEvent e) {
         switch (e.getActionCommand()) {
             case Button_HideOverlay.ACTION_COMMAND ->
@@ -44,7 +49,9 @@ public class OverlayButtonListener implements ActionListener {
         return true;
     }
 
-    //TODO: add javadocs
+    /**
+     * TODO: add javadocs
+     */
     public static class Button_HideOverlay extends SimpleJButton {
         public static final String ACTION_COMMAND = "overlay_back";
 

@@ -1,15 +1,17 @@
 package graphics.playPage.drawPanel;
 
-import graphics.playPage.observer.Observer;
-import graphics.playPage.observer.MouseListeners;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
-import java.awt.*;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import graphics.playPage.observer.Observer;
+import graphics.playPage.observer.MouseListeners;
 
 //TODO: add javadocs
 public class DrawPanel extends DynamicPanel {

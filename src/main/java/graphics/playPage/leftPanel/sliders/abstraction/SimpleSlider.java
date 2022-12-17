@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import consoleUtils.NumberFormatter;
-
 import org.jetbrains.annotations.NotNull;
+
+import consoleUtils.NumberFormatter;
 
 //TODO: add javadocs
 abstract class SimpleSlider extends JSlider {

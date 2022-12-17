@@ -1,12 +1,14 @@
 package graphics.playPage.drawPanel;
 
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import org.jetbrains.annotations.NotNull;
+
 import staticData.StaticData;
 
 import graphics.playPage.observer.Observer;
-
-import java.awt.*;
-
-import org.jetbrains.annotations.NotNull;
 
 class ObserverInfoPainter {
     private final @NotNull Observer observer;

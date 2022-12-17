@@ -1,15 +1,16 @@
 package graphics.playPage.leftPanel.leftDrawPanel;
 
-import graphics.Window;
-import graphics.common.KeyboardListener;
-import graphics.playPage.observer.Observer;
-
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import graphicsEngineExtension.KeyboardListener;
+
+import graphics.Window;
+import graphics.playPage.observer.Observer;
 
 //TODO: add javadocs
 class ObserverInfoSection extends AbstractTextSection {

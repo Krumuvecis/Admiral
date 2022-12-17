@@ -1,11 +1,11 @@
 package graphics.playPage.leftPanel;
 
-import graphicsEngine.parts.SimpleLabel;
-
 import java.awt.Color;
 import java.awt.Graphics;
 
 import org.jetbrains.annotations.Nullable;
+
+import graphicsEngine.parts.SimpleLabel;
 
 //TODO: add javadocs
 public abstract class DynamicLabel extends SimpleLabel {

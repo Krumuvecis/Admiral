@@ -1,9 +1,9 @@
 package graphics.playPage.leftPanel.sliders.abstraction;
 
-import graphicsEngine.colors.SimpleColorScheme;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import graphicsEngine.colors.SimpleColorScheme;
 
 public abstract class LinearSliderPanel extends SliderPanel {
     public LinearSliderPanel(@Nullable SimpleColorScheme colors,

@@ -1,13 +1,13 @@
 package graphics.playPage.leftPanel.leftDrawPanel;
 
-import staticData.StaticData;
-
 import java.awt.Graphics;
 import java.awt.Color;
 
+import org.jetbrains.annotations.NotNull;
+
 import consoleUtils.NumberFormatter;
 
-import org.jetbrains.annotations.NotNull;
+import staticData.StaticData;
 
 //TODO: add javadocs
 class FieldInfoSection extends AbstractTextSection {

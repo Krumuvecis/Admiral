@@ -1,14 +1,5 @@
 package graphics.common;
 
-import graphics.Window;
-
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.panels.DynamicPanel;
-import graphicsEngine.presets.HeaderAndFooterPage;
-import graphicsEngine.presets.panels.AbstractHeader;
-import graphicsEngine.presets.panels.AbstractFooter;
-
 import java.util.Objects;
 import java.util.List;
 import java.awt.Component;
@@ -19,12 +10,25 @@ import javax.swing.JPanel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//TODO: finish this and add javadoc
+import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
+import graphicsEngine.panels.DynamicPanel;
+import graphicsEngine.presets.HeaderAndFooterPage;
+import graphicsEngine.presets.panels.AbstractHeader;
+import graphicsEngine.presets.panels.AbstractFooter;
+
+import graphics.Window;
+
+/**
+ * TODO: finish this and add javadocs
+ */
 public abstract class CommonPage extends HeaderAndFooterPage {
     public final Window window;
     private HeaderButtonListener headerButtonListener;
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     public CommonPage(@Nullable Window window,
                       @Nullable List<ActionListener> actionListenerList,
                       @Nullable SimpleColorScheme colors) {
@@ -58,25 +62,33 @@ public abstract class CommonPage extends HeaderAndFooterPage {
         return remainder;
     }
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     @Override
     public @NotNull AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
                                              @Nullable BorderProperties borderProperties) {
         return new CommonHeader(headerColors, borderProperties, headerButtonListener);
     }
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     @Override
     public @Nullable AbstractFooter getFooter(@Nullable SimpleColorScheme footerColors,
                                               @Nullable BorderProperties borderProperties) {
         return null;
     }
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     @Override
     public final void addParts() {}
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     public abstract void setBodyParameters();
 
     private void addBody(@Nullable Component center) {
@@ -94,6 +106,8 @@ public abstract class CommonPage extends HeaderAndFooterPage {
         });
     }
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     public abstract @Nullable Component getPageBody();
 }

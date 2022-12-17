@@ -1,11 +1,12 @@
 package graphics.playPage.observer;
 
+import org.jetbrains.annotations.NotNull;
+
 import cells.CellContainer;
 
 import graphics.Window;
 
-import org.jetbrains.annotations.NotNull;
-
+//TODO: add javadocs
 public class Observer {
     public static final int[] ZOOM_LIMITS = new int[] {1, 10};
     public static final int INITIAL_ZOOM = 4, ZOOM_INCREMENT = 1;
@@ -15,6 +16,7 @@ public class Observer {
     public int zoom = INITIAL_ZOOM;
     public final @NotNull ObserverMovement movement;
 
+    //TODO: add javadoc
     public Observer(Window window) {
         movement = new ObserverMovement(this);
         new ObserverKeyboardChecker(window, this).start();

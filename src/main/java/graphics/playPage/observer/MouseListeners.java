@@ -1,13 +1,13 @@
 package graphics.playPage.observer;
 
-import staticData.StaticData;
-
-import graphics.playPage.drawPanel.DrawPanel;
-
-import java.awt.*;
+import java.awt.Dimension;
 import java.awt.event.*;
 
 import org.jetbrains.annotations.NotNull;
+
+import staticData.StaticData;
+
+import graphics.playPage.drawPanel.DrawPanel;
 
 /**
  * A utility class for containing various observer mouse listeners.
@@ -39,14 +39,17 @@ public class MouseListeners {
             this.observer = observer;
         }
 
+        //TODO: add javadoc
         @Override
         public void mouseClicked(MouseEvent e) {
             mouseClickAction(e);
         }
 
+        //TODO: add javadoc
         @Override
         public void mouseReleased(MouseEvent e) {} //unused
 
+        //TODO: add javadoc
         @Override
         public void mousePressed(MouseEvent e) {
             mouseClickAction(e);
@@ -63,11 +66,13 @@ public class MouseListeners {
             }
         }
 
+        //TODO: add javadoc
         @Override
         public void mouseEntered(MouseEvent e) {
             drawPanel.setPanelActive(true);
         }
 
+        //TODO: add javadoc
         @Override
         public void mouseExited(MouseEvent e) {
             drawPanel.setPanelActive(false);
@@ -87,6 +92,7 @@ public class MouseListeners {
             this.observer = observer;
         }
 
+        //TODO: add javadoc
         @Override
         public void mouseDragged(MouseEvent e) {
             if (drawPanel.panelActive) {
@@ -95,6 +101,7 @@ public class MouseListeners {
             }
         }
 
+        //TODO: add javadoc
         @Override
         public void mouseMoved(MouseEvent e) {
             if (drawPanel.panelActive) {
@@ -117,6 +124,7 @@ public class MouseListeners {
             this.observer = observer;
         }
 
+        //TODO: add javadoc
         @Override
         public void mouseWheelMoved(MouseWheelEvent e) {
             if (drawPanel.panelActive) {

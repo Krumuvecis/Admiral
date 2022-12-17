@@ -1,14 +1,14 @@
 package graphics.playPage.drawPanel;
 
-import staticData.StaticData;
-import cells.Cell;
-
 import java.awt.Graphics;
 import java.awt.Color;
 
+import org.jetbrains.annotations.NotNull;
+
 import consoleUtils.NumberFormatter;
 
-import org.jetbrains.annotations.NotNull;
+import staticData.StaticData;
+import cells.Cell;
 
 //TODO: add javadocs
 class CellPainter {

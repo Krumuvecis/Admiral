@@ -1,13 +1,13 @@
 package main;
 
+import static consoleUtils.ConsoleUtils.printLine;
+
 import DelayCalculator.DelayOptions;
 import DelayCalculator.PreferenceType;
 import graphicsEngine.GraphicsAdapter;
 import graphicsEngine.windows.WindowUpdater;
 
 import graphics.Window;
-
-import static consoleUtils.ConsoleUtils.printLine;
 
 /**
  * Main class of this application.
@@ -24,26 +24,32 @@ public class Main {
      */
     public static void main(String[] args) {
         //init some static data here
-        if (args != null && args.length > 0 && args[0].equals(DEV_MODE_ID)) {
+        new Main(args != null
+                && args.length > 0
+                && args[0].equals(DEV_MODE_ID));
+    }
+
+    private Main(boolean devMode) {
+        if (devMode) {
             startDevMode();
         } else {
             startNormalMode();
         }
     }
 
-    private static void startNormalMode() {
+    private void startDevMode() {
+        printLine("dev mode not ready yet");
+    }
+
+    private void startNormalMode() {
         startGraphics();
     }
 
-    private static void startGraphics() {
+    private void startGraphics() {
         new GraphicsAdapter() {{
             newWindow(
                     new WindowUpdater(new Window(this),
                     new DelayOptions(PreferenceType.FPS, 60)));
         }};
-    }
-
-    private static void startDevMode() {
-        printLine("dev mode not ready yet");
     }
 }

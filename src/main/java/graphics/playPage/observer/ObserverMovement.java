@@ -2,6 +2,7 @@ package graphics.playPage.observer;
 
 import org.jetbrains.annotations.NotNull;
 
+//TODO: finish this and add javadocs
 public class ObserverMovement {
     private final @NotNull Observer observer;
 

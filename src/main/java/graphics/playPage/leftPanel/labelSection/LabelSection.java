@@ -1,21 +1,21 @@
 package graphics.playPage.leftPanel.labelSection;
 
-import staticData.StaticData;
+import java.awt.Dimension;
+import java.awt.Color;
+import javax.swing.BoxLayout;
 
-import graphics.playPage.leftPanel.DynamicLabel;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import consoleUtils.NumberFormatter;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.parts.SimpleLabel;
 import graphicsEngine.presets.panels.HorizontalPanel;
 
-import java.awt.Dimension;
-import java.awt.Color;
-import javax.swing.BoxLayout;
+import staticData.StaticData;
 
-import consoleUtils.NumberFormatter;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import graphics.playPage.leftPanel.DynamicLabel;
 
 //TODO: add javadocs
 public class LabelSection extends HorizontalPanel {

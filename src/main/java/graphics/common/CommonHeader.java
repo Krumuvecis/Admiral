@@ -1,18 +1,22 @@
 package graphics.common;
 
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.presets.panels.AbstractHeader;
-
 import javax.swing.BoxLayout;
 
 import org.jetbrains.annotations.Nullable;
 
-//TODO: add javadoc
+import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
+import graphicsEngine.presets.panels.AbstractHeader;
+
+/**
+ * TODO: finish this and add javadocs
+ */
 public class CommonHeader extends AbstractHeader {
     private static final int HEIGHT = 40;
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     public CommonHeader(@Nullable SimpleColorScheme colors,
                         @Nullable BorderProperties borderProperties,
                         @Nullable HeaderButtonListener buttonListener) {
@@ -20,11 +24,19 @@ public class CommonHeader extends AbstractHeader {
         addButtons(buttonListener);
     }
 
-    //TODO: add javadoc
+    /**
+     * TODO: finish this javadoc
+     */
     @Override
     public void addParts() {}
 
-    //TODO: make this header abstract and make separate ones for each page, for header button separation
+    /**
+     * TODO:
+     *  make this header abstract
+     *  make separate headers for each page
+     *  separate header buttons
+     *  finish this javadoc?
+     */
     private void addButtons(@Nullable HeaderButtonListener buttonListener) {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         add(new HeaderButtonListener.Button_Menu(buttonListener));
