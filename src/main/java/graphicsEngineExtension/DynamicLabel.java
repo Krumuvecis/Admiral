@@ -1,4 +1,4 @@
-package graphics.playPage.leftPanel;
+package graphicsEngineExtension;
 
 import java.awt.Color;
 import java.awt.Graphics;

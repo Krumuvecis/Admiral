@@ -12,13 +12,13 @@ import graphicsEngineExtension.sliders.ExponentialSlider;
 import staticData.StaticData;
 
 //TODO: add javadocs
-public class PressureToWindCoefficientSlider extends ExponentialSlider {
+class PressureToWindCoefficientSlider extends ExponentialSlider {
     private static final int
             MAJOR_TICK_COUNT = 5,
             MINOR_TICK_COUNT = 3;
 
     //TODO: add javadoc
-    public PressureToWindCoefficientSlider(@Nullable SimpleColorScheme colors) {
+    protected PressureToWindCoefficientSlider(@Nullable SimpleColorScheme colors) {
         super(
                 colors,
                 StaticData.cells.barokineticSettings.getPressureToWindCoefficientSlideability().getRange(),

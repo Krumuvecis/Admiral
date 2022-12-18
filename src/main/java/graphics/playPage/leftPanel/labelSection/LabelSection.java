@@ -13,9 +13,9 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.parts.SimpleLabel;
 import graphicsEngine.presets.panels.HorizontalPanel;
 
-import staticData.StaticData;
+import graphicsEngineExtension.DynamicLabel;
 
-import graphics.playPage.leftPanel.DynamicLabel;
+import staticData.StaticData;
 
 //TODO: add javadocs
 public class LabelSection extends HorizontalPanel {

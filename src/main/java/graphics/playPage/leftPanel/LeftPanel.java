@@ -13,8 +13,7 @@ import graphicsEngine.presets.panels.VerticalPanel;
 import graphics.Window;
 import graphics.playPage.observer.Observer;
 import graphics.playPage.leftPanel.labelSection.LabelSection;
-import graphics.playPage.leftPanel.sliders.InertiaFactorSlider;
-import graphics.playPage.leftPanel.sliders.PressureToWindCoefficientSlider;
+import graphics.playPage.leftPanel.sliders.SliderPanel;
 import graphics.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
 
 //TODO: add javadocs
@@ -38,8 +37,7 @@ public class LeftPanel extends VerticalPanel {
         LayoutManager layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
         add(new LabelSection(getPanelColors()), layout);
-        add(new InertiaFactorSlider(getPanelColors()), layout);
-        add(new PressureToWindCoefficientSlider(getPanelColors()), layout);
+        add(new SliderPanel(getPanelColors()), layout);
         add(new LeftDrawPanel(window, observer), layout);
     }
 }

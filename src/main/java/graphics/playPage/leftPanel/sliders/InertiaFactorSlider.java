@@ -12,13 +12,13 @@ import graphicsEngineExtension.sliders.LinearSlider;
 import staticData.StaticData;
 
 //TODO: add javadocs
-public class InertiaFactorSlider extends LinearSlider {
+class InertiaFactorSlider extends LinearSlider {
     private static final int
             MAJOR_TICK_COUNT = 3,
             MINOR_TICK_COUNT = 3;
 
     //TODO: add javadoc
-    public InertiaFactorSlider(@Nullable SimpleColorScheme colors) {
+    protected InertiaFactorSlider(@Nullable SimpleColorScheme colors) {
         super(
                 colors,
                 StaticData.cells.barokineticSettings.getInertiaFactorSlideability().getRange(),
