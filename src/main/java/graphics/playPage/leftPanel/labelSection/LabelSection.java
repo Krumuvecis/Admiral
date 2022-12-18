@@ -10,10 +10,8 @@ import org.jetbrains.annotations.Nullable;
 import consoleUtils.NumberFormatter;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.parts.SimpleLabel;
+import graphicsEngine.parts.labels.*;
 import graphicsEngine.presets.panels.HorizontalPanel;
-
-import graphicsEngineExtension.DynamicLabel;
 
 import staticData.StaticData;
 

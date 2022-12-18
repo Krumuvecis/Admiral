@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.StaticPanel;
-import graphicsEngine.parts.SimpleLabel;
+import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.Window;
 import graphics.common.CommonPage;

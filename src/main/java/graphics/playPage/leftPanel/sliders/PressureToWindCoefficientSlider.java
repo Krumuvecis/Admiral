@@ -6,8 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import consoleUtils.NumberFormatter;
 
 import graphicsEngine.colors.SimpleColorScheme;
-
-import graphicsEngineExtension.sliders.ExponentialSlider;
+import graphicsEngine.parts.sliders.ExponentialSlider;
 
 import staticData.StaticData;
 

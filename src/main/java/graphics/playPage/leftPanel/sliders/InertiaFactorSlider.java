@@ -6,8 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import consoleUtils.NumberFormatter;
 
 import graphicsEngine.colors.SimpleColorScheme;
-
-import graphicsEngineExtension.sliders.LinearSlider;
+import graphicsEngine.parts.sliders.LinearSlider;
 
 import staticData.StaticData;
 
