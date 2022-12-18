@@ -10,7 +10,7 @@ import graphicsEngineExtension.sliders.panelless.PanellessSlider_Exponential;
 //TODO: add javadocs
 public abstract class ExponentialSlider extends SliderPanel {
 
-    //
+    //TODO: add javadoc
     public ExponentialSlider(@Nullable SimpleColorScheme colors,
                              double @NotNull [] range, double initialValue,
                              int majorTickCount, int minorTickCount) {
@@ -21,7 +21,7 @@ public abstract class ExponentialSlider extends SliderPanel {
                 SliderConstants.DEFAULT_TICK_LABEL_DECIMAL_PLACES);
     }
 
-    //
+    //TODO: add javadoc
     public ExponentialSlider(@Nullable SimpleColorScheme colors, int panelHeight,
                              double @NotNull [] range, double initialValue,
                              int majorTickCount, int minorTickCount,

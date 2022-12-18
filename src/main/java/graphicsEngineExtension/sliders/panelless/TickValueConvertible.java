@@ -1,25 +1,32 @@
 package graphicsEngineExtension.sliders.panelless;
 
 /**
- * TODO: finish javadocs
+ * An interface containing methods needed for tick-value conversion.
  */
 interface TickValueConvertible {
     /**
-     * prepares variables for tick-value conversion
-     * TODO: finish this javadoc; maybe rename method
+     * Prepares variables for tick-value conversion.
      *
-     * @param majorTickCount
-     * @param minorTickCount
+     * @param majorTickCount Number of major ticks. (excludes start; has to be greater than 1)
+     * @param minorTickCount Number of minor ticks between major ticks. (has to be greater than 1)
      */
     void setConversionConstants(int majorTickCount, int minorTickCount);
 
     /**
-     * TODO: finish this javadoc
+     * Gets the closest tick to a particular value.
+     *
+     * @param value Reference value.
+     *
+     * @return Closest tick number.
      */
     int getTickFromValue(double value);
 
     /**
-     * TODO: finish this javadoc
+     * Gets a value corresponding to a tick.
+     *
+     * @param tick Reference tick number.
+     *
+     * @return Corresponding value.
      */
     double getValueFromTick(int tick);
 

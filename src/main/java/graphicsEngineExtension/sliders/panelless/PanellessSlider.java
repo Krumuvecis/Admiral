@@ -26,7 +26,7 @@ abstract class PanellessSlider extends TickedSlider {
 
     private void setInitialValue(double value) {
         int tick = getTickFromValue(value); // gets the nearest tick
-        setValue(tick);
+        setValue(tick); // sets the initial tick
         valueChanged(getValueFromTick(tick)); // sets the actual value to the value of the corresponding tick
     }
 
@@ -35,7 +35,7 @@ abstract class PanellessSlider extends TickedSlider {
             /**
              * Invoked when the target of the listener has changed its state.
              *
-             * @param e a ChangeEvent object
+             * @param e A ChangeEvent object.
              */
             @Override
             public void stateChanged(ChangeEvent e) {

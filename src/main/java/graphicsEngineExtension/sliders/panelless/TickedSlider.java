@@ -8,9 +8,19 @@ import org.jetbrains.annotations.NotNull;
 
 import consoleUtils.NumberFormatter;
 
-//TODO: add javadocs
+/**
+ * A simple slider with equidistant ticks and corresponding labels.
+ */
 abstract class TickedSlider extends SimpleSlider implements TickValueConvertible {
-
+    /**
+     * Creates a new TickedSlider.
+     *
+     * @param backgroundColor        Background color. (prevents flickering)
+     * @param range                  Value range. {min, max}
+     * @param majorTickCount         Number of major ticks. (excludes start; has to be greater than 1)
+     * @param minorTickCount         Number of minor ticks between major ticks. (has to be greater than 1)
+     * @param tickLabelDecimalPlaces Number of decimal places for tick labels.
+     */
     protected TickedSlider(@NotNull Color backgroundColor,
                            double @NotNull [] range,
                            int majorTickCount, int minorTickCount,

@@ -6,11 +6,18 @@ import javax.swing.JSlider;
 
 import org.jetbrains.annotations.NotNull;
 
-//TODO: add javadocs
+/**
+ * A simple slider with the most basic swing settings and a range.
+ */
 abstract class SimpleSlider extends JSlider {
     private final double @NotNull [] range; //Range of the slider {min, max}
 
-    //TODO: add javadoc
+    /**
+     * Creates a new SimpleSlider.
+     *
+     * @param backgroundColor Background color. (prevents flickering)
+     * @param range           Value range. {min, max}
+     */
     protected SimpleSlider(@NotNull Color backgroundColor,
                            double @NotNull [] range) {
         super();
