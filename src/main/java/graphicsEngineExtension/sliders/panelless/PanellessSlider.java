@@ -7,10 +7,20 @@ import javax.swing.event.ChangeListener;
 
 import org.jetbrains.annotations.NotNull;
 
-//TODO: add javadocs
+/**
+ * A ticked slider with a change listener supporting dynamic tick value-conversion.
+ */
 abstract class PanellessSlider extends TickedSlider {
-
-    //TODO: add javadoc
+    /**
+     * Creates a new panelless slider.
+     *
+     * @param backgroundColor        Background color. (prevents flickering)
+     * @param range                  Value range. {min, max}
+     * @param initialValue           Preferred initial value. (will change to the nearest corresponding tick)
+     * @param majorTickCount         Number of major ticks. (excludes start; has to be greater than 1)
+     * @param minorTickCount         Number of minor ticks between major ticks. (has to be greater than 1)
+     * @param tickLabelDecimalPlaces Number of decimal places for tick labels.
+     */
     protected PanellessSlider(@NotNull Color backgroundColor,
                               double @NotNull [] range, double initialValue,
                               int majorTickCount, int minorTickCount,
@@ -25,7 +35,8 @@ abstract class PanellessSlider extends TickedSlider {
     }
 
     private void setInitialValue(double value) {
-        int tick = getTickFromValue(value); // gets the nearest tick
+        double valueInRange = getValueInRange(value); // ensures that the value is within range
+        int tick = getTickFromValue(valueInRange); // gets the nearest tick
         setValue(tick); // sets the initial tick
         valueChanged(getValueFromTick(tick)); // sets the actual value to the value of the corresponding tick
     }

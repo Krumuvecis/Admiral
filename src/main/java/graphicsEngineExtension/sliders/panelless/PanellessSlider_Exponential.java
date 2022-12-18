@@ -4,7 +4,12 @@ import java.awt.Color;
 
 import org.jetbrains.annotations.NotNull;
 
-//TODO: add customizable base; add javadocs
+/**
+ * TODO:
+ *      add customizable base
+ *      add reversibility
+ *      add javadocs
+ */
 public abstract class PanellessSlider_Exponential extends PanellessSlider {
     private double base; //Base of exponent for tick-value conversion.
 

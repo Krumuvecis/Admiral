@@ -34,4 +34,17 @@ abstract class SimpleSlider extends JSlider {
     protected final double @NotNull [] getRange() {
         return range;
     }
+
+    /**
+     * Ensures that the provided value is within the value range.
+     * TODO: add reversibility support
+     *
+     * @param value Value to check.
+     *
+     * @return Value within range.
+     */
+    protected final double getValueInRange(double value) {
+        double @NotNull [] range = getRange();
+        return Math.max(range[0], Math.min(range[1], value));
+    }
 }

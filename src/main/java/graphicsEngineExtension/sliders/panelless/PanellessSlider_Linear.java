@@ -4,7 +4,12 @@ import java.awt.Color;
 
 import org.jetbrains.annotations.NotNull;
 
-//TODO: inherit this from exponential slider with base 1; add javadocs
+/**
+ * TODO:
+ *      inherit this from exponential slider with base 1
+ *      add reversibility
+ *      add javadocs
+ */
 public abstract class PanellessSlider_Linear extends PanellessSlider {
     private double tickValue; //Value of a tick for tick-value conversion.
 

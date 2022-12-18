@@ -8,7 +8,7 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngineExtension.sliders.panelless.PanellessSlider_Exponential;
 
 //TODO: add javadocs
-public abstract class ExponentialSlider extends SliderPanel {
+public abstract class ExponentialSlider extends PaneledSlider {
 
     //TODO: add javadoc
     public ExponentialSlider(@Nullable SimpleColorScheme colors,
@@ -27,7 +27,7 @@ public abstract class ExponentialSlider extends SliderPanel {
                              int majorTickCount, int minorTickCount,
                              int tickLabelDecimalPlaces) {
         super(colors, panelHeight);
-        @NotNull SliderPanel panel = this;
+        @NotNull PaneledSlider panel = this;
         add(new PanellessSlider_Exponential(
                 getPanelColors().getBaseColor(),
                 range, initialValue,

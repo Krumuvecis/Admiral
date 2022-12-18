@@ -8,7 +8,7 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngineExtension.sliders.panelless.PanellessSlider_Linear;
 
 //TODO: add javadocs
-public abstract class LinearSlider extends SliderPanel {
+public abstract class LinearSlider extends PaneledSlider {
 
     //TODO: add javadoc
     public LinearSlider(@Nullable SimpleColorScheme colors,
@@ -27,7 +27,7 @@ public abstract class LinearSlider extends SliderPanel {
                         int majorTickCount, int minorTickCount,
                         int tickLabelDecimalPlaces) {
         super(colors, panelHeight);
-        @NotNull SliderPanel panel = this;
+        @NotNull PaneledSlider panel = this;
         add(new PanellessSlider_Linear(
                 getPanelColors().getBaseColor(),
                 range, initialValue,

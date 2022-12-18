@@ -11,14 +11,14 @@ import graphicsEngine.presets.panels.HorizontalPanel;
 import graphics.playPage.leftPanel.DynamicLabel;
 
 //TODO: add javadocs
-abstract class SliderPanel extends HorizontalPanel {
+abstract class PaneledSlider extends HorizontalPanel {
 
     //TODO: add javadoc
-    public SliderPanel(@Nullable SimpleColorScheme colors, int height) {
+    public PaneledSlider(@Nullable SimpleColorScheme colors, int height) {
         super(colors, height, null);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        @NotNull SliderPanel panel = this;
+        @NotNull PaneledSlider panel = this;
         add(new DynamicLabel(
                 getPanelColors().getSecondaryColor(),
                 getPanelColors().getBaseColor()) {
@@ -30,7 +30,11 @@ abstract class SliderPanel extends HorizontalPanel {
         });
     }
 
-    //TODO: add javadoc
+    /**
+     * Gets the text of the label for paneled slider.
+     *
+     * @return The text of the label.
+     */
     public abstract @NotNull String getLabelText();
 
     /**
