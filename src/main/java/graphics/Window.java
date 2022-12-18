@@ -16,7 +16,7 @@ import graphicsEngineExtension.KeyboardListener;
 
 import graphics.common.MenuOverlay;
 import graphics.common.OverlayButtonListener;
-import graphics.common.HeaderButtonListener;
+import graphics.common.header.HeaderButtonListener;
 import graphics.playPage.PlayPage;
 import graphics.startingPage.StartingPage;
 

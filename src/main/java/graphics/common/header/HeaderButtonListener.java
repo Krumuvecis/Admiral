@@ -1,14 +1,11 @@
-package graphics.common;
+package graphics.common.header;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import static consoleUtils.ConsoleUtils.printLine;
-
-import graphicsEngine.presets.SimpleJButton;
 
 import staticData.StaticData;
 
@@ -60,51 +57,4 @@ public class HeaderButtonListener implements ActionListener {
         return true;
     }
 
-    /**
-     * TODO: add javadocs
-     */
-    public static class Button_Menu extends SimpleJButton {
-        public static final String ACTION_COMMAND = "overlay_menu";
-
-        protected Button_Menu(@Nullable ActionListener actionListener) {
-            super("Menu", ACTION_COMMAND, actionListener);
-            setFocusable(false);
-        }
-    }
-
-    /**
-     * TODO: add javadocs
-     */
-    public static class Button_StartingPage extends SimpleJButton {
-        public static final String ACTION_COMMAND = "page_starting";
-
-        protected Button_StartingPage(@Nullable ActionListener actionListener) {
-            super("Starting page", ACTION_COMMAND, actionListener);
-            setFocusable(false);
-        }
-    }
-
-    /**
-     * TODO: add javadocs
-     */
-    public static class Button_PlayPage extends SimpleJButton {
-        public static final String ACTION_COMMAND = "page_play";
-
-        protected Button_PlayPage(@Nullable ActionListener actionListener) {
-            super("Play page", ACTION_COMMAND, actionListener);
-            setFocusable(false);
-        }
-    }
-
-    /**
-     * TODO: add javadocs
-     */
-    public static class Button_Pause extends SimpleJButton {
-        public static final String ACTION_COMMAND = "pause";
-
-        protected Button_Pause(@Nullable ActionListener actionListener) {
-            super("Toggle pause", ACTION_COMMAND, actionListener);
-            setFocusable(false);
-        }
-    }
 }

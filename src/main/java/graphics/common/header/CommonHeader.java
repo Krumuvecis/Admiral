@@ -1,4 +1,4 @@
-package graphics.common;
+package graphics.common.header;
 
 import javax.swing.BoxLayout;
 
@@ -34,14 +34,13 @@ public class CommonHeader extends AbstractHeader {
      * TODO:
      *  make this header abstract
      *  make separate headers for each page
-     *  separate header buttons
      *  finish this javadoc?
      */
     private void addButtons(@Nullable HeaderButtonListener buttonListener) {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        add(new HeaderButtonListener.Button_Menu(buttonListener));
-        add(new HeaderButtonListener.Button_StartingPage(buttonListener));
-        add(new HeaderButtonListener.Button_PlayPage(buttonListener));
-        add(new HeaderButtonListener.Button_Pause(buttonListener));
+        add(new Button_Menu(buttonListener));
+        add(new Button_StartingPage(buttonListener));
+        add(new Button_PlayPage(buttonListener));
+        add(new Button_Pause(buttonListener));
     }
 }

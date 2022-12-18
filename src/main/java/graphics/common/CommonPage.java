@@ -18,6 +18,8 @@ import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.presets.panels.AbstractFooter;
 
 import graphics.Window;
+import graphics.common.header.CommonHeader;
+import graphics.common.header.HeaderButtonListener;
 
 /**
  * TODO: finish this and add javadocs
