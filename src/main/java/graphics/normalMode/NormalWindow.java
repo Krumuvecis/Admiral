@@ -10,8 +10,8 @@ import graphicsEngine.windows.WindowManager;
 import graphicsEngine.windows.AbstractPage;
 
 import graphics.common.CommonWindow;
-import graphics.normalMode.common.MenuOverlay;
-import graphics.normalMode.common.OverlayButtonListener;
+import graphics.common.overlays.MenuOverlay;
+import graphics.common.overlays.OverlayButtonListener;
 import graphics.normalMode.common.header.HeaderButtonListener;
 import graphics.normalMode.playPage.PlayPage;
 import graphics.normalMode.startingPage.StartingPage;

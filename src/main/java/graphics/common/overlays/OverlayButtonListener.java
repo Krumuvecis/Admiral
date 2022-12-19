@@ -1,27 +1,24 @@
-package graphics.normalMode.common;
+package graphics.common.overlays;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import static consoleUtils.ConsoleUtils.printLine;
 
-import graphicsEngine.presets.SimpleJButton;
-
-import graphics.normalMode.NormalWindow;
+import graphics.common.CommonWindow;
 
 /**
  * TODO: add javadocs
  */
 public class OverlayButtonListener implements ActionListener {
-    private final NormalWindow window;
+    private final CommonWindow window;
 
     /**
      * TODO: finish this javadoc
      */
-    public OverlayButtonListener(@NotNull NormalWindow window) {
+    public OverlayButtonListener(@NotNull CommonWindow window) {
         this.window = window;
     }
 
@@ -47,17 +44,5 @@ public class OverlayButtonListener implements ActionListener {
             }
         }
         return true;
-    }
-
-    /**
-     * TODO: add javadocs
-     */
-    public static class Button_HideOverlay extends SimpleJButton {
-        public static final String ACTION_COMMAND = "overlay_back";
-
-        protected Button_HideOverlay(@Nullable ActionListener actionListener) {
-            super("Back", ACTION_COMMAND, actionListener);
-            setFocusable(false);
-        }
     }
 }

@@ -35,7 +35,8 @@ public abstract class CommonWindow extends MultiPageWindow {
                 windowManager,
                 config(titleModeSuffix, size, location),
                 null, null);
-        setIcon(graphicsEngine.Utilities.getSampleIcon()); // doesn't work! TODO: fix
+        // icon paths don't work after graphicsEngine compilation! TODO: fix
+        setIcon(graphicsEngine.Utilities.getSampleIcon());
         keyboardListener = new KeyboardListener();
         addKeyListener(keyboardListener);
         setPageListenersEnabled(true);
