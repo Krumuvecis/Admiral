@@ -18,7 +18,7 @@ import graphics.common.overlays.PagedOverlay;
 public abstract class CommonWindow extends MultiPageWindow {
     private static final @NotNull String //for title purposes
             APPLICATION_NAME = "Admiral",
-            VERSION_NUMBER = "0.5",
+            VERSION_NUMBER = "0.6",
             TITLE_SUFFIX_SEPARATOR = " - ";
 
     public KeyboardListener keyboardListener;
