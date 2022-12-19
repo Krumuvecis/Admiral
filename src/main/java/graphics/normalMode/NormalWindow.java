@@ -9,9 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import graphicsEngine.windows.WindowManager;
 import graphicsEngine.windows.AbstractPage;
 
-import graphicsEngineExtension.KeyboardListener;
-
-import graphics.common.Window;
+import graphics.common.CommonWindow;
 import graphics.normalMode.common.MenuOverlay;
 import graphics.normalMode.common.OverlayButtonListener;
 import graphics.normalMode.common.header.HeaderButtonListener;
@@ -22,31 +20,19 @@ import graphics.normalMode.startingPage.StartingPage;
  * The window for this application
  * TODO: finish javadocs
  */
-public class NormalWindow extends Window {
-    public KeyboardListener keyboardListener;
-    /**
-     * For determining the "enabled" state of non-overlay listeners
-     */
-    public boolean pageListenersEnabled;
+public class NormalWindow extends CommonWindow {
+    private static final int @NotNull []
+            STARTING_SIZE = new int[] {1000, 600},
+            STARTING_LOCATION = new int[] {200, 30};
 
     //TODO: add javadoc
     public NormalWindow(@NotNull WindowManager windowManager) {
-        super(windowManager);
+        super(windowManager, null, STARTING_SIZE, STARTING_LOCATION);
         //TODO: return back to starting page after testing
         //setActivePage(StartingPage.getStaticPageKey());
         setActivePage(PlayPage.getStaticPageKey());
 
         setOverlay(new MenuOverlay(new OverlayButtonListener(this)));
-    }
-
-    /**
-     * For multi-window purposes.
-     *
-     * @return The key of this window.
-     */
-    @Override
-    public final @NotNull String getWindowKey() {
-        return "normalWindow";
     }
 
     /**
