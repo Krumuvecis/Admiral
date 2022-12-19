@@ -15,7 +15,7 @@ class Button_Exit extends SimpleJButton {
 
     //TODO: add javadoc
     protected Button_Exit(@Nullable ActionListener actionListener) {
-        super("Exit (unfinished)", ACTION_COMMAND, actionListener);
+        super("Exit", ACTION_COMMAND, actionListener);
         setFocusable(false);
     }
 }

@@ -15,7 +15,7 @@ class Button_Pause extends SimpleJButton {
 
     //TODO: add javadoc
     protected Button_Pause(@Nullable ActionListener actionListener) {
-        super("Pause", ACTION_COMMAND, actionListener);
+        super("Toggle pause", ACTION_COMMAND, actionListener);
         setFocusable(false);
     }
 }

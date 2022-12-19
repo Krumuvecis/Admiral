@@ -20,7 +20,6 @@ import graphics.common.overlays.pages.settings_dev.DevSettings;
  * TODO: add javadocs
  */
 public class PagedOverlay extends SimpleOverlay {
-
     private final @NotNull CommonWindow window;
 
     /**
@@ -29,13 +28,15 @@ public class PagedOverlay extends SimpleOverlay {
     public PagedOverlay(@NotNull CommonWindow window) {
         super(null);
         this.window = window;
+        setLayout(new BorderLayout());
         setPage(OverlayPageType.MAIN);
     }
 
-    //
+    /**
+     * TODO: finish this javadoc
+     */
     public void setPage(OverlayPageType page) {
         removeAll();
-        setLayout(new BorderLayout());
         try {
             add(Objects.requireNonNull(getNewPage(page)), BorderLayout.CENTER);
         } catch (NullPointerException ignored) {}
