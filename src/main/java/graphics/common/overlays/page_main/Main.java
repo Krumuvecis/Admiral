@@ -8,13 +8,13 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.panels.StaticPanel;
 
 import graphics.common.CommonWindow;
-import graphics.common.overlays.CenteringPanel;
-import graphics.common.overlays.ButtonContainer;
+import graphics.common.overlays.OverlayPage;
+import graphics.common.overlays.centering.CentralContainer;
 
 /**
  * TODO: add javadocs
  */
-public class Main extends CenteringPanel {
+public class Main extends OverlayPage {
 
     /**
      * TODO: finish this javadoc
@@ -28,10 +28,10 @@ public class Main extends CenteringPanel {
      */
     @Override
     public final @NotNull StaticPanel getCenter(@Nullable ActionListener actionListener) {
-        return new ButtonContainer(actionListener) {
+        return new CentralContainer(actionListener) {
             //
             @Override
-            public void addButtons(@Nullable ActionListener actionListener) {
+            public void addComponents(@Nullable ActionListener actionListener) {
                 add(new Button_HideOverlay(actionListener));
             }
         };

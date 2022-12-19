@@ -1,4 +1,4 @@
-package graphics.common.overlays;
+package graphics.common.overlays.centering;
 
 import java.awt.Dimension;
 import java.awt.Color;
@@ -16,13 +16,13 @@ import graphicsEngine.panels.StaticPanel;
 /**
  * TODO: add javadocs
  */
-public abstract class ButtonContainer extends StaticPanel {
+public abstract class CentralContainer extends StaticPanel {
     //TODO: add javadoc
-    public ButtonContainer(@Nullable ActionListener actionListener) {
-        super(getSizeLimits(), getContainerColors(), getBorderProperties());
+    public CentralContainer(@Nullable ActionListener actionListener) {
+        super(getSizeLimits(), getContainerColors(), new BorderProperties(Color.red, true));
         //setMinimumSize(getSizeLimits()); //uncomment, if constant size required
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        addButtons(actionListener);
+        addComponents(actionListener);
     }
 
     private static @Nullable Dimension getSizeLimits() {
@@ -37,11 +37,6 @@ public abstract class ButtonContainer extends StaticPanel {
                 null);
     }
 
-    private static @Nullable BorderProperties getBorderProperties() {
-        //TODO: finish this
-        return new BorderProperties(Color.red, true);
-    }
-
     //TODO: add javadoc
-    public abstract void addButtons(@Nullable ActionListener actionListener);
+    public abstract void addComponents(@Nullable ActionListener actionListener);
 }

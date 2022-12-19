@@ -1,4 +1,4 @@
-package graphics.common.overlays;
+package graphics.common.overlays.centering;
 
 import java.awt.Dimension;
 import java.awt.Color;
@@ -14,7 +14,7 @@ import graphicsEngine.panels.StaticPanel;
 /**
  * TODO: finish this javadoc
  */
-public interface Centerable {
+interface Centerable {
     //
     static @NotNull JPanel getOffsetPanel() {
         @NotNull Color transparentColor = ColorUtilities.defaultColorByOpacity(false);

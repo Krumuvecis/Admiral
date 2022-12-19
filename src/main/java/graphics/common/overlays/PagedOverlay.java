@@ -3,6 +3,7 @@ package graphics.common.overlays;
 import java.awt.*;
 import java.util.Objects;
 
+import graphics.common.overlays.centering.CenteringPanel;
 import org.jetbrains.annotations.NotNull;
 
 import graphicsEngine.presets.SimpleOverlay;
@@ -29,7 +30,7 @@ public class PagedOverlay extends SimpleOverlay {
 
     //
     public void setPage(OverlayPageType page) {
-        //removeAll();
+        removeAll();
         setLayout(new BorderLayout());
         try {
             add(Objects.requireNonNull(getNewPage(page)), BorderLayout.CENTER);

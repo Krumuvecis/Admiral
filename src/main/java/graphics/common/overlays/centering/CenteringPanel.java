@@ -1,4 +1,4 @@
-package graphics.common.overlays;
+package graphics.common.overlays.centering;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -17,24 +17,13 @@ import graphicsEngine.panels.StaticPanel;
  * TODO: finish this javadoc
  */
 public abstract class CenteringPanel extends StaticPanel implements Centerable {
-    private static final double DEFAULT_TRANSPARENCY = 0.5;
-    private static final Color BACKGROUND_COLOR = new Color(
-            0, 0, 0,
-            (int) (255 * DEFAULT_TRANSPARENCY));
-
-
     /**
      * TODO: finish this javadoc
      */
-    public CenteringPanel(@Nullable ActionListener actionListener) {
-        super(null, getColors(), new BorderProperties(Color.red, true));
+    public CenteringPanel(@Nullable SimpleColorScheme colors,
+                          @Nullable ActionListener actionListener) {
+        super(null, colors, new BorderProperties(Color.red, true));
         addCenteredCenter(actionListener);
-    }
-
-    private static @NotNull SimpleColorScheme getColors() {
-        return new SimpleColorScheme(
-                BACKGROUND_COLOR,
-                null);
     }
 
     private void addCenteredCenter(@Nullable ActionListener actionListener) {
