@@ -10,11 +10,9 @@ import graphicsEngine.windows.WindowManager;
 import graphicsEngine.windows.AbstractPage;
 
 import graphics.common.CommonWindow;
-import graphics.common.overlays.MenuOverlay;
-import graphics.common.overlays.OverlayButtonListener;
 import graphics.normalMode.common.header.HeaderButtonListener;
-import graphics.normalMode.playPage.PlayPage;
 import graphics.normalMode.startingPage.StartingPage;
+import graphics.normalMode.playPage.PlayPage;
 
 /**
  * The window for this application
@@ -31,8 +29,6 @@ public class NormalWindow extends CommonWindow {
         //TODO: return back to starting page after testing
         //setActivePage(StartingPage.getStaticPageKey());
         setActivePage(PlayPage.getStaticPageKey());
-
-        setOverlay(new MenuOverlay(new OverlayButtonListener(this)));
     }
 
     /**

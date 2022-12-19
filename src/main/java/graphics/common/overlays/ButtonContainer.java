@@ -1,8 +1,9 @@
 package graphics.common.overlays;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+import javax.swing.BoxLayout;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -15,7 +16,8 @@ import graphicsEngine.panels.StaticPanel;
 /**
  * TODO: add javadocs
  */
-public class ButtonContainer extends StaticPanel {
+public abstract class ButtonContainer extends StaticPanel {
+    //TODO: add javadoc
     public ButtonContainer(@Nullable ActionListener actionListener) {
         super(getSizeLimits(), getContainerColors(), getBorderProperties());
         //setMinimumSize(getSizeLimits()); //uncomment, if constant size required
@@ -40,7 +42,6 @@ public class ButtonContainer extends StaticPanel {
         return new BorderProperties(Color.red, true);
     }
 
-    private void addButtons(@Nullable ActionListener actionListener) {
-        add(new Button_HideOverlay(actionListener));
-    }
+    //TODO: add javadoc
+    public abstract void addButtons(@Nullable ActionListener actionListener);
 }

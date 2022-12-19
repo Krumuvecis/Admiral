@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 
-import graphics.common.overlays.MenuOverlay;
-import graphics.common.overlays.OverlayButtonListener;
 import org.jetbrains.annotations.NotNull;
 
 import graphicsEngine.windows.AbstractPage;
@@ -28,8 +26,6 @@ public class DevWindow extends CommonWindow {
         //TODO: return back to starting page after testing
         //setActivePage(StartingPage.getStaticPageKey());
         //setActivePage(PlayPage.getStaticPageKey());
-
-        setOverlay(new MenuOverlay(new OverlayButtonListener(this)));
     }
 
     /**

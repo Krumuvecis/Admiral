@@ -15,25 +15,12 @@ import graphicsEngine.panels.StaticPanel;
  * TODO: finish this javadoc
  */
 public interface Centerable {
-    /**
-     * TODO: finish this javadoc
-     */
-    static @NotNull JPanel getVerticalOffsetPanel(int minimumOffset) {
-        return getOffsetPanel(new Dimension(Integer.MAX_VALUE, minimumOffset));
-    }
-
-    /**
-     * TODO: finish this javadoc
-     */
-    static @NotNull JPanel getHorizontalOffsetPanel(int minimumOffset) {
-        return getOffsetPanel(new Dimension(minimumOffset, Integer.MAX_VALUE));
-    }
-
-    private static @NotNull JPanel getOffsetPanel(@NotNull Dimension preferredSize) {
+    //
+    static @NotNull JPanel getOffsetPanel() {
         @NotNull Color transparentColor = ColorUtilities.defaultColorByOpacity(false);
         return new JPanel() {{
             setBackground(transparentColor);
-            setPreferredSize(preferredSize);
+            setPreferredSize(new Dimension(1, 1));
         }};
     }
 

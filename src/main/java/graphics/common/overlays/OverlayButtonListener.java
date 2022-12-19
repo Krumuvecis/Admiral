@@ -12,14 +12,19 @@ import graphics.common.CommonWindow;
 /**
  * TODO: add javadocs
  */
-public class OverlayButtonListener implements ActionListener {
-    private final CommonWindow window;
+public abstract class OverlayButtonListener implements ActionListener {
+    private final @NotNull CommonWindow window;
 
     /**
      * TODO: finish this javadoc
      */
     public OverlayButtonListener(@NotNull CommonWindow window) {
         this.window = window;
+    }
+
+    //
+    public final @NotNull CommonWindow getWindow() {
+        return window;
     }
 
     /**
@@ -29,20 +34,11 @@ public class OverlayButtonListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (actionCheck(e)) return;
-        printLine("An overlay button has been pressed but no action set up");
+        if (!actionCheck(e)) {
+            printLine("An overlay button has been pressed but no action set up");
+        }
     }
 
-    @SuppressWarnings("SwitchStatementWithTooFewBranches")
-    private boolean actionCheck(@NotNull ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case Button_HideOverlay.ACTION_COMMAND ->
-                    window.toggleOverlay();
-            //add new overlay button actions here
-            default -> {
-                return false;
-            }
-        }
-        return true;
-    }
+    //
+    public abstract boolean actionCheck(@NotNull ActionEvent e);
 }

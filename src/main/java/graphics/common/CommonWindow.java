@@ -9,6 +9,8 @@ import graphicsEngine.windows.windowTypes.MultiPageWindow;
 
 import graphicsEngineExtension.KeyboardListener;
 
+import graphics.common.overlays.PagedOverlay;
+
 /**
  * The window for this application
  * TODO: finish javadocs
@@ -36,10 +38,11 @@ public abstract class CommonWindow extends MultiPageWindow {
                 config(titleModeSuffix, size, location),
                 null, null);
         // icon paths don't work after graphicsEngine compilation! TODO: fix
-        setIcon(graphicsEngine.Utilities.getSampleIcon());
+        //setIcon(graphicsEngine.Utilities.getSampleIcon());
         keyboardListener = new KeyboardListener();
         addKeyListener(keyboardListener);
         setPageListenersEnabled(true);
+        setOverlay(new PagedOverlay(this));
     }
 
     /**
