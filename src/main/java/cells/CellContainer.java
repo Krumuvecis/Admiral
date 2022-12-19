@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
+import cells.settings.BarokineticSettings;
+
 /**
  * TODO: add javadocs
  */
@@ -15,42 +17,48 @@ public class CellContainer {
             cellSize * cellCount[0],
             cellSize * cellCount[1]};
 
-    private final @NotNull List<@NotNull List<@NotNull Cell>> cells = new ArrayList<>() {{
-        for (int i = 0; i < cellCount[0]; i++) {
-            add(new ArrayList<>() {{
-                for (int j = 0; j < cellCount[1]; j++) {
-                    add(new Cell());
-                }
-            }});
-        }
-    }};
+    public final @NotNull BarokineticSettings barokineticSettings;
 
-    //
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+    private final @NotNull List<@NotNull List<@NotNull Cell>> cells;
+
+    //TODO: add javadoc
     public CellContainer() {
-        setInitialCells(true); //set this to true, for some pre-defined initial cells
+        barokineticSettings = new BarokineticSettings();
+        cells = new ArrayList<>() {{
+            for (int i = 0; i < cellCount[0]; i++) {
+                add(new ArrayList<>() {{
+                    for (int j = 0; j < cellCount[1]; j++) {
+                        add(new Cell(barokineticSettings));
+                    }
+                }});
+            }
+        }};
+        setInitialCells(false); //set this to true, for some pre-defined initial cells
         new CellUpdater(this).start();
     }
 
     @SuppressWarnings({"SameParameterValue", "CommentedOutCode", "RedundantSuppression"})
     private void setInitialCells(boolean setInitial) {
         if (setInitial) {
+            double magnitude = barokineticSettings.pressureMaxMagnitudeChange;
             getCell(
                     cellCount[0] / 2 - 1,
                     cellCount[1] / 2 - 1
-            ).setPressure(Cell.PRESSURE_MAX);
+            ).setPressure(magnitude);
             /*getCell(
                     cellCount[0] / 2,
                     cellCount[1] / 2 - 1
-            ).setPressure(-Cell.PRESSURE_MAX)*/
+            ).setPressure(-magnitude)*/
         }
     }
 
-    //
+    //TODO: add javadoc
     public int @NotNull [] getCellCount() {
         return cellCount;
     }
 
-    //
+    //TODO: add javadoc
     public @NotNull Cell getCell(int x, int y) {
         if (x < 0) {
             x += cellCount[0];
@@ -67,7 +75,7 @@ public class CellContainer {
         return cells.get(x).get(y);
     }
 
-    //
+    //TODO: add javadoc
     public double getTotalPressure() {
         double totalPressure = 0;
         int @NotNull [] cellCount = getCellCount();

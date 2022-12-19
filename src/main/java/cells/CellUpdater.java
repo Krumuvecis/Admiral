@@ -1,20 +1,16 @@
 package cells;
 
-import staticData.StaticData;
-
 import ThreadAbstraction.AbstractUpdater;
 
 import org.jetbrains.annotations.NotNull;
+
+import staticData.StaticData;
 
 /**
  * TODO: add javadocs
  */
 class CellUpdater extends AbstractUpdater {
     private static final int DELAY = 50;
-    private static final double
-            inertiaFactor = 10, // inertia of medium (must be greater than 1; otherwise self-induces)
-            pressureToWindCoefficient = 1, // relative wind coefficient
-            windToPressureCoefficient = 1 / pressureToWindCoefficient / inertiaFactor; // don't change this!
     private final @NotNull AbstractCellCycler
             windCalculator,
             pressureCalculator,
@@ -23,8 +19,8 @@ class CellUpdater extends AbstractUpdater {
     //
     public CellUpdater(@NotNull CellContainer cellContainer) {
         super(DELAY);
-        windCalculator = new WindCalculator(cellContainer, pressureToWindCoefficient);
-        pressureCalculator = new PressureCalculator(cellContainer, windToPressureCoefficient);
+        windCalculator = new WindCalculator(cellContainer);
+        pressureCalculator = new PressureCalculator(cellContainer);
         pressureRefresher = new PressureRefresher(cellContainer);
     }
 
@@ -34,9 +30,13 @@ class CellUpdater extends AbstractUpdater {
     @Override
     public void update() {
         if(!StaticData.pause) {
-            windCalculator.cycleCells();
-            pressureCalculator.cycleCells();
-            pressureRefresher.cycleCells();
+            barokinesis();
         }
+    }
+
+    private void barokinesis() {
+        windCalculator.cycleCells();
+        pressureCalculator.cycleCells();
+        pressureRefresher.cycleCells();
     }
 }

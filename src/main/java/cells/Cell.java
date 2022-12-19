@@ -1,15 +1,14 @@
 package cells;
 
+import org.jetbrains.annotations.NotNull;
+
+import cells.settings.BarokineticSettings;
+
 /**
  * TODO: finish this javadoc
  */
 public class Cell {
-    public static final double //TODO: get rid of these parameters
-            PRESSURE_MAX = 20, //used in randomization and initial cells
-            WIND_MAX = 50; //unused
-    private static final double
-            pressureDampeningFactor = 0.07; // changeable
-
+    private final @NotNull BarokineticSettings barokineticSettings;
     private double
             pressure, //actual pressure
             newPressure; //buffer for calculations
@@ -26,8 +25,11 @@ public class Cell {
 
     /**
      * Creates a new cell.
+     *
+     * @param barokineticSettings Barokinetic settings.
      */
-    public Cell() {
+    public Cell(@NotNull BarokineticSettings barokineticSettings) {
+        this.barokineticSettings = barokineticSettings;
         pressure = 0;
         newPressure = 0;
         windAmount = 0;
@@ -65,7 +67,7 @@ public class Cell {
      * Dampens the temporary pressure of this cell.
      */
     void dampenPressure() {
-        newPressure = newPressure * (1 - pressureDampeningFactor);
+        newPressure = newPressure * (1 - barokineticSettings.pressureDampeningFactor);
     }
 
     /**
@@ -73,5 +75,29 @@ public class Cell {
      */
     void updatePressure() {
         pressure = newPressure;
+    }
+
+    static double @NotNull [] getWindProjections(double magnitude, double angle) {
+        return new double[] {
+                magnitude * Math.cos(angle),
+                magnitude * Math.sin(angle)};
+    }
+
+    //
+    void increaseWind(double @NotNull [] deltaProjections) {
+        double @NotNull [] oldWind = getWindProjections(windAmount, windDirection);
+        setWind(new double[] {
+                oldWind[0] + deltaProjections[0],
+                oldWind[1] + deltaProjections[1]});
+    }
+
+    private void setWind(double @NotNull [] projections) {
+        windAmount = Math.hypot(projections[0], projections[1]);
+        windDirection = mathUtils.Trigonometry.getAngle(projections[0], projections[1]);
+    }
+
+    //
+    void dampenWind() {
+        windAmount = windAmount * (1 - barokineticSettings.windDampeningFactor);
     }
 }
