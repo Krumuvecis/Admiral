@@ -17,7 +17,7 @@ import graphicsEngine.presets.HeaderAndFooterPage;
 import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.presets.panels.AbstractFooter;
 
-import graphics.normalMode.NormalWindow;
+import graphics.common.CommonWindow;
 import graphics.normalMode.common.header.CommonHeader;
 import graphics.normalMode.common.header.HeaderButtonListener;
 
@@ -25,13 +25,13 @@ import graphics.normalMode.common.header.HeaderButtonListener;
  * TODO: finish this and add javadocs
  */
 public abstract class CommonPage extends HeaderAndFooterPage {
-    public final NormalWindow window;
+    public final CommonWindow window;
     private HeaderButtonListener headerButtonListener;
 
     /**
      * TODO: finish this javadoc
      */
-    public CommonPage(@Nullable NormalWindow window,
+    public CommonPage(@Nullable CommonWindow window,
                       @Nullable List<ActionListener> actionListenerList,
                       @Nullable SimpleColorScheme colors) {
         super(actionListenerList, null, colors, null);

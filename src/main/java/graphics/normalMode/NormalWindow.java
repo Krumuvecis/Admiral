@@ -40,21 +40,21 @@ public class NormalWindow extends CommonWindow {
      * @return
      */
     @Override
-    public @NotNull List<AbstractPage> getInitialPages() {
-        NormalWindow window = this;
+    public final @NotNull List<@NotNull AbstractPage> getInitialPages() {
+        @NotNull NormalWindow window = this;
         return new ArrayList<>() {{
             add(new StartingPage(window, getListenerList_StartingPage(), null));
             add(new PlayPage(window, getListenerList_PlayPage(), null));
         }};
     }
 
-    private @NotNull List<ActionListener> getListenerList_StartingPage() {
+    private @NotNull List<@NotNull ActionListener> getListenerList_StartingPage() {
         return new ArrayList<>() {{
             add(getHeaderListener());
         }};
     }
 
-    private @NotNull List<ActionListener> getListenerList_PlayPage() {
+    private @NotNull List<@NotNull ActionListener> getListenerList_PlayPage() {
         return new ArrayList<>() {{
             add(getHeaderListener());
         }};

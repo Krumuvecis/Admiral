@@ -14,7 +14,7 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
-import graphics.normalMode.NormalWindow;
+import graphics.common.CommonWindow;
 import graphics.normalMode.common.CommonPage;
 
 //TODO: add javadocs
@@ -24,7 +24,7 @@ public class StartingPage extends CommonPage {
     }
 
     //TODO: add javadoc
-    public StartingPage(@Nullable NormalWindow window,
+    public StartingPage(@Nullable CommonWindow window,
                         @Nullable List<ActionListener> actionListenerList,
                         @Nullable SimpleColorScheme colors) {
         super(window, actionListenerList, colors);

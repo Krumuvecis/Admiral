@@ -54,12 +54,12 @@ public class PlayPage extends CommonPage {
     //TODO: add javadoc
     @Override
     public @Nullable Component getPageBody() {
-        observer = new Observer(window);
+        observer = new Observer((NormalWindow) window);
         @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
         return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
             {
                 setLayout(new BorderLayout(0, 0));
-                add(new LeftPanel(window, observer), BorderLayout.WEST);
+                add(new LeftPanel((NormalWindow) window, observer), BorderLayout.WEST);
                 add(new DrawPanel(observer));
             }
         };
