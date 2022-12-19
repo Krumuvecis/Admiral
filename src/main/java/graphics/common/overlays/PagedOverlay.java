@@ -1,16 +1,20 @@
 package graphics.common.overlays;
 
-import java.awt.*;
 import java.util.Objects;
+import java.awt.BorderLayout;
 
-import graphics.common.overlays.centering.CenteringPanel;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.presets.SimpleOverlay;
 
 import graphics.common.CommonWindow;
-import graphics.common.overlays.page_main.Main;
-import org.jetbrains.annotations.Nullable;
+import graphics.common.overlays.centering.CenteringPanel;
+import graphics.common.overlays.pages.main.Main;
+import graphics.common.overlays.pages.settings.Settings;
+import graphics.common.overlays.pages.settings_colors.ColorSettings;
+import graphics.common.overlays.pages.settings_layout.LayoutSettings;
+import graphics.common.overlays.pages.settings_dev.DevSettings;
 
 /**
  * TODO: add javadocs
@@ -41,10 +45,10 @@ public class PagedOverlay extends SimpleOverlay {
     private @Nullable CenteringPanel getNewPage(OverlayPageType page) {
         return switch (page) {
             case MAIN -> new Main(window);
-            case SETTINGS -> null;
-            case SETTINGS_LAYOUT -> null;
-            case SETTINGS_COLORS -> null;
-            case SETTINGS_DEV -> null;
+            case SETTINGS -> new Settings(window);
+            case SETTINGS_LAYOUT -> new LayoutSettings(window);
+            case SETTINGS_COLORS -> new ColorSettings(window);
+            case SETTINGS_DEV -> new DevSettings(window);
             default -> null;
         };
     }

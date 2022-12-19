@@ -9,13 +9,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.ColorUtilities;
-import graphicsEngine.panels.StaticPanel;
 
 /**
  * TODO: finish this javadoc
  */
 interface Centerable {
-    //
+    //TODO: add javadoc
     static @NotNull JPanel getOffsetPanel() {
         @NotNull Color transparentColor = ColorUtilities.defaultColorByOpacity(false);
         return new JPanel() {{
@@ -27,5 +26,5 @@ interface Centerable {
     /**
      * TODO: finish this javadoc
      */
-    @NotNull StaticPanel getCenter(@Nullable ActionListener actionListener);
+    @NotNull CentralContainer getCenter(@Nullable ActionListener actionListener);
 }

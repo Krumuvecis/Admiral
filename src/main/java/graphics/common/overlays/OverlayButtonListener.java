@@ -22,7 +22,9 @@ public abstract class OverlayButtonListener implements ActionListener {
         this.window = window;
     }
 
-    //
+    /**
+     * TODO: finish this javadoc
+     */
     public final @NotNull CommonWindow getWindow() {
         return window;
     }
@@ -39,6 +41,15 @@ public abstract class OverlayButtonListener implements ActionListener {
         }
     }
 
-    //
+    /**
+     * TODO: finish this javadoc
+     */
     public abstract boolean actionCheck(@NotNull ActionEvent e);
+
+    /**
+     * TODO: finish this javadoc
+     */
+    public final void switchPage(OverlayPageType page) {
+        ((PagedOverlay) (getWindow().getOverlay())).setPage(page);
+    }
 }

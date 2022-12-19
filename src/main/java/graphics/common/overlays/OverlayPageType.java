@@ -1,6 +1,6 @@
 package graphics.common.overlays;
 
-//
+//TODO: add javadocs
 public enum OverlayPageType {
     MAIN,
     SETTINGS,
