@@ -1,4 +1,4 @@
-package graphics.normalMode.common.header;
+package graphics.devMode.common.header;
 
 import java.awt.event.ActionEvent;
 
@@ -9,8 +9,8 @@ import staticData.StaticData;
 import graphics.common.CommonWindow;
 import graphics.common.header.SimpleHeaderButtonListener;
 import graphics.common.header.Button_Menu;
-import graphics.normalMode.playPage.PlayPage;
-import graphics.normalMode.startingPage.StartingPage;
+import graphics.devMode.selectionPage.SelectionPage;
+import graphics.devMode.page1.Page1;
 
 /**
  * TODO: add javadocs
@@ -32,10 +32,10 @@ public class HeaderButtonListener extends SimpleHeaderButtonListener {
         switch (e.getActionCommand()) {
             case Button_Menu.ACTION_COMMAND ->
                     getWindow().toggleOverlay();
-            case Button_StartingPage.ACTION_COMMAND ->
-                    getWindow().setActivePage(StartingPage.getStaticPageKey());
-            case Button_PlayPage.ACTION_COMMAND ->
-                    getWindow().setActivePage(PlayPage.getStaticPageKey());
+            case Button_SelectionPage.ACTION_COMMAND ->
+                    getWindow().setActivePage(SelectionPage.getStaticPageKey());
+            case Button_Page1.ACTION_COMMAND ->
+                    getWindow().setActivePage(Page1.getStaticPageKey());
             case Button_Pause.ACTION_COMMAND ->
                     StaticData.pause = !StaticData.pause;
             //add new header button actions here

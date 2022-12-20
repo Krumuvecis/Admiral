@@ -1,4 +1,4 @@
-package graphics.devMode;
+package graphics.devMode.common;
 
 import java.util.List;
 import java.awt.event.ActionListener;
@@ -11,7 +11,8 @@ import graphicsEngine.presets.panels.AbstractHeader;
 
 import graphics.common.CommonWindow;
 import graphics.common.CommonPage;
-import graphics.normalMode.common.header.HeaderButtonListener;
+import graphics.devMode.common.header.CommonHeader;
+import graphics.devMode.common.header.HeaderButtonListener;
 
 /**
  * TODO: finish this and add javadocs
@@ -44,7 +45,6 @@ public abstract class DevPage extends CommonPage {
     @Override
     public @Nullable AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
                                               @Nullable BorderProperties borderProperties) {
-        return null;
-        //return new CommonHeader(headerColors, borderProperties, headerButtonListener);
+        return new CommonHeader(headerColors, borderProperties, headerButtonListener);
     }
 }

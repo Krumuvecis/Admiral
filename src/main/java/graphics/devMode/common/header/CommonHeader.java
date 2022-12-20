@@ -1,4 +1,4 @@
-package graphics.normalMode.common.header;
+package graphics.devMode.common.header;
 
 import javax.swing.BoxLayout;
 
@@ -36,8 +36,8 @@ public class CommonHeader extends SimpleHeader {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         @Nullable HeaderButtonListener buttonListener = (HeaderButtonListener) simpleButtonListener;
         add(new Button_Menu(buttonListener));
-        add(new Button_StartingPage(buttonListener));
-        add(new Button_PlayPage(buttonListener));
+        add(new Button_SelectionPage(buttonListener));
+        add(new Button_Page1(buttonListener));
         add(new Button_Pause(buttonListener));
     }
 }
