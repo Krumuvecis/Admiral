@@ -40,6 +40,7 @@ public class PagedOverlay extends SimpleOverlay {
         try {
             add(Objects.requireNonNull(getNewPage(page)), BorderLayout.CENTER);
         } catch (NullPointerException ignored) {}
+        revalidate();
     }
 
     @SuppressWarnings("UnnecessaryDefault")

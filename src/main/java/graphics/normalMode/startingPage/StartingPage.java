@@ -15,10 +15,10 @@ import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.normalMode.common.CommonPage;
+import graphics.normalMode.common.NormalPage;
 
 //TODO: add javadocs
-public class StartingPage extends CommonPage {
+public class StartingPage extends NormalPage {
     private StartingPage() {
         this(null, null, null);
     }
