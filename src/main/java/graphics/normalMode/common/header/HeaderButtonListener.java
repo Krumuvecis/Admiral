@@ -1,52 +1,40 @@
 package graphics.normalMode.common.header;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 
-import static consoleUtils.ConsoleUtils.printLine;
-
 import staticData.StaticData;
 
-import graphics.normalMode.NormalWindow;
+import graphics.common.CommonWindow;
+import graphics.common.header.SimpleHeaderButtonListener;
 import graphics.normalMode.playPage.PlayPage;
 import graphics.normalMode.startingPage.StartingPage;
 
 /**
  * TODO: add javadocs
  */
-public class HeaderButtonListener implements ActionListener {
-    private final NormalWindow window;
+public class HeaderButtonListener extends SimpleHeaderButtonListener {
 
     /**
      * TODO: finish this javadoc
      */
-    public HeaderButtonListener(@NotNull NormalWindow window) {
-        this.window = window;
+    public HeaderButtonListener(@NotNull CommonWindow window) {
+        super(window);
     }
 
     /**
-     * Invoked when an action occurs.
-     *
-     * @param e the event to be processed
+     * TODO: finish this javadoc
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (window.pageListenersEnabled) {
-            if (actionCheck(e)) return;
-            printLine("A header button has been pressed but no action set up");
-        }
-    }
-
-    private boolean actionCheck(@NotNull ActionEvent e) {
+    public boolean actionCheck(@NotNull ActionEvent e) {
         switch (e.getActionCommand()) {
             case Button_Menu.ACTION_COMMAND ->
-                    window.toggleOverlay();
+                    getWindow().toggleOverlay();
             case Button_StartingPage.ACTION_COMMAND ->
-                    window.setActivePage(StartingPage.getStaticPageKey());
+                    getWindow().setActivePage(StartingPage.getStaticPageKey());
             case Button_PlayPage.ACTION_COMMAND ->
-                    window.setActivePage(PlayPage.getStaticPageKey());
+                    getWindow().setActivePage(PlayPage.getStaticPageKey());
             case Button_Pause.ACTION_COMMAND ->
                     StaticData.pause = !StaticData.pause;
             //add new header button actions here
