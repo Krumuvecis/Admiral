@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.presets.SimpleOverlay;
 
 import graphics.common.CommonWindow;
-import graphics.common.overlays.centering.CenteringPanel;
+import graphics.common.centering.CenteringPanel;
 import graphics.common.overlays.pages.main.Main;
 import graphics.common.overlays.pages.settings.Settings;
 import graphics.common.overlays.pages.settings_colors.ColorSettings;

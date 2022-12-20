@@ -1,4 +1,4 @@
-package graphics.common.overlays.centering;
+package graphics.common.centering;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;

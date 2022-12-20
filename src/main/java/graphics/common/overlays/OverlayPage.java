@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 
-import graphics.common.overlays.centering.CenteringPanel;
+import graphics.common.centering.CenteringPanel;
 
 //
 public abstract class OverlayPage extends CenteringPanel {
