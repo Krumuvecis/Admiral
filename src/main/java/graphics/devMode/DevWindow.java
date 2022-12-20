@@ -25,8 +25,10 @@ public class DevWindow extends CommonWindow {
 
     //TODO: add javadoc
     public DevWindow(@NotNull WindowManager windowManager) {
-        super(windowManager, "dev mode", STARTING_SIZE, STARTING_LOCATION);
-        setActivePage(SelectionPage.getStaticPageKey());
+        super(
+                windowManager, "dev mode",
+                STARTING_SIZE, STARTING_LOCATION,
+                SelectionPage.getStaticPageKey());
     }
 
     /**

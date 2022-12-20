@@ -31,11 +31,11 @@ public class HeaderButtonListener extends SimpleHeaderButtonListener {
     public boolean actionCheck(@NotNull ActionEvent e) {
         switch (e.getActionCommand()) {
             case Button_Menu.ACTION_COMMAND ->
-                    getWindow().toggleOverlay();
+                    getCommonWindow().toggleOverlay();
             case Button_SelectionPage.ACTION_COMMAND ->
-                    getWindow().setActivePage(SelectionPage.getStaticPageKey());
+                    getCommonWindow().setActivePage(SelectionPage.getStaticPageKey());
             case Button_Page1.ACTION_COMMAND ->
-                    getWindow().setActivePage(Page1.getStaticPageKey());
+                    getCommonWindow().setActivePage(Page1.getStaticPageKey());
             case Button_Pause.ACTION_COMMAND ->
                     StaticData.pause = !StaticData.pause;
             //add new header button actions here
@@ -44,5 +44,9 @@ public class HeaderButtonListener extends SimpleHeaderButtonListener {
             }
         }
         return true;
+    }
+
+    private @NotNull CommonWindow getCommonWindow() {
+        return (CommonWindow) getWindow();
     }
 }

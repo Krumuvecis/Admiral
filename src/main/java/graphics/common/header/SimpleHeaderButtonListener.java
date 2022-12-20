@@ -1,45 +1,27 @@
 package graphics.common.header;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 
-import static consoleUtils.ConsoleUtils.printLine;
-
 import graphics.common.CommonWindow;
+import graphics.common.SimpleButtonListener;
 
 /**
  * TODO: add javadocs
  */
-public abstract class SimpleHeaderButtonListener implements ActionListener {
-    private final @NotNull CommonWindow window;
+public abstract class SimpleHeaderButtonListener extends SimpleButtonListener {
 
     /**
      * TODO: finish this javadoc
      */
     public SimpleHeaderButtonListener(@NotNull CommonWindow window) {
-        this.window = window;
+        super(window);
     }
 
-    /**
-     * TODO: finish this javadoc
-     */
-    public final @NotNull CommonWindow getWindow() {
-        return window;
-    }
-
-    /**
-     * Invoked when an action occurs.
-     *
-     * @param e the event to be processed
-     */
     @Override
-    public final void actionPerformed(ActionEvent e) {
-        if (window.pageListenersEnabled) {
-            if (actionCheck(e)) return;
-            printLine("A header button has been pressed but no action set up");
-        }
+    public @NotNull String listenableName() {
+        return "Header";
     }
 
     /**

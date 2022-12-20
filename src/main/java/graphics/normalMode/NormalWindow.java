@@ -25,10 +25,10 @@ public class NormalWindow extends CommonWindow {
 
     //TODO: add javadoc
     public NormalWindow(@NotNull WindowManager windowManager) {
-        super(windowManager, null, STARTING_SIZE, STARTING_LOCATION);
-        //TODO: return back to starting page after testing
-        //setActivePage(StartingPage.getStaticPageKey());
-        setActivePage(PlayPage.getStaticPageKey());
+        super(
+                windowManager, null,
+                STARTING_SIZE, STARTING_LOCATION,
+                PlayPage.getStaticPageKey()); //TODO: return back to starting page after testing
     }
 
     /**

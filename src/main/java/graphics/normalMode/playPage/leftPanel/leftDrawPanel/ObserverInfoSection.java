@@ -1,13 +1,11 @@
 package graphics.normalMode.playPage.leftPanel.leftDrawPanel;
 
+import java.util.List;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import graphicsEngineExtension.KeyboardListener;
 
 import graphics.normalMode.NormalWindow;
 import graphics.normalMode.playPage.observer.Observer;
@@ -43,19 +41,13 @@ class ObserverInfoSection extends AbstractTextSection {
 
     private void drawKeyInfo(@NotNull Graphics g,
                              @NotNull Color textColor) {
-        @Nullable KeyboardListener keyboardListener = window.keyboardListener;
         drawLineOfText(g, textColor, sectionLocation,
                 "Pressed keys:");
-
-        if (keyboardListener == null) {
+        @NotNull List<Integer> keys = window.getPressedKeys();
+        for (int i = 0; i < keys.size(); i++) {
+            int key = keys.get(i);
             drawLineOfText(g, textColor, sectionLocation,
-                    "Keyboard listener not initialized.");
-        } else {
-            for (int i = 0; i < keyboardListener.pressedKeys.size(); i++) {
-                int key = keyboardListener.pressedKeys.get(i);
-                drawLineOfText(g, textColor, sectionLocation,
-                        (i + 1) + " - " + key + " - " + KeyEvent.getKeyText(key));
-            }
+                    (i + 1) + " - " + key + " - " + KeyEvent.getKeyText(key));
         }
     }
 }

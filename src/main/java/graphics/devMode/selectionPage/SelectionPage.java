@@ -1,7 +1,8 @@
 package graphics.devMode.selectionPage;
 
 import java.util.List;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -9,10 +10,11 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
+import graphics.common.centering.CenteringPanel;
+import graphics.common.centering.CentralContainer;
 import graphics.devMode.common.DevPage;
 
 //TODO: add javadocs
@@ -45,17 +47,24 @@ public class SelectionPage extends DevPage {
         //TODO: set body parameters here
     }
 
-    //TODO: add javadoc
+    //TODO: add javadocs
     @Override
     public @Nullable Component getPageBody() {
-        return new StaticPanel(
-                null,
+        return new CenteringPanel(
                 new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
                 null) {
-            {
-                setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel("Selection page", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
-                //Add parts to body here
+            @Override
+            public @NotNull CentralContainer getCenter(@Nullable ActionListener actionListener) {
+                return new CentralContainer(actionListener) {
+                    /**
+                     * @param actionListener
+                     */
+                    @Override
+                    public void addComponents(@Nullable ActionListener actionListener) {
+                        add(new SimpleLabel("Selection page", getPanelColors().getSecondaryColor()));
+                        //Add parts to body here
+                    }
+                };
             }
         };
     }

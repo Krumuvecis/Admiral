@@ -2,7 +2,6 @@ package graphicsEngineExtension;
 
 import java.util.List;
 import java.util.ArrayList;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -11,7 +10,11 @@ import org.jetbrains.annotations.NotNull;
 //TODO: add javadocs
 public class KeyboardListener implements KeyListener {
     //TODO: add javadoc
-    public final @NotNull List<Integer> pressedKeys = new ArrayList<>();
+    private final @NotNull List<Integer> pressedKeys = new ArrayList<>();
+
+    public final @NotNull List<Integer> getKeys() {
+        return List.copyOf(pressedKeys);
+    }
 
     /**
      * Invoked when a key has been typed.
@@ -21,7 +24,7 @@ public class KeyboardListener implements KeyListener {
      * @param e the event to be processed
      */
     @Override
-    public void keyTyped(KeyEvent e) {
+    public final void keyTyped(KeyEvent e) {
         //unused
     }
 
@@ -33,7 +36,7 @@ public class KeyboardListener implements KeyListener {
      * @param e the event to be processed
      */
     @Override
-    public void keyPressed(KeyEvent e) {
+    public final void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         for (Integer pressedKey : pressedKeys) {
             if (pressedKey == key) {
@@ -51,7 +54,7 @@ public class KeyboardListener implements KeyListener {
      * @param e the event to be processed
      */
     @Override
-    public void keyReleased(KeyEvent e) {
+    public final void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         for (int i = 0; i < pressedKeys.size(); i++) {
             if (pressedKeys.get(i) == key) {
