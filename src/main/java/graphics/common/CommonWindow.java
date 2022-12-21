@@ -5,9 +5,8 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.windows.WindowConfig;
 import graphicsEngine.windows.WindowManager;
-import graphicsEngine.windows.windowTypes.MultiPageWindow;
 
-import graphicsEngineExtension.KeyboardListener;
+import graphicsEngineExtension.windows.ExtendedMultiPageWindow;
 
 import graphics.common.overlays.PagedOverlay;
 
@@ -15,33 +14,22 @@ import graphics.common.overlays.PagedOverlay;
  * The window for this application
  * TODO: finish javadocs
  */
-public abstract class CommonWindow extends MultiPageWindow {
+public abstract class CommonWindow extends ExtendedMultiPageWindow {
     private static final @NotNull String //for title purposes
             APPLICATION_NAME = "Admiral",
-            VERSION_NUMBER = "0.5",
+            VERSION_NUMBER = "0.6",
             TITLE_SUFFIX_SEPARATOR = " - ";
-
-    public KeyboardListener keyboardListener;
-
-    /**
-     * For determining the "enabled" state of non-overlay listeners
-     */
-    public boolean pageListenersEnabled;
 
     //TODO: add javadoc
     public CommonWindow(@NotNull WindowManager windowManager,
                         @Nullable String titleModeSuffix,
                         int @NotNull [] size,
-                        int @NotNull [] location) {
+                        int @NotNull [] location,
+                        @Nullable String mainPageKey) {
         super(
                 windowManager,
                 config(titleModeSuffix, size, location),
-                null, null);
-        // icon paths don't work after graphicsEngine compilation! TODO: fix
-        //setIcon(graphicsEngine.Utilities.getSampleIcon());
-        keyboardListener = new KeyboardListener();
-        addKeyListener(keyboardListener);
-        setPageListenersEnabled(true);
+                null, null, mainPageKey);
         setOverlay(new PagedOverlay(this));
     }
 
@@ -77,41 +65,5 @@ public abstract class CommonWindow extends MultiPageWindow {
     @Override
     public final @NotNull String getWindowKey() {
         return "main_window";
-    }
-
-    private void setPageListenersEnabled(boolean state) {
-        pageListenersEnabled = state;
-    }
-
-    private void togglePageListenersEnabled() {
-       setPageListenersEnabled(!pageListenersEnabled);
-    }
-
-    //TODO: add javadoc
-    @Override
-    public final void setActivePage(@Nullable String key) {
-        super.setActivePage(key);
-        hideOverlay();
-    }
-
-    //TODO: add javadoc
-    @Override
-    public final void showOverlay() {
-        setPageListenersEnabled(false);
-        super.showOverlay();
-    }
-
-    //TODO: add javadoc
-    @Override
-    public final void hideOverlay() {
-        super.hideOverlay();
-        setPageListenersEnabled(true);
-    }
-
-    //TODO: add javadoc
-    @Override
-    public final void toggleOverlay() {
-        togglePageListenersEnabled();
-        super.toggleOverlay();
     }
 }

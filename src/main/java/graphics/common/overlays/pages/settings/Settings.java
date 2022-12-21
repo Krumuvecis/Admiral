@@ -6,8 +6,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphics.common.CommonWindow;
+import graphics.common.centering.CentralContainer;
 import graphics.common.overlays.OverlayPage;
-import graphics.common.overlays.centering.CentralContainer;
 import graphics.common.overlays.pages.common.Button_Back;
 
 /**

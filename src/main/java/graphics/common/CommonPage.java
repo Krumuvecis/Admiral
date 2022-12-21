@@ -1,4 +1,4 @@
-package graphics.normalMode.common;
+package graphics.common;
 
 import java.util.Objects;
 import java.util.List;
@@ -14,19 +14,13 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.presets.HeaderAndFooterPage;
-import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.presets.panels.AbstractFooter;
-
-import graphics.common.CommonWindow;
-import graphics.normalMode.common.header.CommonHeader;
-import graphics.normalMode.common.header.HeaderButtonListener;
 
 /**
  * TODO: finish this and add javadocs
  */
 public abstract class CommonPage extends HeaderAndFooterPage {
-    public final CommonWindow window;
-    private HeaderButtonListener headerButtonListener;
+    private final @Nullable CommonWindow window;
 
     /**
      * TODO: finish this javadoc
@@ -42,6 +36,11 @@ public abstract class CommonPage extends HeaderAndFooterPage {
         }
     }
 
+    //TODO: add javadoc
+    public final @Nullable CommonWindow getWindow() {
+        return window;
+    }
+
     /**
      * Adds known listeners to this page.
      * Override this to add custom listeners.
@@ -52,11 +51,10 @@ public abstract class CommonPage extends HeaderAndFooterPage {
      */
     @Override
     public @NotNull List<ActionListener> addListeners(@Nullable List<ActionListener> list) {
-        List<ActionListener> remainder = super.addListeners(list);
+        @NotNull List<ActionListener> remainder = super.addListeners(list);
         for (int i = 0; i < remainder.size(); i++) {
             ActionListener listener = remainder.get(i);
-            if (listener instanceof HeaderButtonListener) {
-                headerButtonListener = (HeaderButtonListener) listener;
+            if (addParticularListener(listener)) {
                 remainder.remove(i);
                 i--;
             }
@@ -64,14 +62,8 @@ public abstract class CommonPage extends HeaderAndFooterPage {
         return remainder;
     }
 
-    /**
-     * TODO: finish this javadoc
-     */
-    @Override
-    public @NotNull AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
-                                             @Nullable BorderProperties borderProperties) {
-        return new CommonHeader(headerColors, borderProperties, headerButtonListener);
-    }
+    //TODO: add javadoc
+    public abstract boolean addParticularListener(@Nullable ActionListener listener);
 
     /**
      * TODO: finish this javadoc
@@ -93,7 +85,7 @@ public abstract class CommonPage extends HeaderAndFooterPage {
      */
     public abstract void setBodyParameters();
 
-    private void addBody(@Nullable Component center) {
+    private void addBody(@Nullable Component body) {
         add(new DynamicPanel(
                 null,
                 new SimpleColorScheme(
@@ -103,7 +95,7 @@ public abstract class CommonPage extends HeaderAndFooterPage {
             @Override
             public void addParts() {
                 setLayout(new BorderLayout(0, 0));
-                add(Objects.requireNonNullElse(center, new JPanel()), BorderLayout.CENTER);
+                add(Objects.requireNonNullElse(body, new JPanel()), BorderLayout.CENTER);
             }
         });
     }

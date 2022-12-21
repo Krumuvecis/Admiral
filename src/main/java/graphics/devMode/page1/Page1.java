@@ -1,9 +1,7 @@
-package graphics.normalMode.startingPage;
+package graphics.devMode.page1;
 
 import java.util.List;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -15,30 +13,30 @@ import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.normalMode.common.NormalPage;
+import graphics.devMode.common.DevPage;
 
 //TODO: add javadocs
-public class StartingPage extends NormalPage {
-    private StartingPage() {
+public class Page1 extends DevPage {
+    private Page1() {
         this(null, null, null);
     }
 
     //TODO: add javadoc
-    public StartingPage(@Nullable CommonWindow window,
-                        @Nullable List<ActionListener> actionListenerList,
-                        @Nullable SimpleColorScheme colors) {
+    public Page1(@Nullable CommonWindow window,
+                 @Nullable List<ActionListener> actionListenerList,
+                 @Nullable SimpleColorScheme colors) {
         super(window, actionListenerList, colors);
     }
 
     //TODO: add javadoc
     @Override
     public final @NotNull String getPageKey() {
-        return "startingPage";
+        return "page1";
     }
 
     //TODO: add javadoc
     public static @NotNull String getStaticPageKey() {
-        return (new StartingPage()).getPageKey();
+        return (new Page1()).getPageKey();
     }
 
     //TODO: add javadoc
@@ -56,7 +54,7 @@ public class StartingPage extends NormalPage {
                 null) {
             {
                 setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel("Starting page", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
+                add(new SimpleLabel("Page 1", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
                 //Add parts to body here
             }
         };

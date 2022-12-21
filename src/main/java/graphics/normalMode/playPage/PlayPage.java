@@ -14,13 +14,13 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
 import graphics.normalMode.NormalWindow;
-import graphics.normalMode.common.CommonPage;
+import graphics.normalMode.common.NormalPage;
 import graphics.normalMode.playPage.observer.Observer;
 import graphics.normalMode.playPage.leftPanel.LeftPanel;
 import graphics.normalMode.playPage.drawPanel.DrawPanel;
 
 //TODO: add javadocs
-public class PlayPage extends CommonPage {
+public class PlayPage extends NormalPage {
     private Observer observer;
 
     private PlayPage() {
@@ -54,14 +54,19 @@ public class PlayPage extends CommonPage {
     //TODO: add javadoc
     @Override
     public @Nullable Component getPageBody() {
-        observer = new Observer((NormalWindow) window);
-        @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
-        return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
-            {
-                setLayout(new BorderLayout(0, 0));
-                add(new LeftPanel((NormalWindow) window, observer), BorderLayout.WEST);
-                add(new DrawPanel(observer));
-            }
-        };
+        @Nullable NormalWindow window = (NormalWindow) getWindow();
+        if (window == null) {
+            return null;
+        } else {
+            observer = new Observer(window);
+            @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
+            return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
+                {
+                    setLayout(new BorderLayout(0, 0));
+                    add(new LeftPanel(window, observer), BorderLayout.WEST);
+                    add(new DrawPanel(observer));
+                }
+            };
+        }
     }
 }

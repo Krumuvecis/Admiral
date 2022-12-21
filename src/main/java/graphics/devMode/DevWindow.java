@@ -10,6 +10,9 @@ import graphicsEngine.windows.AbstractPage;
 import graphicsEngine.windows.WindowManager;
 
 import graphics.common.CommonWindow;
+import graphics.devMode.common.header.HeaderButtonListener;
+import graphics.devMode.selectionPage.SelectionPage;
+import graphics.devMode.page1.Page1;
 
 /**
  * The window for this application
@@ -22,10 +25,10 @@ public class DevWindow extends CommonWindow {
 
     //TODO: add javadoc
     public DevWindow(@NotNull WindowManager windowManager) {
-        super(windowManager, "dev mode", STARTING_SIZE, STARTING_LOCATION);
-        //TODO: return back to starting page after testing
-        //setActivePage(StartingPage.getStaticPageKey());
-        //setActivePage(PlayPage.getStaticPageKey());
+        super(
+                windowManager, "dev mode",
+                STARTING_SIZE, STARTING_LOCATION,
+                SelectionPage.getStaticPageKey());
     }
 
     /**
@@ -36,24 +39,24 @@ public class DevWindow extends CommonWindow {
     public @NotNull List<AbstractPage> getInitialPages() {
         DevWindow window = this;
         return new ArrayList<>() {{
-            //add(new StartingPage(window, getListenerList_StartingPage(), null));
-            //add(new PlayPage(window, getListenerList_PlayPage(), null));
+            add(new SelectionPage(window, getListenerList_SelectionPage(), null));
+            add(new Page1(window, getListenerList_Page1(), null));
         }};
     }
 
-    private @NotNull List<ActionListener> getListenerList_StartingPage() {
+    private @NotNull List<ActionListener> getListenerList_SelectionPage() {
         return new ArrayList<>() {{
             add(getHeaderListener());
         }};
     }
 
-    private @NotNull List<ActionListener> getListenerList_PlayPage() {
+    private @NotNull List<ActionListener> getListenerList_Page1() {
         return new ArrayList<>() {{
             add(getHeaderListener());
         }};
     }
 
     private @NotNull ActionListener getHeaderListener() {
-        return null;//new HeaderButtonListener(this);
+        return new HeaderButtonListener(this);
     }
 }
