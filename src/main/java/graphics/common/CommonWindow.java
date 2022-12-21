@@ -17,7 +17,7 @@ import graphics.common.overlays.PagedOverlay;
 public abstract class CommonWindow extends ExtendedMultiPageWindow {
     private static final @NotNull String //for title purposes
             APPLICATION_NAME = "Admiral",
-            VERSION_NUMBER = "0.6",
+            VERSION_NUMBER = "0.7",
             TITLE_SUFFIX_SEPARATOR = " - ";
 
     //TODO: add javadoc
