@@ -10,10 +10,10 @@ import graphicsEngine.windows.AbstractPage;
 import graphicsEngine.windows.WindowManager;
 
 import graphics.common.CommonWindow;
+import graphics.devMode.common.header.HeaderButtonListener;
 import graphics.devMode.selectionPage.SelectionPage;
 import graphics.devMode.selectionPage.buttons.SelectionPageButtonListener;
 import graphics.devMode.page1.Page1;
-import graphics.devMode.page1.header.HeaderButtonListener;
 
 /**
  * The window for this application
@@ -53,7 +53,18 @@ public class DevWindow extends CommonWindow {
 
     private @NotNull List<ActionListener> getListenerList_Page1(@NotNull CommonWindow window) {
         return new ArrayList<>() {{
-            add(new HeaderButtonListener(window));
+            add(getHeaderListener(window));
         }};
+    }
+
+    @SuppressWarnings("unused")
+    private @NotNull List<ActionListener> getListenerList_Page2(@NotNull CommonWindow window) {
+        return new ArrayList<>() {{
+            add(getHeaderListener(window));
+        }};
+    }
+
+    private @NotNull ActionListener getHeaderListener(@NotNull CommonWindow window) {
+        return new HeaderButtonListener(window);
     }
 }

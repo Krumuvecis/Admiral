@@ -9,19 +9,14 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.StaticPanel;
-import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.devMode.common.DevPage;
-import graphics.devMode.page1.header.CommonHeader;
-import graphics.devMode.page1.header.HeaderButtonListener;
+import graphics.devMode.common.DevSubPage;
 
 //TODO: add javadocs
-public class Page1 extends DevPage {
-    private HeaderButtonListener headerButtonListener;
+public class Page1 extends DevSubPage {
 
     private Page1() {
         this(null, null, null);
@@ -43,25 +38,6 @@ public class Page1 extends DevPage {
     //TODO: add javadoc
     public static @NotNull String getStaticPageKey() {
         return (new Page1()).getPageKey();
-    }
-
-    //TODO: add javadoc
-    @Override
-    public boolean addParticularListener(@Nullable ActionListener listener) {
-        if (listener instanceof HeaderButtonListener) {
-            headerButtonListener = (HeaderButtonListener) listener;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * TODO: finish this javadoc
-     */
-    @Override
-    public @Nullable AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
-                                              @Nullable BorderProperties borderProperties) {
-        return new CommonHeader(headerColors, borderProperties, headerButtonListener);
     }
 
     //TODO: add javadoc

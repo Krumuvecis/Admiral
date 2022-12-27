@@ -1,4 +1,4 @@
-package graphics.devMode.page1.header;
+package graphics.devMode.common.header;
 
 import java.awt.event.ActionListener;
 
