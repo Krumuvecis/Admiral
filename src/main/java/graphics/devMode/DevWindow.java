@@ -36,27 +36,23 @@ public class DevWindow extends CommonWindow {
      * @return
      */
     @Override
-    public @NotNull List<AbstractPage> getInitialPages() {
-        DevWindow window = this;
+    public final @NotNull List<AbstractPage> getInitialPages() {
+        @NotNull CommonWindow window = this;
         return new ArrayList<>() {{
-            add(new SelectionPage(window, getListenerList_SelectionPage(), null));
-            add(new Page1(window, getListenerList_Page1(), null));
+            add(new SelectionPage(window, getListenerList_SelectionPage(window), null));
+            add(new Page1(window, getListenerList_Page1(window), null));
         }};
     }
 
-    private @NotNull List<ActionListener> getListenerList_SelectionPage() {
+    private @NotNull List<ActionListener> getListenerList_SelectionPage(@NotNull CommonWindow window) {
         return new ArrayList<>() {{
-            //add(getHeaderListener());
+            //TODO: add button listener here
         }};
     }
 
-    private @NotNull List<ActionListener> getListenerList_Page1() {
+    private @NotNull List<ActionListener> getListenerList_Page1(@NotNull CommonWindow window) {
         return new ArrayList<>() {{
-            add(getHeaderListener());
+            add(new HeaderButtonListener(window));
         }};
-    }
-
-    private @NotNull ActionListener getHeaderListener() {
-        return new HeaderButtonListener(this);
     }
 }
