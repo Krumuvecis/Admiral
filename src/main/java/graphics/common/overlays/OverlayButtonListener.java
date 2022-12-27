@@ -2,8 +2,9 @@ package graphics.common.overlays;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphics.common.CommonWindow;
 import graphicsEngineExtension.SimpleButtonListener;
+
+import graphics.common.CommonWindow;
 
 /**
  * TODO: add javadocs

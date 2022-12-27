@@ -4,20 +4,20 @@ import java.util.List;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-import graphics.devMode.page1.header.CommonHeader;
-import graphics.devMode.page1.header.HeaderButtonListener;
-import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.presets.panels.AbstractHeader;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.common.DevPage;
+import graphics.devMode.page1.header.CommonHeader;
+import graphics.devMode.page1.header.HeaderButtonListener;
 
 //TODO: add javadocs
 public class Page1 extends DevPage {
