@@ -3,7 +3,7 @@ package graphics.common.overlays;
 import org.jetbrains.annotations.NotNull;
 
 import graphics.common.CommonWindow;
-import graphics.common.SimpleButtonListener;
+import graphicsEngineExtension.SimpleButtonListener;
 
 /**
  * TODO: add javadocs

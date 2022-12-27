@@ -1,15 +1,15 @@
 package graphics.devMode.selectionPage;
 
 import java.util.List;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
+import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
@@ -43,6 +43,21 @@ public class SelectionPage extends DevPage {
 
     //TODO: add javadoc
     @Override
+    public boolean addParticularListener(@Nullable ActionListener listener) {
+        return false;
+    }
+
+    /**
+     * TODO: finish this javadoc
+     */
+    @Override
+    public @Nullable AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
+                                              @Nullable BorderProperties borderProperties) {
+        return null;
+    }
+
+    //TODO: add javadoc
+    @Override
     public void setBodyParameters() {
         //TODO: set body parameters here
     }
@@ -51,7 +66,7 @@ public class SelectionPage extends DevPage {
     @Override
     public @Nullable Component getPageBody() {
         return new CenteringPanel(
-                new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
+                null,
                 null) {
             @Override
             public @NotNull CentralContainer getCenter(@Nullable ActionListener actionListener) {

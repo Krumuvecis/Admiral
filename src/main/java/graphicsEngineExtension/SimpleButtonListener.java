@@ -1,4 +1,4 @@
-package graphics.common;
+package graphicsEngineExtension;
 
 import java.util.Objects;
 import java.awt.event.ActionEvent;

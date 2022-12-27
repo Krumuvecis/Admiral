@@ -4,8 +4,9 @@ import java.awt.event.ActionEvent;
 
 import org.jetbrains.annotations.NotNull;
 
+import graphicsEngineExtension.SimpleButtonListener;
+
 import graphics.common.CommonWindow;
-import graphics.common.SimpleButtonListener;
 
 /**
  * TODO: add javadocs

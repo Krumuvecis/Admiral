@@ -10,9 +10,9 @@ import graphicsEngine.windows.AbstractPage;
 import graphicsEngine.windows.WindowManager;
 
 import graphics.common.CommonWindow;
-import graphics.devMode.common.header.HeaderButtonListener;
 import graphics.devMode.selectionPage.SelectionPage;
 import graphics.devMode.page1.Page1;
+import graphics.devMode.page1.header.HeaderButtonListener;
 
 /**
  * The window for this application
@@ -46,7 +46,7 @@ public class DevWindow extends CommonWindow {
 
     private @NotNull List<ActionListener> getListenerList_SelectionPage() {
         return new ArrayList<>() {{
-            add(getHeaderListener());
+            //add(getHeaderListener());
         }};
     }
 

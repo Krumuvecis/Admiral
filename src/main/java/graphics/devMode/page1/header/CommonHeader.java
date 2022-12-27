@@ -1,4 +1,4 @@
-package graphics.devMode.common.header;
+package graphics.devMode.page1.header;
 
 import javax.swing.BoxLayout;
 
