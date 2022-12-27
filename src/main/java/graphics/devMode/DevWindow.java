@@ -14,6 +14,7 @@ import graphics.devMode.common.header.HeaderButtonListener;
 import graphics.devMode.selectionPage.SelectionPage;
 import graphics.devMode.selectionPage.buttons.SelectionPageButtonListener;
 import graphics.devMode.page1.Page1;
+import graphics.devMode.page2.Page2;
 
 /**
  * The window for this application
@@ -42,6 +43,7 @@ public class DevWindow extends CommonWindow {
         return new ArrayList<>() {{
             add(new SelectionPage(window, getListenerList_SelectionPage(window), null));
             add(new Page1(window, getListenerList_Page1(window), null));
+            add(new Page2(window, getListenerList_Page2(window), null));
         }};
     }
 
@@ -57,7 +59,6 @@ public class DevWindow extends CommonWindow {
         }};
     }
 
-    @SuppressWarnings("unused")
     private @NotNull List<ActionListener> getListenerList_Page2(@NotNull CommonWindow window) {
         return new ArrayList<>() {{
             add(getHeaderListener(window));

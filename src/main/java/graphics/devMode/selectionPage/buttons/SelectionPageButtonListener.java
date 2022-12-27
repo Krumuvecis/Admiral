@@ -8,6 +8,7 @@ import graphicsEngineExtension.SimpleButtonListener;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.page1.Page1;
+import graphics.devMode.page2.Page2;
 
 /**
  * TODO: add javadocs
@@ -29,12 +30,13 @@ public class SelectionPageButtonListener extends SimpleButtonListener {
     /**
      * TODO: finish this javadoc
      */
-    @SuppressWarnings("SwitchStatementWithTooFewBranches")
     @Override
     public boolean actionCheck(@NotNull ActionEvent e) {
         switch (e.getActionCommand()) {
             case Button_Page1.ACTION_COMMAND ->
                     getCommonWindow().setActivePage(Page1.getStaticPageKey());
+            case Button_Page2.ACTION_COMMAND ->
+                    getCommonWindow().setActivePage(Page2.getStaticPageKey());
             //add new button actions here
             default -> {
                 return false;

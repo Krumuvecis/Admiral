@@ -16,8 +16,7 @@ import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
 import graphics.normalMode.common.NormalPage;
-import graphics.normalMode.startingPage.buttons.Button_Play;
-import graphics.normalMode.startingPage.buttons.StartingPageButtonListener;
+import graphics.normalMode.startingPage.buttons.*;
 
 //TODO: add javadocs
 public class StartingPage extends NormalPage {

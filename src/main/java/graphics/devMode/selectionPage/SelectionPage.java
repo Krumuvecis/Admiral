@@ -16,8 +16,7 @@ import graphics.common.CommonWindow;
 import graphics.common.centering.CenteringPanel;
 import graphics.common.centering.CentralContainer;
 import graphics.devMode.common.DevPage;
-import graphics.devMode.selectionPage.buttons.SelectionPageButtonListener;
-import graphics.devMode.selectionPage.buttons.Button_Page1;
+import graphics.devMode.selectionPage.buttons.*;
 
 //TODO: add javadocs
 public class SelectionPage extends DevPage {
@@ -86,6 +85,7 @@ public class SelectionPage extends DevPage {
                     public void addComponents(@Nullable ActionListener actionListener) {
                         add(new SimpleLabel("Selection page", getPanelColors().getSecondaryColor()));
                         add(new Button_Page1(actionListener));
+                        add(new Button_Page2(actionListener));
                         //Add more parts to body here
                     }
                 };
