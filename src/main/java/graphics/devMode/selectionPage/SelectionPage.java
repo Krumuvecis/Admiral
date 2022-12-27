@@ -16,9 +16,13 @@ import graphics.common.CommonWindow;
 import graphics.common.centering.CenteringPanel;
 import graphics.common.centering.CentralContainer;
 import graphics.devMode.common.DevPage;
+import graphics.devMode.selectionPage.buttons.SelectionPageButtonListener;
+import graphics.devMode.selectionPage.buttons.Button_Page1;
 
 //TODO: add javadocs
 public class SelectionPage extends DevPage {
+    private SelectionPageButtonListener buttonListener;
+
     private SelectionPage() {
         this(null, null, null);
     }
@@ -44,6 +48,10 @@ public class SelectionPage extends DevPage {
     //TODO: add javadoc
     @Override
     public boolean addParticularListener(@Nullable ActionListener listener) {
+        if (listener instanceof SelectionPageButtonListener) {
+            buttonListener = (SelectionPageButtonListener) listener;
+            return true;
+        }
         return false;
     }
 
@@ -67,7 +75,7 @@ public class SelectionPage extends DevPage {
     public @Nullable Component getPageBody() {
         return new CenteringPanel(
                 null,
-                null) {
+                buttonListener) {
             @Override
             public @NotNull CentralContainer getCenter(@Nullable ActionListener actionListener) {
                 return new CentralContainer(actionListener) {
@@ -77,7 +85,8 @@ public class SelectionPage extends DevPage {
                     @Override
                     public void addComponents(@Nullable ActionListener actionListener) {
                         add(new SimpleLabel("Selection page", getPanelColors().getSecondaryColor()));
-                        //Add parts to body here
+                        add(new Button_Page1(actionListener));
+                        //Add more parts to body here
                     }
                 };
             }

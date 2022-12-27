@@ -11,6 +11,7 @@ import graphicsEngine.windows.WindowManager;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.selectionPage.SelectionPage;
+import graphics.devMode.selectionPage.buttons.SelectionPageButtonListener;
 import graphics.devMode.page1.Page1;
 import graphics.devMode.page1.header.HeaderButtonListener;
 
@@ -46,7 +47,7 @@ public class DevWindow extends CommonWindow {
 
     private @NotNull List<ActionListener> getListenerList_SelectionPage(@NotNull CommonWindow window) {
         return new ArrayList<>() {{
-            //TODO: add button listener here
+            add(new SelectionPageButtonListener(window));
         }};
     }
 
