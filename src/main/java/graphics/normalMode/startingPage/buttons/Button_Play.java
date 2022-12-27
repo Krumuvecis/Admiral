@@ -1,4 +1,4 @@
-package graphics.normalMode.common.header;
+package graphics.normalMode.startingPage.buttons;
 
 import java.awt.event.ActionListener;
 
@@ -9,11 +9,11 @@ import graphicsEngine.presets.SimpleJButton;
 /**
  * TODO: add javadocs
  */
-class Button_PlayPage extends SimpleJButton {
+public class Button_Play extends SimpleJButton {
     protected static final String ACTION_COMMAND = "page_play";
 
-    protected Button_PlayPage(@Nullable ActionListener actionListener) {
-        super("Play page", ACTION_COMMAND, actionListener);
+    public Button_Play(@Nullable ActionListener actionListener) {
+        super("Play", ACTION_COMMAND, actionListener);
         setFocusable(false);
     }
 }

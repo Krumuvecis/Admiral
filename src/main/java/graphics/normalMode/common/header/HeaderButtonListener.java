@@ -9,8 +9,6 @@ import staticData.StaticData;
 import graphics.common.CommonWindow;
 import graphics.common.header.SimpleHeaderButtonListener;
 import graphics.common.header.Button_Menu;
-import graphics.normalMode.playPage.PlayPage;
-import graphics.normalMode.startingPage.StartingPage;
 
 /**
  * TODO: add javadocs
@@ -32,10 +30,6 @@ public class HeaderButtonListener extends SimpleHeaderButtonListener {
         switch (e.getActionCommand()) {
             case Button_Menu.ACTION_COMMAND ->
                     getCommonWindow().toggleOverlay();
-            case Button_StartingPage.ACTION_COMMAND ->
-                    getCommonWindow().setActivePage(StartingPage.getStaticPageKey());
-            case Button_PlayPage.ACTION_COMMAND ->
-                    getCommonWindow().setActivePage(PlayPage.getStaticPageKey());
             case Button_Pause.ACTION_COMMAND ->
                     StaticData.pause = !StaticData.pause;
             //add new header button actions here

@@ -14,14 +14,14 @@ import graphics.common.header.Button_Menu;
 /**
  * TODO: finish this and add javadocs
  */
-public class CommonHeader extends SimpleHeader {
+public class Header extends SimpleHeader {
 
     /**
      * TODO: finish this javadoc
      */
-    public CommonHeader(@Nullable SimpleColorScheme colors,
-                        @Nullable BorderProperties borderProperties,
-                        @Nullable HeaderButtonListener buttonListener) {
+    public Header(@Nullable SimpleColorScheme colors,
+                  @Nullable BorderProperties borderProperties,
+                  @Nullable HeaderButtonListener buttonListener) {
         super(colors, borderProperties, buttonListener);
     }
 
@@ -36,8 +36,6 @@ public class CommonHeader extends SimpleHeader {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         @Nullable HeaderButtonListener buttonListener = (HeaderButtonListener) simpleButtonListener;
         add(new Button_Menu(buttonListener));
-        add(new Button_StartingPage(buttonListener));
-        add(new Button_PlayPage(buttonListener));
         add(new Button_Pause(buttonListener));
     }
 }

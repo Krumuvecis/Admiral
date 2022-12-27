@@ -12,6 +12,7 @@ import graphicsEngine.windows.AbstractPage;
 import graphics.common.CommonWindow;
 import graphics.normalMode.common.header.HeaderButtonListener;
 import graphics.normalMode.startingPage.StartingPage;
+import graphics.normalMode.startingPage.buttons.StartingPageButtonListener;
 import graphics.normalMode.playPage.PlayPage;
 
 /**
@@ -28,7 +29,7 @@ public class NormalWindow extends CommonWindow {
         super(
                 windowManager, null,
                 STARTING_SIZE, STARTING_LOCATION,
-                PlayPage.getStaticPageKey()); //TODO: return back to starting page after testing
+                StartingPage.getStaticPageKey());
     }
 
     /**
@@ -39,24 +40,31 @@ public class NormalWindow extends CommonWindow {
     public final @NotNull List<@NotNull AbstractPage> getInitialPages() {
         @NotNull NormalWindow window = this;
         return new ArrayList<>() {{
-            add(new StartingPage(window, getListenerList_StartingPage(), null));
-            add(new PlayPage(window, getListenerList_PlayPage(), null));
+            add(new StartingPage(window, getListenerList_StartingPage(window), null));
+            add(new PlayPage(window, getListenerList_PlayPage(window), null));
         }};
     }
 
-    private @NotNull List<@NotNull ActionListener> getListenerList_StartingPage() {
+    private @NotNull List<@NotNull ActionListener> getListenerList_StartingPage(@NotNull NormalWindow window) {
         return new ArrayList<>() {{
-            add(getHeaderListener());
+            add(new StartingPageButtonListener(window));
         }};
     }
 
-    private @NotNull List<@NotNull ActionListener> getListenerList_PlayPage() {
+    private @NotNull List<@NotNull ActionListener> getListenerList_PlayPage(@NotNull NormalWindow window) {
         return new ArrayList<>() {{
-            add(getHeaderListener());
+            add(getHeaderListener(window));
         }};
     }
 
-    private @NotNull ActionListener getHeaderListener() {
-        return new HeaderButtonListener(this);
+    @SuppressWarnings("unused")
+    private @NotNull List<@NotNull ActionListener> getListenerList_ForNextPage(@NotNull NormalWindow window) {
+        return new ArrayList<>() {{
+            add(getHeaderListener(window));
+        }};
+    }
+
+    private @NotNull ActionListener getHeaderListener(@NotNull NormalWindow window) {
+        return new HeaderButtonListener(window);
     }
 }

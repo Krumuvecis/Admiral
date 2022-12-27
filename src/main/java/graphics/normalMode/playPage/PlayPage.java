@@ -14,13 +14,13 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
 import graphics.normalMode.NormalWindow;
-import graphics.normalMode.common.NormalPage;
+import graphics.normalMode.common.NormalSubPage;
 import graphics.normalMode.playPage.observer.Observer;
 import graphics.normalMode.playPage.leftPanel.LeftPanel;
 import graphics.normalMode.playPage.drawPanel.DrawPanel;
 
 //TODO: add javadocs
-public class PlayPage extends NormalPage {
+public class PlayPage extends NormalSubPage {
     private Observer observer;
 
     private PlayPage() {
@@ -47,13 +47,13 @@ public class PlayPage extends NormalPage {
 
     //TODO: add javadoc
     @Override
-    public void setBodyParameters() {
+    public final void setBodyParameters() {
         //TODO: set body parameters here
     }
 
     //TODO: add javadoc
     @Override
-    public @Nullable Component getPageBody() {
+    public final @Nullable Component getPageBody() {
         @Nullable NormalWindow window = (NormalWindow) getWindow();
         if (window == null) {
             return null;

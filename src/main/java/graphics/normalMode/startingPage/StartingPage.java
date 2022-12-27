@@ -1,7 +1,6 @@
 package graphics.normalMode.startingPage;
 
 import java.util.List;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
@@ -9,16 +8,21 @@ import java.awt.event.ActionListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
 import graphics.normalMode.common.NormalPage;
+import graphics.normalMode.startingPage.buttons.Button_Play;
+import graphics.normalMode.startingPage.buttons.StartingPageButtonListener;
 
 //TODO: add javadocs
 public class StartingPage extends NormalPage {
+    private StartingPageButtonListener buttonListener;
+
     private StartingPage() {
         this(null, null, null);
     }
@@ -43,21 +47,41 @@ public class StartingPage extends NormalPage {
 
     //TODO: add javadoc
     @Override
-    public void setBodyParameters() {
+    public final boolean addParticularListener(@Nullable ActionListener listener) {
+        if (listener instanceof StartingPageButtonListener) {
+            buttonListener = (StartingPageButtonListener) listener;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * TODO: finish this javadoc
+     */
+    @Override
+    public final @Nullable AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
+                                                    @Nullable BorderProperties borderProperties) {
+        return null;
+    }
+
+    //TODO: add javadoc
+    @Override
+    public final void setBodyParameters() {
         //TODO: set body parameters here
     }
 
     //TODO: add javadoc
     @Override
-    public @Nullable Component getPageBody() {
+    public final @NotNull Component getPageBody() {
         return new StaticPanel(
                 null,
-                new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
+                null,
                 null) {
             {
                 setLayout(new BorderLayout(0, 0));
                 add(new SimpleLabel("Starting page", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
-                //Add parts to body here
+                add(new Button_Play(buttonListener));
+                //Add more parts to body here
             }
         };
     }
