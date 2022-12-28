@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
-import graphics.normalMode.NormalWindow;
+import graphicsEngineExtension.windows.KeyboardListenableWindow;
 
 //TODO: add javadocs
 public class LeftDrawPanel extends DynamicPanel {
@@ -27,7 +27,7 @@ public class LeftDrawPanel extends DynamicPanel {
             pressedKeySection;
 
     //TODO: add javadoc
-    public LeftDrawPanel(@NotNull NormalWindow window) {
+    public LeftDrawPanel(@NotNull KeyboardListenableWindow window) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
         fieldInfoSection = new FieldInfoSection();
         pressedKeySection = new PressedKeySection(window);

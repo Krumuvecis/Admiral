@@ -1,4 +1,4 @@
-package graphics.common.header;
+package graphics.common.panels.header;
 
 import java.awt.event.ActionListener;
 

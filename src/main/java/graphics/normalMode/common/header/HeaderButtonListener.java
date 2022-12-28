@@ -7,8 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import staticData.StaticData;
 
 import graphics.common.CommonWindow;
-import graphics.common.header.SimpleHeaderButtonListener;
-import graphics.common.header.Button_Menu;
+import graphics.common.panels.header.SimpleHeaderButtonListener;
+import graphics.common.panels.header.Button_Menu;
 
 /**
  * TODO: add javadocs

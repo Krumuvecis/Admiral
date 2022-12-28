@@ -7,9 +7,9 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 
-import graphics.common.header.SimpleHeader;
-import graphics.common.header.SimpleHeaderButtonListener;
-import graphics.common.header.Button_Menu;
+import graphics.common.panels.header.SimpleHeader;
+import graphics.common.panels.header.SimpleHeaderButtonListener;
+import graphics.common.panels.header.Button_Menu;
 
 /**
  * TODO: finish this and add javadocs

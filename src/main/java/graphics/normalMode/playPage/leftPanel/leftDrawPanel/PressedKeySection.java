@@ -7,15 +7,15 @@ import java.awt.event.KeyEvent;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphics.normalMode.NormalWindow;
+import graphicsEngineExtension.windows.KeyboardListenableWindow;
 
 //TODO: add javadocs
 class PressedKeySection extends AbstractTextSection {
     private final static int MAX_LINES = 6;
-    private final @NotNull NormalWindow window;
+    private final @NotNull KeyboardListenableWindow window;
 
     //TODO: add javadoc
-    PressedKeySection(@NotNull NormalWindow window) {
+    PressedKeySection(@NotNull KeyboardListenableWindow window) {
         super();
         this.window = window;
     }

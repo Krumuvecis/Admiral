@@ -4,19 +4,20 @@ import java.awt.Color;
 import java.awt.LayoutManager;
 import javax.swing.BoxLayout;
 
+import graphics.common.panels.AbstractLeftPanel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.presets.panels.VerticalPanel;
 
-import graphics.normalMode.NormalWindow;
+import graphicsEngineExtension.windows.KeyboardListenableWindow;
+
 import graphics.normalMode.playPage.leftPanel.labelSection.LabelSection;
 import graphics.normalMode.playPage.leftPanel.sliders.SliderPanel;
 import graphics.normalMode.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
 
 //TODO: add javadocs
-public class LeftPanel extends VerticalPanel {
+public class LeftPanel extends AbstractLeftPanel {
     private static final int PANEL_WIDTH = 200;
     private static final int BACKGROUND_BRIGHTNESS = 80;
     private static final @Nullable Color
@@ -27,7 +28,7 @@ public class LeftPanel extends VerticalPanel {
             TEXT_COLOR = null; // default - white
 
     //TODO: add javadoc
-    public LeftPanel(@NotNull NormalWindow window) {
+    public LeftPanel(@NotNull KeyboardListenableWindow window) {
         super(
                 new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR),
                 PANEL_WIDTH,

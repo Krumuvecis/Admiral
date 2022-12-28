@@ -2,7 +2,8 @@ package graphics.devMode.page1;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -10,10 +11,12 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
+import graphics.common.panels.AbstractLeftPanel;
+import graphics.common.panels.AbstractRightPanel;
 import graphics.devMode.common.DevPage;
 
 //TODO: add javadocs
@@ -48,16 +51,22 @@ public class Page1 extends DevPage {
         }};
     }
 
-    //TODO: add javadoc
+    //
     @Override
-    public void setBodyParameters() {
-        //TODO: set body parameters here
+    public @Nullable AbstractLeftPanel getLeftPanel(@NotNull CommonWindow window) {
+        return null;
     }
 
-    //TODO: add javadoc
+    //
     @Override
-    public @Nullable Component getPageBody() {
-        return new StaticPanel(
+    public @Nullable AbstractRightPanel getRightPanel(@NotNull CommonWindow window) {
+        return null;
+    }
+
+    //
+    @Override
+    public @Nullable DynamicPanel getCentralPanel(@NotNull CommonWindow window) {
+        return new DynamicPanel(
                 null,
                 new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
                 null) {

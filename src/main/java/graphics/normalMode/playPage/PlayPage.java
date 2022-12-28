@@ -2,21 +2,19 @@ package graphics.normalMode.playPage;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.Component;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
 import graphics2.Observer;
 
 import graphics.common.CommonWindow;
+import graphics.common.panels.AbstractLeftPanel;
+import graphics.common.panels.AbstractRightPanel;
 import graphics.normalMode.NormalWindow;
 import graphics.normalMode.common.NormalPage;
 import graphics.normalMode.playPage.leftPanel.LeftPanel;
@@ -24,8 +22,6 @@ import graphics.normalMode.playPage.drawPanel.DrawPanel;
 
 //TODO: add javadocs
 public class PlayPage extends NormalPage {
-    private Observer observer;
-
     private PlayPage() {
         this(null, null);
     }
@@ -55,30 +51,23 @@ public class PlayPage extends NormalPage {
         }};
     }
 
-    //TODO: add javadoc
+    //
     @Override
-    public final void setBodyParameters() {
-        //TODO: set body parameters here
+    public final @NotNull AbstractLeftPanel getLeftPanel(@NotNull CommonWindow window) {
+        return new LeftPanel(window);
     }
 
-    //TODO: add javadoc
+    //
     @Override
-    public final @Nullable Component getPageBody() {
-        @Nullable NormalWindow window = (NormalWindow) getWindow();
-        if (window == null) {
-            return null;
-        } else {
-            @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
-            return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
-                {
-                    setLayout(new BorderLayout(0, 0));
-                    add(new LeftPanel(window), BorderLayout.WEST);
+    public final @Nullable AbstractRightPanel getRightPanel(@NotNull CommonWindow window) {
+        return null;
+    }
 
-                    observer = new Observer();
-                    new KeyboardActions(window, observer).start();
-                    add(new DrawPanel(observer));
-                }
-            };
-        }
+    //
+    @Override
+    public final @NotNull DynamicPanel getCentralPanel(@NotNull CommonWindow window) {
+        @NotNull Observer observer = new Observer();
+        new KeyboardActions(window, observer).start();
+        return new DrawPanel(observer);
     }
 }
