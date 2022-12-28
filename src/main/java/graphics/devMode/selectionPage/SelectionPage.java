@@ -9,18 +9,16 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
+import graphics.common.pages.CommonStartingPage;
 import graphics.common.centering.CenteringPanel;
 import graphics.common.centering.CentralContainer;
-import graphics.devMode.common.DevPage;
 import graphics.devMode.selectionPage.buttons.*;
 
 //TODO: add javadocs
-public class SelectionPage extends DevPage {
+public class SelectionPage extends CommonStartingPage {
     private SelectionPageButtonListener buttonListener;
 
     private SelectionPage() {
@@ -60,15 +58,6 @@ public class SelectionPage extends DevPage {
             return true;
         }
         return false;
-    }
-
-    /**
-     * TODO: finish this javadoc
-     */
-    @Override
-    public @Nullable AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
-                                              @Nullable BorderProperties borderProperties) {
-        return null;
     }
 
     //TODO: add javadoc

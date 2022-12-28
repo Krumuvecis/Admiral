@@ -1,4 +1,4 @@
-package graphics.common;
+package graphics.common.pages;
 
 import java.util.Objects;
 import java.util.List;
@@ -11,23 +11,23 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.presets.HeaderAndFooterPage;
-import graphicsEngine.presets.panels.AbstractFooter;
+
+import graphics.common.CommonWindow;
 
 /**
  * TODO: finish this and add javadocs
  */
-public abstract class CommonPage extends HeaderAndFooterPage {
+abstract class CommonPage extends HeaderAndFooterPage {
     private final @Nullable CommonWindow window;
 
     /**
      * TODO: finish this javadoc
      */
-    public CommonPage(@Nullable CommonWindow window,
-                      @Nullable List<ActionListener> actionListenerList,
-                      @Nullable SimpleColorScheme colors) {
+    protected CommonPage(@Nullable CommonWindow window,
+                         @Nullable List<ActionListener> actionListenerList,
+                         @Nullable SimpleColorScheme colors) {
         super(actionListenerList, null, colors, null);
         this.window = window;
         if (window != null) {
@@ -50,7 +50,7 @@ public abstract class CommonPage extends HeaderAndFooterPage {
      * @return Remaining unknown listeners.
      */
     @Override
-    public @NotNull List<ActionListener> addListeners(@Nullable List<ActionListener> list) {
+    public final @NotNull List<ActionListener> addListeners(@Nullable List<ActionListener> list) {
         @NotNull List<ActionListener> remainder = super.addListeners(list);
         for (int i = 0; i < remainder.size(); i++) {
             ActionListener listener = remainder.get(i);
@@ -69,15 +69,6 @@ public abstract class CommonPage extends HeaderAndFooterPage {
      * TODO: finish this javadoc
      */
     @Override
-    public @Nullable AbstractFooter getFooter(@Nullable SimpleColorScheme footerColors,
-                                              @Nullable BorderProperties borderProperties) {
-        return null;
-    }
-
-    /**
-     * TODO: finish this javadoc
-     */
-    @Override
     public final void addParts() {}
 
     /**
@@ -88,9 +79,7 @@ public abstract class CommonPage extends HeaderAndFooterPage {
     private void addBody(@Nullable Component body) {
         add(new DynamicPanel(
                 null,
-                new SimpleColorScheme(
-                        null,
-                        null),
+                null,
                 null) {
             @Override
             public void addParts() {

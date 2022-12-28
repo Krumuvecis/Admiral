@@ -10,17 +10,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.StaticPanel;
-import graphicsEngine.presets.panels.AbstractHeader;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.normalMode.common.NormalPage;
+import graphics.common.pages.CommonStartingPage;
 import graphics.normalMode.startingPage.buttons.*;
 
 //TODO: add javadocs
-public class StartingPage extends NormalPage {
+public class StartingPage extends CommonStartingPage {
     private StartingPageButtonListener buttonListener;
 
     private StartingPage() {
@@ -62,15 +60,6 @@ public class StartingPage extends NormalPage {
         }
         //Check for other listener types here
         return false;
-    }
-
-    /**
-     * TODO: finish this javadoc
-     */
-    @Override
-    public final @Nullable AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
-                                                    @Nullable BorderProperties borderProperties) {
-        return null;
     }
 
     //TODO: add javadoc

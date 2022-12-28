@@ -16,13 +16,13 @@ import graphicsEngine.panels.DynamicPanel;
 
 import graphics.common.CommonWindow;
 import graphics.normalMode.NormalWindow;
-import graphics.normalMode.common.NormalSubPage;
+import graphics.normalMode.common.NormalPage;
 import graphics.normalMode.playPage.observer.Observer;
 import graphics.normalMode.playPage.leftPanel.LeftPanel;
 import graphics.normalMode.playPage.drawPanel.DrawPanel;
 
 //TODO: add javadocs
-public class PlayPage extends NormalSubPage {
+public class PlayPage extends NormalPage {
     private Observer observer;
 
     private PlayPage() {
@@ -49,7 +49,7 @@ public class PlayPage extends NormalSubPage {
     private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
         return new ArrayList<>() {{
             if (window != null) {
-                add(NormalSubPage.getNewHeaderListener(window));
+                add(NormalPage.getNewHeaderListener(window));
             }
         }};
     }

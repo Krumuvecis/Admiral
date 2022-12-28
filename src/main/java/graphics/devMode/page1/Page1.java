@@ -14,10 +14,10 @@ import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.devMode.common.DevSubPage;
+import graphics.devMode.common.DevPage;
 
 //TODO: add javadocs
-public class Page1 extends DevSubPage {
+public class Page1 extends DevPage {
 
     private Page1() {
         this(null, null);
@@ -43,7 +43,7 @@ public class Page1 extends DevSubPage {
     private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
         return new ArrayList<>() {{
             if (window != null) {
-                add(DevSubPage.getNewHeaderListener(window));
+                add(DevPage.getNewHeaderListener(window));
             }
         }};
     }
