@@ -8,13 +8,16 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.DynamicPanel;
+
+import graphics2.observablePanels.ObservableDynamicPanel;
+import graphics2.observerMouseListeners.ObserverMouseListener;
+import graphics2.observerMouseListeners.ObserverMouseMotionListener;
+import graphics2.observerMouseListeners.ObserverMouseWheelListener;
 
 import graphics.normalMode.playPage.observer.Observer;
-import graphics.normalMode.playPage.observer.MouseListeners;
 
 //TODO: add javadocs
-public class DrawPanel extends DynamicPanel {
+public class DrawPanel extends ObservableDynamicPanel {
     private static final int BACKGROUND_BRIGHTNESS = 30;
     private static final @Nullable Color
             BACKGROUND_COLOR = new Color(
@@ -22,28 +25,16 @@ public class DrawPanel extends DynamicPanel {
                     BACKGROUND_BRIGHTNESS,
                     BACKGROUND_BRIGHTNESS),
             TEXT_COLOR = null; // default - white
-    private final @NotNull ObserverInfoPainter observerInfoPainter;
-    private final @NotNull FieldPainter fieldPainter;
-    public boolean panelActive = false;
+    private final @NotNull Observer observer;
 
     //TODO: add javadoc
     public DrawPanel(@NotNull Observer observer) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
-        MouseListeners.addListeners(this, observer);
-
-        observerInfoPainter = new ObserverInfoPainter(observer);
-        fieldPainter = new FieldPainter(observer);
-    }
-
-    public void setPanelActive(boolean state) {
-        panelActive = state;
-    }
-
-    public @NotNull Dimension getPanelCenter() {
-        @NotNull Dimension panelSize = this.getSize();
-        return new Dimension(
-                panelSize.width / 2,
-                panelSize.height / 2);
+        this.observer = observer;
+        addMouseListeners(
+                new ObserverMouseListener(this, observer),
+                new ObserverMouseMotionListener(this, observer),
+                new ObserverMouseWheelListener(this, observer));
     }
 
     //TODO: add javadoc
@@ -52,11 +43,14 @@ public class DrawPanel extends DynamicPanel {
         super.paintComponent(g);
         @NotNull Dimension drawCenter = getPanelCenter();
         drawTestLines(g, this.getSize());
-
-        fieldPainter.drawField(g, drawCenter);
-        observerInfoPainter.drawClickPoints(g, drawCenter);
+        int zoom = observer.zoom;
+        int @NotNull []
+                observerPos = observer.observerPos,
+                mousePos = observer.mousePos;
+        FieldPainter.drawField(g, drawCenter, observerPos, zoom);
+        ClickPointPainter.drawClickPoints(g, drawCenter, observerPos, zoom);
         drawCenterMarker(g, drawCenter);
-        observerInfoPainter.drawMouseInfo(g, getPanelColors().getSecondaryColor());
+        ObserverInfoPainter.drawMouseInfo(g, mousePos, zoom, getPanelColors().getSecondaryColor());
     }
 
     private void drawTestLines(@NotNull Graphics g,

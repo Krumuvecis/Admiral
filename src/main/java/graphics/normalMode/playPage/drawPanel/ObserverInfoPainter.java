@@ -1,59 +1,39 @@
 package graphics.normalMode.playPage.drawPanel;
 
-import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 
 import org.jetbrains.annotations.NotNull;
 
-import staticData.StaticData;
-
-import graphics.normalMode.playPage.observer.Observer;
-
+//TODO: add javadoc
 class ObserverInfoPainter {
-    private final @NotNull Observer observer;
+    private static final int LINE_HEIGHT = 15;
+    private static final int @NotNull [] TEXT_OFFSET = new int[] {10, 10};
 
-    ObserverInfoPainter(@NotNull Observer observer) {
-        this.observer = observer;
-    }
-
-    void drawMouseInfo(@NotNull Graphics g,
-                       @NotNull Color textColor) {
+    //TODO: add javadoc
+    protected static void drawMouseInfo(@NotNull Graphics g,
+                                        int @NotNull [] mousePos,
+                                        int zoom,
+                                        @NotNull Color textColor) {
         g.setColor(textColor);
-        int @NotNull []
-                textOffset = new int[] {10, 10},
-                mousePos = observer.mousePos,
-                textPos = new int[] {
-                        mousePos[0] + textOffset[0],
-                        mousePos[1] + textOffset[1]};
-        int dt = 15;
-        g.drawString(
-                "x: " + mousePos[0] + ", y: " + mousePos[1],
-                textPos[0],
-                textPos[1]);
-        g.drawString(
-                "zoom: " + observer.zoom,
-                textPos[0],
-                textPos[1] + dt);
+        int @NotNull [] textPos = new int[] {
+                mousePos[0] + TEXT_OFFSET[0],
+                mousePos[1] + TEXT_OFFSET[1]};
+        drawCoordinateInfo(g, textPos, mousePos);
+        drawZoomInfo(g, textPos, zoom);
     }
 
-    void drawClickPoints(@NotNull Graphics g,
-                         @NotNull Dimension drawCenter) {
-        int
-                unscaledRadius = 30,
-                radius = unscaledRadius / observer.zoom;
+    private static void drawCoordinateInfo(@NotNull Graphics g,
+                                           int @NotNull [] textPos,
+                                           int @NotNull [] mousePos) {
+        @NotNull String text = "x: " + mousePos[0] + ", y: " + mousePos[1];
+        g.drawString(text, textPos[0], textPos[1]);
+    }
 
-        g.setColor(new Color(220, 170, 20));
-        for (int[] point : StaticData.clickPoints) {
-            g.fillOval(
-                    drawCenter.width
-                            + (point[0] - observer.observerPos[0]) / observer.zoom
-                            - radius / 2,
-                    drawCenter.height
-                            + (point[1] - observer.observerPos[1]) / observer.zoom
-                            - radius / 2,
-                    radius,
-                    radius);
-        }
+    private static void drawZoomInfo(@NotNull Graphics g,
+                                     int @NotNull [] textPos,
+                                     int zoom) {
+        @NotNull String text = "zoom: " + zoom;
+        g.drawString(text, textPos[0], textPos[1] + LINE_HEIGHT);
     }
 }
