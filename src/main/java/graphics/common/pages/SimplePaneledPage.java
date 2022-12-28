@@ -23,6 +23,8 @@ import graphics.common.panels.AbstractRightPanel;
  * TODO: finish this and add javadocs
  */
 public abstract class SimplePaneledPage extends AbstractSimplePage {
+    boolean leftPanelVisibility = true;
+    @Nullable AbstractLeftPanel leftPanel;
 
     /**
      * TODO: finish this javadoc
@@ -70,7 +72,8 @@ public abstract class SimplePaneledPage extends AbstractSimplePage {
     private void addLeftPanel(@NotNull CommonWindow window, @NotNull DynamicPanel panel) {
         @Nullable AbstractLeftPanel leftPanel = getLeftPanel(window);
         if (leftPanel != null) {
-            panel.add(leftPanel, BorderLayout.WEST);
+            this.leftPanel = leftPanel;
+            panel.add(this.leftPanel, BorderLayout.WEST);
         }
     }
 
@@ -96,4 +99,11 @@ public abstract class SimplePaneledPage extends AbstractSimplePage {
 
     //
     public abstract @Nullable DynamicPanel getCentralPanel(@NotNull CommonWindow window);
+
+    public void toggleLeftPanelVisibility() {
+        leftPanelVisibility = !leftPanelVisibility;
+        if (leftPanel != null) {
+            leftPanel.setVisible(leftPanelVisibility);
+        }
+    }
 }
