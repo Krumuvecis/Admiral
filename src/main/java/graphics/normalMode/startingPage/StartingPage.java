@@ -1,6 +1,7 @@
 package graphics.normalMode.startingPage;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.awt.Component;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
@@ -23,14 +24,13 @@ public class StartingPage extends NormalPage {
     private StartingPageButtonListener buttonListener;
 
     private StartingPage() {
-        this(null, null, null);
+        this(null, null);
     }
 
     //TODO: add javadoc
     public StartingPage(@Nullable CommonWindow window,
-                        @Nullable List<ActionListener> actionListenerList,
                         @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+        super(window, getNewListeners(window), colors);
     }
 
     //TODO: add javadoc
@@ -44,6 +44,15 @@ public class StartingPage extends NormalPage {
         return (new StartingPage()).getPageKey();
     }
 
+    private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
+        return new ArrayList<>() {{
+            if (window != null) {
+                add(new StartingPageButtonListener(window));
+                //Add more listeners here
+            }
+        }};
+    }
+
     //TODO: add javadoc
     @Override
     public final boolean addParticularListener(@Nullable ActionListener listener) {
@@ -51,6 +60,7 @@ public class StartingPage extends NormalPage {
             buttonListener = (StartingPageButtonListener) listener;
             return true;
         }
+        //Check for other listener types here
         return false;
     }
 

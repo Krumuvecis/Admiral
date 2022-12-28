@@ -2,7 +2,6 @@ package graphics.normalMode;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -10,9 +9,7 @@ import graphicsEngine.windows.WindowManager;
 import graphicsEngine.windows.AbstractPage;
 
 import graphics.common.CommonWindow;
-import graphics.normalMode.common.header.HeaderButtonListener;
 import graphics.normalMode.startingPage.StartingPage;
-import graphics.normalMode.startingPage.buttons.StartingPageButtonListener;
 import graphics.normalMode.playPage.PlayPage;
 
 /**
@@ -40,31 +37,8 @@ public class NormalWindow extends CommonWindow {
     public final @NotNull List<@NotNull AbstractPage> getInitialPages() {
         @NotNull NormalWindow window = this;
         return new ArrayList<>() {{
-            add(new StartingPage(window, getListenerList_StartingPage(window), null));
-            add(new PlayPage(window, getListenerList_PlayPage(window), null));
+            add(new StartingPage(window, null));
+            add(new PlayPage(window, null));
         }};
-    }
-
-    private @NotNull List<@NotNull ActionListener> getListenerList_StartingPage(@NotNull NormalWindow window) {
-        return new ArrayList<>() {{
-            add(new StartingPageButtonListener(window));
-        }};
-    }
-
-    private @NotNull List<@NotNull ActionListener> getListenerList_PlayPage(@NotNull NormalWindow window) {
-        return new ArrayList<>() {{
-            add(getHeaderListener(window));
-        }};
-    }
-
-    @SuppressWarnings("unused")
-    private @NotNull List<@NotNull ActionListener> getListenerList_ForNextPage(@NotNull NormalWindow window) {
-        return new ArrayList<>() {{
-            add(getHeaderListener(window));
-        }};
-    }
-
-    private @NotNull ActionListener getHeaderListener(@NotNull NormalWindow window) {
-        return new HeaderButtonListener(window);
     }
 }

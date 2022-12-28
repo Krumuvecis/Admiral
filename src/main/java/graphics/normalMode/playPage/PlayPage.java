@@ -1,6 +1,7 @@
 package graphics.normalMode.playPage;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.awt.Component;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,6 +14,7 @@ import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
+import graphics.common.CommonWindow;
 import graphics.normalMode.NormalWindow;
 import graphics.normalMode.common.NormalSubPage;
 import graphics.normalMode.playPage.observer.Observer;
@@ -24,14 +26,13 @@ public class PlayPage extends NormalSubPage {
     private Observer observer;
 
     private PlayPage() {
-        this(null, null, null);
+        this(null, null);
     }
 
     //TODO: add javadoc
     public PlayPage(@Nullable NormalWindow window,
-                    @Nullable List<ActionListener> actionListenerList,
                     @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+        super(window, getNewListeners(window), colors);
     }
 
     //TODO: add javadoc
@@ -43,6 +44,14 @@ public class PlayPage extends NormalSubPage {
     //TODO: add javadoc
     public static @NotNull String getStaticPageKey() {
         return (new PlayPage()).getPageKey();
+    }
+
+    private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
+        return new ArrayList<>() {{
+            if (window != null) {
+                add(NormalSubPage.getNewHeaderListener(window));
+            }
+        }};
     }
 
     //TODO: add javadoc

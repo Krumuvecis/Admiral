@@ -11,8 +11,7 @@ import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.presets.panels.AbstractHeader;
 
 import graphics.common.CommonWindow;
-import graphics.normalMode.common.header.Header;
-import graphics.normalMode.common.header.HeaderButtonListener;
+import graphics.normalMode.common.header.*;
 
 /**
  * TODO: finish this and add javadocs
@@ -27,6 +26,11 @@ public abstract class NormalSubPage extends NormalPage {
                          @Nullable List<ActionListener> actionListenerList,
                          @Nullable SimpleColorScheme colors) {
         super(window, actionListenerList, colors);
+    }
+
+    //TODO: add javadoc
+    public static @NotNull HeaderButtonListener getNewHeaderListener(@NotNull CommonWindow window) {
+        return new HeaderButtonListener(window);
     }
 
     //TODO: add javadoc

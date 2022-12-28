@@ -1,6 +1,7 @@
 package graphics.devMode.page2;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -19,14 +20,13 @@ import graphics.devMode.common.DevSubPage;
 public class Page2 extends DevSubPage {
 
     private Page2() {
-        this(null, null, null);
+        this(null, null);
     }
 
     //TODO: add javadoc
     public Page2(@Nullable CommonWindow window,
-                 @Nullable List<ActionListener> actionListenerList,
                  @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+        super(window, getNewListeners(window), colors);
     }
 
     //TODO: add javadoc
@@ -38,6 +38,14 @@ public class Page2 extends DevSubPage {
     //TODO: add javadoc
     public static @NotNull String getStaticPageKey() {
         return (new Page2()).getPageKey();
+    }
+
+    private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
+        return new ArrayList<>() {{
+            if (window != null) {
+                add(DevSubPage.getNewHeaderListener(window));
+            }
+        }};
     }
 
     //TODO: add javadoc
