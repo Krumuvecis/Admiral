@@ -1,4 +1,4 @@
-package graphicsEngineExtension.mouse;
+package graphicsEngineExtension.input.mouse;
 
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;

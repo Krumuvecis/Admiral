@@ -1,4 +1,4 @@
-package graphicsEngineExtension.mouse;
+package graphicsEngineExtension.input.mouse;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -11,14 +11,14 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
-import graphicsEngineExtension.mouse.SimpleMouseListener;
-import graphicsEngineExtension.mouse.SimpleMouseMotionListener;
-import graphicsEngineExtension.mouse.SimpleMouseWheelListener;
+import graphicsEngineExtension.input.mouse.SimpleMouseListener;
+import graphicsEngineExtension.input.mouse.SimpleMouseMotionListener;
+import graphicsEngineExtension.input.mouse.SimpleMouseWheelListener;
 
 import graphics2.Observer;
 import graphics2.ObserverMouseActions;
 
-//
+//TODO: add javadocs
 public abstract class ObservableDynamicPanel extends DynamicPanel implements ObservablePanel {
     public final @NotNull Observer observer;
     private boolean panelActive;

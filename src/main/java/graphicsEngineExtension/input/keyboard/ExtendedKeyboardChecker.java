@@ -1,4 +1,4 @@
-package graphicsEngineExtension.keyboard;
+package graphicsEngineExtension.input.keyboard;
 
 import org.jetbrains.annotations.NotNull;
 

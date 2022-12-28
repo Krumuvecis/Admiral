@@ -3,7 +3,7 @@ package graphics.normalMode.playPage;
 import org.jetbrains.annotations.NotNull;
 
 import graphicsEngineExtension.windows.ExtendedLayeredWindow;
-import graphicsEngineExtension.keyboard.ExtendedKeyboardChecker;
+import graphicsEngineExtension.input.keyboard.ExtendedKeyboardChecker;
 
 import graphics2.OrthogonalDirection;
 import graphics2.Observer;

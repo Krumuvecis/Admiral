@@ -1,4 +1,4 @@
-package graphicsEngineExtension;
+package graphicsEngineExtension.input;
 
 import java.util.Objects;
 import java.awt.event.ActionEvent;
@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import static consoleUtils.ConsoleUtils.printLine;
 import graphicsEngine.windows.AbstractWindow;
 
+//TODO: add javadocs
 public abstract class SimpleButtonListener implements ActionListener {
     private final @NotNull AbstractWindow window;
 

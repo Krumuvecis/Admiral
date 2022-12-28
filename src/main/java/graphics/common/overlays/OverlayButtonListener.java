@@ -2,7 +2,7 @@ package graphics.common.overlays;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphicsEngineExtension.SimpleButtonListener;
+import graphicsEngineExtension.input.SimpleButtonListener;
 
 import graphics.common.CommonWindow;
 

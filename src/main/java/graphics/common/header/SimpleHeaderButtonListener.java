@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphicsEngineExtension.SimpleButtonListener;
+import graphicsEngineExtension.input.SimpleButtonListener;
 
 import graphics.common.CommonWindow;
 
