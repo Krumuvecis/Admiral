@@ -19,14 +19,6 @@ public class Observer {
     }
 
     //
-    public enum MovementDirection {
-        RIGHT,
-        LEFT,
-        DOWN,
-        UP
-    }
-
-    //
     public static class ObserverLocation {
         private final int @NotNull [] location = new int[2];
         private static final int VELOCITY_UNSCALED = 2;
@@ -55,21 +47,12 @@ public class Observer {
         }
 
         //
-        @SuppressWarnings("RedundantLabeledSwitchRuleCodeBlock")
-        public void move(@NotNull MovementDirection direction) {
+        public void move(@NotNull OrthogonalDirection direction) {
             switch (direction) {
-                case RIGHT -> {
-                    location[0] += getMovementAmount();
-                }
-                case LEFT -> {
-                    location[0] -= getMovementAmount();
-                }
-                case DOWN -> {
-                    location[1] += getMovementAmount();
-                }
-                case UP -> {
-                    location[1] -= getMovementAmount();
-                }
+                case EAST -> location[0] += getMovementAmount();
+                case WEST -> location[0] -= getMovementAmount();
+                case SOUTH -> location[1] += getMovementAmount();
+                case NORTH -> location[1] -= getMovementAmount();
                 default -> {}
             }
         }
@@ -79,6 +62,7 @@ public class Observer {
         }
     }
 
+    //
     public static class ObserverZoom {
         public static final int @NotNull [] ZOOM_LIMITS = new int[] {1, 10};
         private static final int

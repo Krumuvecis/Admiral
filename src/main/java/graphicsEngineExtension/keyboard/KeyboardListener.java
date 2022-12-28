@@ -1,4 +1,4 @@
-package graphicsEngineExtension;
+package graphicsEngineExtension.keyboard;
 
 import java.util.List;
 import java.util.ArrayList;

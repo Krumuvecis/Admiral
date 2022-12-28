@@ -9,12 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 
-import graphicsEngineExtension.mouseListeners.SimpleMouseListener;
-import graphicsEngineExtension.mouseListeners.SimpleMouseMotionListener;
-import graphicsEngineExtension.mouseListeners.SimpleMouseWheelListener;
-
 import graphics2.observablePanels.ObservableDynamicPanel;
-import graphics2.ObserverMouseActions;
 import graphics2.Observer;
 
 //TODO: add javadocs
@@ -26,17 +21,10 @@ public class DrawPanel extends ObservableDynamicPanel {
                     BACKGROUND_BRIGHTNESS,
                     BACKGROUND_BRIGHTNESS),
             TEXT_COLOR = null; // default - white
-    private final @NotNull Observer observer;
 
     //TODO: add javadoc
     public DrawPanel(@NotNull Observer observer) {
-        super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
-        this.observer = observer;
-        @NotNull ObserverMouseActions observerMouseActions = new ObserverMouseActions(this, observer);
-        addMouseListeners(
-                new SimpleMouseListener(observerMouseActions),
-                new SimpleMouseMotionListener(observerMouseActions),
-                new SimpleMouseWheelListener(observerMouseActions));
+        super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR), observer);
     }
 
     //TODO: add javadoc

@@ -75,7 +75,7 @@ public class PlayPage extends NormalPage {
                     add(new LeftPanel(window), BorderLayout.WEST);
 
                     observer = new Observer();
-                    new ObserverKeyboardChecker(window, observer).start();
+                    new KeyboardActions(window, observer).start();
                     add(new DrawPanel(observer));
                 }
             };

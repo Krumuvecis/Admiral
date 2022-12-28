@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphicsEngineExtension.mouseListeners.MouseActionInterface;
+import graphicsEngineExtension.mouse.MouseActionInterface;
 
 import graphics2.observablePanels.ObservablePanel;
 

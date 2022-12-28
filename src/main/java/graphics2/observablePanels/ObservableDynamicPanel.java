@@ -11,14 +11,29 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
+import graphicsEngineExtension.mouse.SimpleMouseListener;
+import graphicsEngineExtension.mouse.SimpleMouseMotionListener;
+import graphicsEngineExtension.mouse.SimpleMouseWheelListener;
+
+import graphics2.Observer;
+import graphics2.ObserverMouseActions;
+
 //
 public abstract class ObservableDynamicPanel extends DynamicPanel implements ObservablePanel {
-    public boolean panelActive;
+    public final @NotNull Observer observer;
+    private boolean panelActive;
 
     //
-    public ObservableDynamicPanel(@Nullable SimpleColorScheme colors) {
+    public ObservableDynamicPanel(@Nullable SimpleColorScheme colors,
+                                  @NotNull Observer observer) {
         super(colors);
-        panelActive = false;
+        setPanelActive(false);
+        this.observer = observer;
+        @NotNull ObserverMouseActions mouseActions = new ObserverMouseActions(this, observer);
+        addMouseListeners(
+                new SimpleMouseListener(mouseActions),
+                new SimpleMouseMotionListener(mouseActions),
+                new SimpleMouseWheelListener(mouseActions));
     }
 
     //
@@ -42,10 +57,9 @@ public abstract class ObservableDynamicPanel extends DynamicPanel implements Obs
         return panelActive;
     }
 
-    //
-    public final void addMouseListeners(@Nullable MouseListener mouseListener,
-                                        @Nullable MouseMotionListener mouseMotionListener,
-                                        @Nullable MouseWheelListener mouseWheelListener) {
+    private void addMouseListeners(@Nullable MouseListener mouseListener,
+                                   @Nullable MouseMotionListener mouseMotionListener,
+                                   @Nullable MouseWheelListener mouseWheelListener) {
         addMouseListener(mouseListener);
         addMouseMotionListener(mouseMotionListener);
         addMouseWheelListener(mouseWheelListener);
