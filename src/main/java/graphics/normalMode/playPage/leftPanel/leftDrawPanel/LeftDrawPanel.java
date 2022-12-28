@@ -24,13 +24,13 @@ public class LeftDrawPanel extends DynamicPanel {
 
     private final @NotNull AbstractSection
             fieldInfoSection,
-            observerInfoSection;
+            pressedKeySection;
 
     //TODO: add javadoc
     public LeftDrawPanel(@NotNull NormalWindow window) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
         fieldInfoSection = new FieldInfoSection();
-        observerInfoSection = new ObserverInfoSection(window);
+        pressedKeySection = new PressedKeySection(window);
     }
 
     //TODO: add javadoc
@@ -43,7 +43,7 @@ public class LeftDrawPanel extends DynamicPanel {
 
         @NotNull Color textColor = getPanelColors().getSecondaryColor();
         fieldInfoSection.draw(g, textColor, 0);
-        observerInfoSection.draw(g, textColor, fieldInfoSection.getSectionEnd());
+        pressedKeySection.draw(g, textColor, fieldInfoSection.getSectionEnd());
 
         //paint other stuff here
     }

@@ -10,12 +10,12 @@ import org.jetbrains.annotations.NotNull;
 import graphics.normalMode.NormalWindow;
 
 //TODO: add javadocs
-class ObserverInfoSection extends AbstractTextSection {
+class PressedKeySection extends AbstractTextSection {
     private final static int MAX_LINES = 6;
     private final @NotNull NormalWindow window;
 
     //TODO: add javadoc
-    ObserverInfoSection(@NotNull NormalWindow window) {
+    PressedKeySection(@NotNull NormalWindow window) {
         super();
         this.window = window;
     }
