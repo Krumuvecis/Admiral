@@ -1,20 +1,24 @@
-package graphics.normalMode.playPage.observer;
+package graphics.normalMode.playPage;
 
 import java.awt.event.KeyEvent;
 
+import org.jetbrains.annotations.NotNull;
+
 import ThreadAbstraction.AbstractUpdater;
 
+import graphics2.Observer;
+
 import graphics.normalMode.NormalWindow;
-import graphics.normalMode.playPage.PlayPage;
 
 //TODO: add javadocs
 public class ObserverKeyboardChecker extends AbstractUpdater {
     private static final int CHECK_DELAY = 20; //in milliseconds
-    private final NormalWindow window;
-    private final Observer observer;
+    private final @NotNull NormalWindow window;
+    private final @NotNull Observer observer;
 
     //TODO: add javadoc
-    ObserverKeyboardChecker(NormalWindow window, Observer observer) {
+    public ObserverKeyboardChecker(@NotNull NormalWindow window,
+                                   @NotNull Observer observer) {
         super(CHECK_DELAY);
         this.window = window;
         this.observer = observer;
@@ -25,7 +29,7 @@ public class ObserverKeyboardChecker extends AbstractUpdater {
      */
     @Override
     public void update() {
-        if (window != null && window.getActivePage() instanceof PlayPage) {
+        if (window.getActivePage() instanceof PlayPage) {
             for (int keyCode : window.getPressedKeys()) {
                 keyCheck(keyCode);
             }
@@ -37,16 +41,16 @@ public class ObserverKeyboardChecker extends AbstractUpdater {
         String key = KeyEvent.getKeyText(keyCode);
         switch (key) {
             case "A", "Left" -> {
-                observer.movement.moveObserver(ObserverMovement.MovementDirection.LEFT);
+                observer.location.move(Observer.MovementDirection.LEFT);
             }
             case "D", "Right" -> {
-                observer.movement.moveObserver(ObserverMovement.MovementDirection.RIGHT);
+                observer.location.move(Observer.MovementDirection.RIGHT);
             }
             case "W", "Up" -> {
-                observer.movement.moveObserver(ObserverMovement.MovementDirection.UP);
+                observer.location.move(Observer.MovementDirection.UP);
             }
             case "S", "Down" -> {
-                observer.movement.moveObserver(ObserverMovement.MovementDirection.DOWN);
+                observer.location.move(Observer.MovementDirection.DOWN);
             }
             default -> {}
         }

@@ -1,16 +1,15 @@
 package graphics2.observerMouseListeners;
 
 import java.awt.Dimension;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
 import org.jetbrains.annotations.NotNull;
 
 import staticData.StaticData;
 
 import graphics2.observablePanels.ObservablePanel;
-
-import graphics.normalMode.playPage.observer.Observer;
+import graphics2.Observer;
 
 /**
  * Observer mouse listener.
@@ -47,11 +46,31 @@ public class ObserverMouseListener implements MouseListener {
         if (panel.getPanelActive()) {
             if (e.getButton() == 1) { //left click
                 @NotNull Dimension panelCenter = panel.getPanelCenter();
-                StaticData.clickPoints.add(new int[]{
-                        observer.observerPos[0] + (e.getX() - panelCenter.width) * observer.zoom,
-                        observer.observerPos[1] + (e.getY() - panelCenter.height) * observer.zoom});
+                int @NotNull []
+                        mousePosition = new int[] {e.getX(), e.getY()},
+                        observerLocation = observer.location.getLocation();
+                int zoom = observer.zoom.getZoom();
+                int @NotNull [] clickPointLocation = getClickPointLocation(
+                        panelCenter,
+                        mousePosition,
+                        observerLocation,
+                        zoom);
+                addClickPoint(clickPointLocation);
             }
         }
+    }
+
+    private int @NotNull [] getClickPointLocation(@NotNull Dimension panelCenter,
+                                                  int @NotNull [] mousePosition,
+                                                  int @NotNull [] observerLocation,
+                                                  int zoom) {
+        return new int[] {
+                observerLocation[0] + (mousePosition[0] - panelCenter.width) * zoom,
+                observerLocation[1] + (mousePosition[1] - panelCenter.height) * zoom};
+    }
+
+    private void addClickPoint(int @NotNull [] location) {
+        StaticData.clickPoints.add(location);
     }
 
     //TODO: add javadoc

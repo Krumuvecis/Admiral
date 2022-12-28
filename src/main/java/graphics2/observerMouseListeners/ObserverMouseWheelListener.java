@@ -1,12 +1,12 @@
 package graphics2.observerMouseListeners;
 
-import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.event.MouseWheelEvent;
+
 import org.jetbrains.annotations.NotNull;
 
 import graphics2.observablePanels.ObservablePanel;
-
-import graphics.normalMode.playPage.observer.Observer;
+import graphics2.Observer;
 
 /**
  * Observer mouse wheel listener.
@@ -26,17 +26,7 @@ public class ObserverMouseWheelListener implements MouseWheelListener {
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
         if (panel.getPanelActive()) {
-            observer.zoom = getNewZoom(
-                    observer.zoom,
-                    e.getWheelRotation() * Observer.ZOOM_INCREMENT);
+            observer.zoom.adjustZoom(e.getWheelRotation());
         }
-    }
-
-    private int getNewZoom(int previous, int delta) {
-        return Math.max(
-                Observer.ZOOM_LIMITS[0],
-                Math.min(
-                        Observer.ZOOM_LIMITS[1],
-                        previous + delta));
     }
 }

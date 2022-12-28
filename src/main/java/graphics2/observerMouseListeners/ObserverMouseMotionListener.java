@@ -1,13 +1,12 @@
 package graphics2.observerMouseListeners;
 
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
 
 import org.jetbrains.annotations.NotNull;
 
 import graphics2.observablePanels.ObservablePanel;
-
-import graphics.normalMode.playPage.observer.Observer;
+import graphics2.Observer;
 
 /**
  * Observer mouse motion listener.

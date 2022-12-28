@@ -11,7 +11,6 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
 import graphics.normalMode.NormalWindow;
-import graphics.normalMode.playPage.observer.Observer;
 
 //TODO: add javadocs
 public class LeftDrawPanel extends DynamicPanel {
@@ -28,11 +27,10 @@ public class LeftDrawPanel extends DynamicPanel {
             observerInfoSection;
 
     //TODO: add javadoc
-    public LeftDrawPanel(@NotNull NormalWindow window,
-                  @NotNull Observer observer) {
+    public LeftDrawPanel(@NotNull NormalWindow window) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
         fieldInfoSection = new FieldInfoSection();
-        observerInfoSection = new ObserverInfoSection(window, observer);
+        observerInfoSection = new ObserverInfoSection(window);
     }
 
     //TODO: add javadoc

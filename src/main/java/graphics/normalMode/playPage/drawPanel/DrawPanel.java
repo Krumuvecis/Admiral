@@ -10,11 +10,10 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.SimpleColorScheme;
 
 import graphics2.observablePanels.ObservableDynamicPanel;
+import graphics2.Observer;
 import graphics2.observerMouseListeners.ObserverMouseListener;
 import graphics2.observerMouseListeners.ObserverMouseMotionListener;
 import graphics2.observerMouseListeners.ObserverMouseWheelListener;
-
-import graphics.normalMode.playPage.observer.Observer;
 
 //TODO: add javadocs
 public class DrawPanel extends ObservableDynamicPanel {
@@ -43,9 +42,9 @@ public class DrawPanel extends ObservableDynamicPanel {
         super.paintComponent(g);
         @NotNull Dimension drawCenter = getPanelCenter();
         drawTestLines(g, this.getSize());
-        int zoom = observer.zoom;
+        int zoom = observer.zoom.getZoom();
         int @NotNull []
-                observerPos = observer.observerPos,
+                observerPos = observer.location.getLocation(),
                 mousePos = observer.mousePos;
         FieldPainter.drawField(g, drawCenter, observerPos, zoom);
         ClickPointPainter.drawClickPoints(g, drawCenter, observerPos, zoom);

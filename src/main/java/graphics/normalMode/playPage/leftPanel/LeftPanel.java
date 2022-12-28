@@ -11,7 +11,6 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.presets.panels.VerticalPanel;
 
 import graphics.normalMode.NormalWindow;
-import graphics.normalMode.playPage.observer.Observer;
 import graphics.normalMode.playPage.leftPanel.labelSection.LabelSection;
 import graphics.normalMode.playPage.leftPanel.sliders.SliderPanel;
 import graphics.normalMode.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
@@ -28,8 +27,7 @@ public class LeftPanel extends VerticalPanel {
             TEXT_COLOR = null; // default - white
 
     //TODO: add javadoc
-    public LeftPanel(@NotNull NormalWindow window,
-                     @NotNull Observer observer) {
+    public LeftPanel(@NotNull NormalWindow window) {
         super(
                 new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR),
                 PANEL_WIDTH,
@@ -38,6 +36,6 @@ public class LeftPanel extends VerticalPanel {
         setLayout(layout);
         add(new LabelSection(getPanelColors()), layout);
         add(new SliderPanel(getPanelColors()), layout);
-        add(new LeftDrawPanel(window, observer), layout);
+        add(new LeftDrawPanel(window), layout);
     }
 }

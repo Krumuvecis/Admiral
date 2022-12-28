@@ -8,20 +8,16 @@ import java.awt.event.KeyEvent;
 import org.jetbrains.annotations.NotNull;
 
 import graphics.normalMode.NormalWindow;
-import graphics.normalMode.playPage.observer.Observer;
 
 //TODO: add javadocs
 class ObserverInfoSection extends AbstractTextSection {
     private final static int MAX_LINES = 6;
     private final @NotNull NormalWindow window;
-    private final @NotNull Observer observer;
 
     //TODO: add javadoc
-    ObserverInfoSection(@NotNull NormalWindow window,
-                        @NotNull Observer observer) {
+    ObserverInfoSection(@NotNull NormalWindow window) {
         super();
         this.window = window;
-        this.observer = observer;
     }
 
     //TODO: add javadoc

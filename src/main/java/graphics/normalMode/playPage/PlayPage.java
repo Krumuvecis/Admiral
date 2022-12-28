@@ -14,10 +14,11 @@ import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.DynamicPanel;
 
+import graphics2.Observer;
+
 import graphics.common.CommonWindow;
 import graphics.normalMode.NormalWindow;
 import graphics.normalMode.common.NormalPage;
-import graphics.normalMode.playPage.observer.Observer;
 import graphics.normalMode.playPage.leftPanel.LeftPanel;
 import graphics.normalMode.playPage.drawPanel.DrawPanel;
 
@@ -67,12 +68,14 @@ public class PlayPage extends NormalPage {
         if (window == null) {
             return null;
         } else {
-            observer = new Observer(window);
             @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
             return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
                 {
                     setLayout(new BorderLayout(0, 0));
-                    add(new LeftPanel(window, observer), BorderLayout.WEST);
+                    add(new LeftPanel(window), BorderLayout.WEST);
+
+                    observer = new Observer();
+                    new ObserverKeyboardChecker(window, observer).start();
                     add(new DrawPanel(observer));
                 }
             };
