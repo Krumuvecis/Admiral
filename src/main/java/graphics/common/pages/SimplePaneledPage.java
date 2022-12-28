@@ -22,12 +22,12 @@ import graphics.common.panels.AbstractRightPanel;
 /**
  * TODO: finish this and add javadocs
  */
-public abstract class CommonPaneledPage extends CommonPage {
+public abstract class SimplePaneledPage extends AbstractSimplePage {
 
     /**
      * TODO: finish this javadoc
      */
-    public CommonPaneledPage(@Nullable CommonWindow window,
+    public SimplePaneledPage(@Nullable CommonWindow window,
                              @Nullable List<ActionListener> actionListenerList,
                              @Nullable SimpleColorScheme colors) {
         super(window, actionListenerList, colors);

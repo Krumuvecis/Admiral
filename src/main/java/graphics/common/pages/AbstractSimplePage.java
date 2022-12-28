@@ -19,15 +19,15 @@ import graphics.common.CommonWindow;
 /**
  * TODO: finish this and add javadocs
  */
-abstract class CommonPage extends HeaderAndFooterPage {
+abstract class AbstractSimplePage extends HeaderAndFooterPage {
     private final @Nullable CommonWindow window;
 
     /**
      * TODO: finish this javadoc
      */
-    protected CommonPage(@Nullable CommonWindow window,
-                         @Nullable List<ActionListener> actionListenerList,
-                         @Nullable SimpleColorScheme colors) {
+    protected AbstractSimplePage(@Nullable CommonWindow window,
+                                 @Nullable List<ActionListener> actionListenerList,
+                                 @Nullable SimpleColorScheme colors) {
         super(actionListenerList, null, colors, null);
         this.window = window;
         if (window != null) {

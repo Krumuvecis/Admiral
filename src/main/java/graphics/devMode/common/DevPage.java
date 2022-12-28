@@ -11,13 +11,13 @@ import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.presets.panels.AbstractHeader;
 
 import graphics.common.CommonWindow;
-import graphics.common.pages.CommonPaneledPage;
+import graphics.common.pages.SimplePaneledPage;
 import graphics.devMode.common.header.*;
 
 /**
  * TODO: finish this and add javadocs
  */
-public abstract class DevPage extends CommonPaneledPage {
+public abstract class DevPage extends SimplePaneledPage {
     private HeaderButtonListener headerButtonListener;
 
     /**

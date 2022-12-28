@@ -15,11 +15,11 @@ import graphics.common.CommonWindow;
 /**
  * TODO: finish this and add javadocs
  */
-public abstract class CommonStartingPage extends CommonPage {
+public abstract class SimpleStartingPage extends AbstractSimplePage {
     /**
      * TODO: finish this javadoc
      */
-    public CommonStartingPage(@Nullable CommonWindow window,
+    public SimpleStartingPage(@Nullable CommonWindow window,
                               @Nullable List<ActionListener> actionListenerList,
                               @Nullable SimpleColorScheme colors) {
         super(window, actionListenerList, colors);

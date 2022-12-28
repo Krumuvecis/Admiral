@@ -14,11 +14,11 @@ import graphicsEngine.panels.StaticPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.common.pages.CommonStartingPage;
+import graphics.common.pages.SimpleStartingPage;
 import graphics.normalMode.startingPage.buttons.*;
 
 //TODO: add javadocs
-public class StartingPage extends CommonStartingPage {
+public class StartingPage extends SimpleStartingPage {
     private StartingPageButtonListener buttonListener;
 
     private StartingPage() {

@@ -12,13 +12,13 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.common.pages.CommonStartingPage;
+import graphics.common.pages.SimpleStartingPage;
 import graphics.common.centering.CenteringPanel;
 import graphics.common.centering.CentralContainer;
 import graphics.devMode.selectionPage.buttons.*;
 
 //TODO: add javadocs
-public class SelectionPage extends CommonStartingPage {
+public class SelectionPage extends SimpleStartingPage {
     private SelectionPageButtonListener buttonListener;
 
     private SelectionPage() {
