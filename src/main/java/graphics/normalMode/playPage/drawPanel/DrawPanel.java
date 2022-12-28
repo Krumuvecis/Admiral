@@ -9,11 +9,13 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 
+import graphicsEngineExtension.mouseListeners.SimpleMouseListener;
+import graphicsEngineExtension.mouseListeners.SimpleMouseMotionListener;
+import graphicsEngineExtension.mouseListeners.SimpleMouseWheelListener;
+
 import graphics2.observablePanels.ObservableDynamicPanel;
+import graphics2.ObserverMouseActions;
 import graphics2.Observer;
-import graphics2.observerMouseListeners.ObserverMouseListener;
-import graphics2.observerMouseListeners.ObserverMouseMotionListener;
-import graphics2.observerMouseListeners.ObserverMouseWheelListener;
 
 //TODO: add javadocs
 public class DrawPanel extends ObservableDynamicPanel {
@@ -30,10 +32,11 @@ public class DrawPanel extends ObservableDynamicPanel {
     public DrawPanel(@NotNull Observer observer) {
         super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
         this.observer = observer;
+        @NotNull ObserverMouseActions observerMouseActions = new ObserverMouseActions(this, observer);
         addMouseListeners(
-                new ObserverMouseListener(this, observer),
-                new ObserverMouseMotionListener(this, observer),
-                new ObserverMouseWheelListener(this, observer));
+                new SimpleMouseListener(observerMouseActions),
+                new SimpleMouseMotionListener(observerMouseActions),
+                new SimpleMouseWheelListener(observerMouseActions));
     }
 
     //TODO: add javadoc
