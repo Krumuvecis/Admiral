@@ -1,33 +1,34 @@
 package graphics.devMode.selectionPage;
 
 import java.util.List;
-import java.awt.Color;
+import java.util.ArrayList;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
+import graphics.common.pages.SimpleStartingPage;
 import graphics.common.centering.CenteringPanel;
 import graphics.common.centering.CentralContainer;
-import graphics.devMode.common.DevPage;
+import graphics.devMode.selectionPage.buttons.*;
 
 //TODO: add javadocs
-public class SelectionPage extends DevPage {
+public class SelectionPage extends SimpleStartingPage {
+    private SelectionPageButtonListener buttonListener;
+
     private SelectionPage() {
-        this(null, null, null);
+        this(null, null);
     }
 
     //TODO: add javadoc
     public SelectionPage(@Nullable CommonWindow window,
-                         @Nullable List<ActionListener> actionListenerList,
                          @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+        super(window, getNewListeners(window), colors);
     }
 
     //TODO: add javadoc
@@ -41,6 +42,24 @@ public class SelectionPage extends DevPage {
         return (new SelectionPage()).getPageKey();
     }
 
+    private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
+        return new ArrayList<>() {{
+            if (window != null) {
+                add(new SelectionPageButtonListener(window));
+            }
+        }};
+    }
+
+    //TODO: add javadoc
+    @Override
+    public boolean addParticularListener(@Nullable ActionListener listener) {
+        if (listener instanceof SelectionPageButtonListener) {
+            buttonListener = (SelectionPageButtonListener) listener;
+            return true;
+        }
+        return false;
+    }
+
     //TODO: add javadoc
     @Override
     public void setBodyParameters() {
@@ -51,8 +70,8 @@ public class SelectionPage extends DevPage {
     @Override
     public @Nullable Component getPageBody() {
         return new CenteringPanel(
-                new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
-                null) {
+                null,
+                buttonListener) {
             @Override
             public @NotNull CentralContainer getCenter(@Nullable ActionListener actionListener) {
                 return new CentralContainer(actionListener) {
@@ -62,7 +81,9 @@ public class SelectionPage extends DevPage {
                     @Override
                     public void addComponents(@Nullable ActionListener actionListener) {
                         add(new SimpleLabel("Selection page", getPanelColors().getSecondaryColor()));
-                        //Add parts to body here
+                        add(new Button_Page1(actionListener));
+                        add(new Button_Page2(actionListener));
+                        //Add more parts to body here
                     }
                 };
             }

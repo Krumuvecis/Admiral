@@ -2,7 +2,6 @@ package graphics.devMode;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -10,9 +9,9 @@ import graphicsEngine.windows.AbstractPage;
 import graphicsEngine.windows.WindowManager;
 
 import graphics.common.CommonWindow;
-import graphics.devMode.common.header.HeaderButtonListener;
 import graphics.devMode.selectionPage.SelectionPage;
 import graphics.devMode.page1.Page1;
+import graphics.devMode.page2.Page2;
 
 /**
  * The window for this application
@@ -36,27 +35,12 @@ public class DevWindow extends CommonWindow {
      * @return
      */
     @Override
-    public @NotNull List<AbstractPage> getInitialPages() {
-        DevWindow window = this;
+    public final @NotNull List<AbstractPage> getInitialPages() {
+        @NotNull CommonWindow window = this;
         return new ArrayList<>() {{
-            add(new SelectionPage(window, getListenerList_SelectionPage(), null));
-            add(new Page1(window, getListenerList_Page1(), null));
+            add(new SelectionPage(window, null));
+            add(new Page1(window, null));
+            add(new Page2(window, null));
         }};
-    }
-
-    private @NotNull List<ActionListener> getListenerList_SelectionPage() {
-        return new ArrayList<>() {{
-            add(getHeaderListener());
-        }};
-    }
-
-    private @NotNull List<ActionListener> getListenerList_Page1() {
-        return new ArrayList<>() {{
-            add(getHeaderListener());
-        }};
-    }
-
-    private @NotNull ActionListener getHeaderListener() {
-        return new HeaderButtonListener(this);
     }
 }
