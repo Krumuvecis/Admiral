@@ -19,7 +19,7 @@ public abstract class KeyboardListenableWindow extends MultiPageWindow {
 
     public KeyboardListenableWindow(@NotNull WindowManager windowManager,
                                     @NotNull WindowConfig config,
-                                    @Nullable List<ActionListener> actionListenerList,
+                                    @Nullable List<@Nullable ActionListener> actionListenerList,
                                     @Nullable SimpleOverlay overlay) {
         super(
                 windowManager,

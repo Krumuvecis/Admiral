@@ -2,7 +2,7 @@ package graphicsEngineExtension.input.keyboard;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphicsEngine.windows.AbstractPage;
+import graphicsEngine.pages.AbstractPage;
 
 import graphicsEngineExtension.windows.ExtendedLayeredWindow;
 

@@ -9,6 +9,12 @@ import org.jetbrains.annotations.NotNull;
 
 //TODO: add javadocs
 public class KeyboardListener implements KeyListener {
+
+    //TODO: add javadoc
+    public KeyboardListener() {
+        super();
+    }
+
     //TODO: add javadoc
     private final @NotNull List<Integer> pressedKeys = new ArrayList<>();
 

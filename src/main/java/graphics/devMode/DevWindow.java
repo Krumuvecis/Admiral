@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphicsEngine.windows.AbstractPage;
 import graphicsEngine.windows.WindowManager;
+import graphicsEngine.pages.AbstractPage;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.selectionPage.SelectionPage;
@@ -38,9 +38,9 @@ public class DevWindow extends CommonWindow {
     public final @NotNull List<AbstractPage> getInitialPages() {
         @NotNull CommonWindow window = this;
         return new ArrayList<>() {{
-            add(new SelectionPage(window, null));
-            add(new Page1(window, null));
-            add(new Page2(window, null));
+            add(new SelectionPage(window));
+            add(new Page1(window));
+            add(new Page2(window));
         }};
     }
 }

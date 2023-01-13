@@ -8,13 +8,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
+import graphicsEngine.pages.panels.AbstractLeftPanel;
 
 import graphics2.Observer;
 
 import graphics.common.CommonWindow;
-import graphics.common.panels.AbstractLeftPanel;
-import graphics.common.panels.AbstractRightPanel;
 import graphics.normalMode.NormalWindow;
 import graphics.normalMode.common.NormalPage;
 import graphics.normalMode.playPage.leftPanel.LeftPanel;
@@ -23,18 +23,17 @@ import graphics.normalMode.playPage.drawPanel.DrawPanel;
 //TODO: add javadocs
 public class PlayPage extends NormalPage {
     private PlayPage() {
-        this(null, null);
+        this(null);
     }
 
     //TODO: add javadoc
-    public PlayPage(@Nullable NormalWindow window,
-                    @Nullable SimpleColorScheme colors) {
-        super(window, getNewListeners(window), colors);
+    public PlayPage(@Nullable NormalWindow window) {
+        super(window, getNewListeners(window));
     }
 
     //TODO: add javadoc
     @Override
-    public String getPageKey() {
+    public @NotNull String getPageKey() {
         return "playPage";
     }
 
@@ -51,23 +50,33 @@ public class PlayPage extends NormalPage {
         }};
     }
 
-    //
+    /**
+     * TODO: finish this javadoc
+     */
     @Override
-    public final @NotNull AbstractLeftPanel getLeftPanel(@NotNull CommonWindow window) {
-        return new LeftPanel(window);
+    public final @Nullable AbstractLeftPanel getLeftPanel(
+            @Nullable SimpleColorScheme colors,
+            @Nullable BorderProperties borderProperties) {
+        @Nullable CommonWindow commonWindow = getCommonWindow();
+        if (commonWindow == null) {
+            return null;
+        } else {
+            return new LeftPanel(getCommonWindow());
+        }
     }
 
-    //
-    @Override
-    public final @Nullable AbstractRightPanel getRightPanel(@NotNull CommonWindow window) {
-        return null;
-    }
-
-    //
-    @Override
-    public final @NotNull DynamicPanel getCentralPanel(@NotNull CommonWindow window) {
-        @NotNull Observer observer = new Observer();
-        new KeyboardActions(window, observer).start();
-        return new DrawPanel(observer);
+    /**
+     * TODO: finish this javadoc
+     */
+    public final @Nullable DynamicPanel getCentralPanel(
+            @Nullable BorderProperties borderProperties) {
+        @Nullable CommonWindow commonWindow = getCommonWindow();
+        if (commonWindow == null) {
+            return null;
+        } else {
+            @NotNull Observer observer = new Observer();
+            new KeyboardActions(commonWindow, observer).start();
+            return new DrawPanel(observer);
+        }
     }
 }

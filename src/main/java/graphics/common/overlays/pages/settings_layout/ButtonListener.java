@@ -26,7 +26,7 @@ class ButtonListener extends OverlayButtonListener {
         switch (e.getActionCommand()) {
             case Button_LeftPanel.ACTION_COMMAND -> {
                 try {
-                    getPaneledPage().toggleLeftPanelVisibility();
+                    //getPaneledPage().toggleLeftPanelVisibility();
                 } catch (NullPointerException ignored) {}
             }
             //TODO: add other button actions here

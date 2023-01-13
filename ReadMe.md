@@ -27,7 +27,7 @@ by [Krumuvecis](https://github.com/Krumuvecis)
 ### Dependencies
 
 * [JetBrains Java Annotations](https://mvnrepository.com/artifact/org.jetbrains/annotations): 23.0.0
-* [GraphicsEngine](https://github.com/KruMF/GraphicsEngine) : 0.8.13
+* [GraphicsEngine](https://github.com/KruMF/GraphicsEngine) : 0.8.15
 * [MathUtils](https://github.com/KruMF/MathUtils) : 0.2
 
 

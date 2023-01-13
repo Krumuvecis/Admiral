@@ -16,7 +16,7 @@
         <maven.assembly-plugin.version>3.4.2</maven.assembly-plugin.version>
 
         <jetbrains.annotations.version>23.0.0</jetbrains.annotations.version>
-        <graphicsEngine.version>0.8.13</graphicsEngine.version>
+        <graphicsEngine.version>0.8.15</graphicsEngine.version>
         <mathUtils.version>0.2</mathUtils.version>
     </properties>
 

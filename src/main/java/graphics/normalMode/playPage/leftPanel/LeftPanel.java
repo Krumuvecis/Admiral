@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.LayoutManager;
 import javax.swing.BoxLayout;
 
-import graphics.common.panels.AbstractLeftPanel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,7 +16,7 @@ import graphics.normalMode.playPage.leftPanel.sliders.SliderPanel;
 import graphics.normalMode.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
 
 //TODO: add javadocs
-public class LeftPanel extends AbstractLeftPanel {
+public class LeftPanel extends graphicsEngine.pages.panels.AbstractLeftPanel {
     private static final int PANEL_WIDTH = 200;
     private static final int BACKGROUND_BRIGHTNESS = 80;
     private static final @Nullable Color

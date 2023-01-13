@@ -1,16 +1,15 @@
 package graphics.normalMode.startingPage;
 
+import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.Component;
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.panels.BorderProperties;
+import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
@@ -19,16 +18,15 @@ import graphics.normalMode.startingPage.buttons.*;
 
 //TODO: add javadocs
 public class StartingPage extends SimpleStartingPage {
-    private StartingPageButtonListener buttonListener;
+    private @Nullable StartingPageButtonListener buttonListener;
 
     private StartingPage() {
-        this(null, null);
+        this(null);
     }
 
     //TODO: add javadoc
-    public StartingPage(@Nullable CommonWindow window,
-                        @Nullable SimpleColorScheme colors) {
-        super(window, getNewListeners(window), colors);
+    public StartingPage(@Nullable CommonWindow window) {
+        super(window, getNewListeners(window));
     }
 
     //TODO: add javadoc
@@ -62,19 +60,14 @@ public class StartingPage extends SimpleStartingPage {
         return false;
     }
 
-    //TODO: add javadoc
-    @Override
-    public final void setBodyParameters() {
-        //TODO: set body parameters here
-    }
-
-    //TODO: add javadoc
-    @Override
-    public final @NotNull Component getPageBody() {
-        return new StaticPanel(
+    /**
+     * TODO: finish this javadoc
+     */
+    public final @NotNull DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
+        return new DynamicPanel(
                 null,
                 null,
-                null) {
+                borderProperties) {
             {
                 setLayout(new BorderLayout(0, 0));
                 add(new SimpleLabel("Starting page", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);

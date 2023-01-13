@@ -11,25 +11,24 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
+import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
+import graphicsEngine.pages.panels.AbstractLeftPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.common.panels.AbstractLeftPanel;
-import graphics.common.panels.AbstractRightPanel;
 import graphics.devMode.common.DevPage;
 
 //TODO: add javadocs
 public class Page2 extends DevPage {
 
     private Page2() {
-        this(null, null);
+        this(null);
     }
 
     //TODO: add javadoc
-    public Page2(@Nullable CommonWindow window,
-                 @Nullable SimpleColorScheme colors) {
-        super(window, getNewListeners(window), colors);
+    public Page2(@Nullable CommonWindow window) {
+        super(window, getNewListeners(window));
     }
 
     //TODO: add javadoc
@@ -51,21 +50,21 @@ public class Page2 extends DevPage {
         }};
     }
 
-    //
+    /**
+     * TODO: finish this javadoc
+     */
     @Override
-    public @Nullable AbstractLeftPanel getLeftPanel(@NotNull CommonWindow window) {
+    public final @Nullable AbstractLeftPanel getLeftPanel(
+            @Nullable SimpleColorScheme colors,
+            @Nullable BorderProperties borderProperties) {
         return null;
     }
 
-    //
-    @Override
-    public @Nullable AbstractRightPanel getRightPanel(@NotNull CommonWindow window) {
-        return null;
-    }
-
-    //
-    @Override
-    public @Nullable DynamicPanel getCentralPanel(@NotNull CommonWindow window) {
+    /**
+     * TODO: finish this javadoc
+     */
+    public final @NotNull DynamicPanel getCentralPanel(
+            @Nullable BorderProperties borderProperties) {
         return new DynamicPanel(
                 null,
                 new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),

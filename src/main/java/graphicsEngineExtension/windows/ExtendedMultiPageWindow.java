@@ -22,7 +22,7 @@ public abstract class ExtendedMultiPageWindow extends ExtendedLayeredWindow  {
     //TODO: add javadoc
     public ExtendedMultiPageWindow(@NotNull WindowManager windowManager,
                                    @NotNull WindowConfig config,
-                                   @Nullable List<ActionListener> actionListenerList,
+                                   @Nullable List<@Nullable ActionListener> actionListenerList,
                                    @Nullable SimpleOverlay overlay,
                                    @Nullable String mainPageKey) {
         super(

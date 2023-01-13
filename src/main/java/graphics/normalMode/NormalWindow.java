@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
 import graphicsEngine.windows.WindowManager;
-import graphicsEngine.windows.AbstractPage;
+import graphicsEngine.pages.AbstractPage;
 
 import graphics.common.CommonWindow;
 import graphics.normalMode.startingPage.StartingPage;
@@ -37,8 +37,8 @@ public class NormalWindow extends CommonWindow {
     public final @NotNull List<@NotNull AbstractPage> getInitialPages() {
         @NotNull NormalWindow window = this;
         return new ArrayList<>() {{
-            add(new StartingPage(window, null));
-            add(new PlayPage(window, null));
+            add(new StartingPage(window));
+            add(new PlayPage(window));
         }};
     }
 }

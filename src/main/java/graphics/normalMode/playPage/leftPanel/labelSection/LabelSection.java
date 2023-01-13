@@ -11,7 +11,7 @@ import consoleUtils.NumberFormatter;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.parts.labels.*;
-import graphicsEngine.presets.panels.HorizontalPanel;
+import graphicsEngine.panels.HorizontalPanel;
 
 import staticData.StaticData;
 

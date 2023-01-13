@@ -4,7 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.presets.panels.AbstractHeader;
+import graphicsEngine.pages.panels.AbstractHeader;
 
 /**
  * TODO: finish this and add javadocs

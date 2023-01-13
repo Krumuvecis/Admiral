@@ -2,8 +2,6 @@ package graphics.common.pages;
 
 import java.util.List;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -11,94 +9,78 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.panels.DynamicPanel;
-import graphicsEngine.presets.panels.AbstractFooter;
+import graphicsEngine.pages.FullyPaneledPage;
 
 import graphics.common.CommonWindow;
-import graphics.common.panels.AbstractLeftPanel;
-import graphics.common.panels.AbstractRightPanel;
 
 /**
  * TODO: finish this and add javadocs
  */
-public abstract class SimplePaneledPage extends AbstractSimplePage {
-    boolean leftPanelVisibility = true;
-    @Nullable AbstractLeftPanel leftPanel;
+public abstract class SimplePaneledPage extends FullyPaneledPage {
+    private static final @NotNull Color COMMON_BACKGROUND_COLOR = ColorUtilities.defaultColorByOpacity(true);
+    private static final int HEADER_AND_FOOTER_BACKGROUND_VALUE = 50, SIDE_PANEL_BACKGROUND_VALUE = 100;
+    private static final @NotNull SimpleColorScheme
+            COMMON_HEADER_AND_FOOTER_COLORS = new SimpleColorScheme(
+                    new Color(
+                            HEADER_AND_FOOTER_BACKGROUND_VALUE,
+                            HEADER_AND_FOOTER_BACKGROUND_VALUE,
+                            HEADER_AND_FOOTER_BACKGROUND_VALUE
+                    ),
+                    null),
+            COMMON_SIDE_PANEL_COLORS = new SimpleColorScheme(
+                    new Color(
+                            SIDE_PANEL_BACKGROUND_VALUE,
+                            SIDE_PANEL_BACKGROUND_VALUE,
+                            SIDE_PANEL_BACKGROUND_VALUE
+                    ),
+                    null);
+
+    private final @Nullable CommonWindow window;
 
     /**
      * TODO: finish this javadoc
      */
     public SimplePaneledPage(@Nullable CommonWindow window,
-                             @Nullable List<ActionListener> actionListenerList,
-                             @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+                             @Nullable List<@Nullable ActionListener> actionListenerList) {
+        super(actionListenerList, COMMON_BACKGROUND_COLOR);
+        this.window = window;
+
+        if (window != null) {
+            initializePanels(COMMON_HEADER_AND_FOOTER_COLORS, COMMON_SIDE_PANEL_COLORS, null);
+        }
+    }
+
+    //TODO: add javadoc
+    public final @Nullable CommonWindow getCommonWindow() {
+        return window;
     }
 
     /**
-     * TODO: finish this and add javadoc
+     * Adds known listeners to this page.
+     * Override this to add custom listeners.
+     *
+     * @param list List of listeners to add.
+     *
+     * @return Remaining unknown listeners.
      */
     @Override
-    public @Nullable AbstractFooter getFooter(@Nullable SimpleColorScheme footerColors,
-                                              @Nullable BorderProperties borderProperties) {
-        return null;
+    public final @NotNull List<ActionListener> addListeners(@Nullable List<ActionListener> list) {
+        @NotNull List<ActionListener> remainder = super.addListeners(list);
+        for (int i = 0; i < remainder.size(); i++) {
+            ActionListener listener = remainder.get(i);
+            if (addParticularListener(listener)) {
+                remainder.remove(i);
+                i--;
+            }
+        }
+        return remainder;
     }
 
     //TODO: add javadoc
-    @Override
-    public final void setBodyParameters() {
-        //TODO: set body parameters here
-    }
+    public abstract boolean addParticularListener(@Nullable ActionListener listener);
 
-    //TODO: add javadoc
-    @Override
-    public final @Nullable Component getPageBody() {
-        @Nullable CommonWindow window = getWindow();
-        if (window == null) {
-            return null;
-        } else {
-            @Nullable Color backgroundColor = ColorUtilities.DEFAULT_COLOR_TRANSPARENT;
-            return new DynamicPanel(new SimpleColorScheme(backgroundColor, null)) {
-                {
-                    setLayout(new BorderLayout(0, 0));
-                    addLeftPanel(window, this);
-                    addRightPanel(window, this);
-                    addCentralPanel(window, this);
-                }
-            };
-        }
-    }
-
-    private void addLeftPanel(@NotNull CommonWindow window, @NotNull DynamicPanel panel) {
-        @Nullable AbstractLeftPanel leftPanel = getLeftPanel(window);
-        if (leftPanel != null) {
-            this.leftPanel = leftPanel;
-            panel.add(this.leftPanel, BorderLayout.WEST);
-        }
-    }
-
-    private void addRightPanel(@NotNull CommonWindow window, @NotNull DynamicPanel panel) {
-        @Nullable AbstractRightPanel rightPanel = getRightPanel(window);
-        if (rightPanel != null) {
-            panel.add(rightPanel, BorderLayout.EAST);
-        }
-    }
-
-    private void addCentralPanel(@NotNull CommonWindow window, @NotNull DynamicPanel panel) {
-        @Nullable DynamicPanel centralPanel = getCentralPanel(window);
-        if (centralPanel != null) {
-            panel.add(centralPanel, BorderLayout.CENTER);
-        }
-    }
-
-    //
-    public abstract @Nullable AbstractLeftPanel getLeftPanel(@NotNull CommonWindow window);
-
-    //
-    public abstract @Nullable AbstractRightPanel getRightPanel(@NotNull CommonWindow window);
-
-    //
-    public abstract @Nullable DynamicPanel getCentralPanel(@NotNull CommonWindow window);
+    /*
+    private boolean leftPanelVisibility = true;
 
     public void toggleLeftPanelVisibility() {
         leftPanelVisibility = !leftPanelVisibility;
@@ -106,4 +88,5 @@ public abstract class SimplePaneledPage extends AbstractSimplePage {
             leftPanel.setVisible(leftPanelVisibility);
         }
     }
+    */
 }
