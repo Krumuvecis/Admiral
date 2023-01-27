@@ -3,6 +3,7 @@ package graphics.common.overlays.pages.settings_layout;
 import java.util.Objects;
 import java.awt.event.ActionEvent;
 
+import graphicsEngine.pages.panels.PanelLocation;
 import org.jetbrains.annotations.NotNull;
 
 import graphics.common.CommonWindow;
@@ -26,7 +27,7 @@ class ButtonListener extends OverlayButtonListener {
         switch (e.getActionCommand()) {
             case Button_LeftPanel.ACTION_COMMAND -> {
                 try {
-                    //getPaneledPage().toggleLeftPanelVisibility();
+                    getPaneledPage().togglePanelVisibilityByPanelLocation(PanelLocation.WEST);
                 } catch (NullPointerException ignored) {}
             }
             //TODO: add other button actions here

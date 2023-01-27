@@ -10,6 +10,8 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.pages.FullyPaneledPage;
+import graphicsEngine.pages.panels.PanelLocation;
+import graphicsEngine.panels.SimplePanel;
 
 import graphics.common.CommonWindow;
 
@@ -79,14 +81,11 @@ public abstract class SimplePaneledPage extends FullyPaneledPage {
     //TODO: add javadoc
     public abstract boolean addParticularListener(@Nullable ActionListener listener);
 
-    /*
-    private boolean leftPanelVisibility = true;
-
-    public void toggleLeftPanelVisibility() {
-        leftPanelVisibility = !leftPanelVisibility;
-        if (leftPanel != null) {
-            leftPanel.setVisible(leftPanelVisibility);
+    public void togglePanelVisibilityByPanelLocation(@NotNull PanelLocation panelLocation) {
+        @Nullable SimplePanel panel = getPanelByLocation(panelLocation);
+        if (panel != null) {
+            boolean currentVisibilityStatus = panel.isVisible();
+            panel.setVisible(!currentVisibilityStatus);
         }
     }
-    */
 }
