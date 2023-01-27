@@ -3,8 +3,9 @@ package graphics.common.overlays.pages.settings_layout;
 import java.util.Objects;
 import java.awt.event.ActionEvent;
 
-import graphicsEngine.pages.panels.PanelLocation;
 import org.jetbrains.annotations.NotNull;
+
+import graphicsEngine.pages.panels.PanelLocation;
 
 import graphics.common.CommonWindow;
 import graphics.common.pages.SimplePaneledPage;
