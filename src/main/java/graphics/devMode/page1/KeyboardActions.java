@@ -1,4 +1,4 @@
-package graphics.normalMode.playPage;
+package graphics.devMode.page1;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -11,7 +11,7 @@ import graphics2.CommonObserverKeyboardActions;
 
 //TODO: add javadocs
 public class KeyboardActions extends CommonObserverKeyboardActions {
-    private static final @NotNull Class<? extends AbstractPage> CHECKABLE_PAGE_CLASS = PlayPage.class;
+    private static final @NotNull Class<? extends AbstractPage> CHECKABLE_PAGE_CLASS = Page1.class;
 
     //TODO: add javadoc
     public KeyboardActions(@NotNull ExtendedLayeredWindow window,
