@@ -54,9 +54,8 @@ public class PlayPage extends NormalPage {
      * TODO: finish this javadoc
      */
     @Override
-    public final @Nullable AbstractLeftPanel getLeftPanel(
-            @Nullable SimpleColorScheme colors,
-            @Nullable BorderProperties borderProperties) {
+    public final @Nullable AbstractLeftPanel getLeftPanel(@Nullable SimpleColorScheme colors,
+                                                          @Nullable BorderProperties borderProperties) {
         @Nullable CommonWindow commonWindow = getCommonWindow();
         if (commonWindow == null) {
             return null;
@@ -68,8 +67,7 @@ public class PlayPage extends NormalPage {
     /**
      * TODO: finish this javadoc
      */
-    public final @Nullable DynamicPanel getCentralPanel(
-            @Nullable BorderProperties borderProperties) {
+    public final @Nullable DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
         @Nullable CommonWindow commonWindow = getCommonWindow();
         if (commonWindow == null) {
             return null;

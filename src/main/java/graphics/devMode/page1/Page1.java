@@ -55,9 +55,8 @@ public class Page1 extends DevPage {
      * TODO: finish this javadoc
      */
     @Override
-    public final @Nullable AbstractLeftPanel getLeftPanel(
-            @Nullable SimpleColorScheme colors,
-            @Nullable BorderProperties borderProperties) {
+    public final @Nullable AbstractLeftPanel getLeftPanel(@Nullable SimpleColorScheme colors,
+                                                          @Nullable BorderProperties borderProperties) {
         @Nullable CommonWindow commonWindow = getCommonWindow();
         if (commonWindow == null) {
             return null;
@@ -69,8 +68,7 @@ public class Page1 extends DevPage {
     /**
      * TODO: finish this javadoc
      */
-    public final @NotNull DynamicPanel getCentralPanel(
-            @Nullable BorderProperties borderProperties) {
+    public final @NotNull DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
         return new DynamicPanel(
                 null,
                 new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),

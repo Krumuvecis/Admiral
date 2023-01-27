@@ -57,9 +57,8 @@ public abstract class DevPage extends SimplePaneledPage {
      * TODO: finish this javadoc
      */
     @Override
-    public final @Nullable AbstractFooter getFooter(
-            @Nullable SimpleColorScheme footerColors,
-            @Nullable BorderProperties borderProperties) {
+    public final @Nullable AbstractFooter getFooter(@Nullable SimpleColorScheme footerColors,
+                                                    @Nullable BorderProperties borderProperties) {
         return null;
     }
 
@@ -67,9 +66,8 @@ public abstract class DevPage extends SimplePaneledPage {
      * TODO: finish this javadoc
      */
     @Override
-    public final @Nullable AbstractRightPanel getRightPanel(
-            @Nullable SimpleColorScheme colors,
-            @Nullable BorderProperties borderProperties) {
+    public final @Nullable AbstractRightPanel getRightPanel(@Nullable SimpleColorScheme colors,
+                                                            @Nullable BorderProperties borderProperties) {
         return null;
     }
 }

@@ -62,8 +62,7 @@ public class SelectionPage extends SimpleStartingPage {
     /**
      * TODO: finish this javadoc
      */
-    public final @NotNull DynamicPanel getCentralPanel(
-            @Nullable BorderProperties borderProperties) {
+    public final @NotNull DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
         return new DynamicPanel(null, null, null) {{
             add(new CenteringPanel(
                     null,
