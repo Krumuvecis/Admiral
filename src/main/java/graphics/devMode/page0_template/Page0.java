@@ -1,4 +1,4 @@
-package graphics.devMode.page2;
+package graphics.devMode.page0_template;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -20,26 +20,26 @@ import graphics.common.CommonWindow;
 import graphics.devMode.common.DevPage;
 
 //TODO: add javadocs
-public class Page2 extends DevPage {
+public class Page0 extends DevPage {
 
-    private Page2() {
+    private Page0() {
         this(null);
     }
 
     //TODO: add javadoc
-    public Page2(@Nullable CommonWindow window) {
+    public Page0(@Nullable CommonWindow window) {
         super(window, getNewListeners(window));
     }
 
     //TODO: add javadoc
     @Override
     public final @NotNull String getPageKey() {
-        return "page2";
+        return "page0";
     }
 
     //TODO: add javadoc
     public static @NotNull String getStaticPageKey() {
-        return (new Page2()).getPageKey();
+        return (new Page0()).getPageKey();
     }
 
     private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
@@ -69,7 +69,7 @@ public class Page2 extends DevPage {
                 null) {
             {
                 setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel("Page 2", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
+                add(new SimpleLabel("Page 0", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
                 //Add parts to body here
             }
         };

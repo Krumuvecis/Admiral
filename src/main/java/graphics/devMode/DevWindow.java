@@ -11,7 +11,7 @@ import graphicsEngine.pages.AbstractPage;
 import graphics.common.CommonWindow;
 import graphics.devMode.selectionPage.SelectionPage;
 import graphics.devMode.page1.Page1;
-import graphics.devMode.page2.Page2;
+import graphics.devMode.page0_template.Page0;
 
 /**
  * The window for this application
@@ -40,7 +40,8 @@ public class DevWindow extends CommonWindow {
         return new ArrayList<>() {{
             add(new SelectionPage(window));
             add(new Page1(window));
-            add(new Page2(window));
+            //add more pages here
+            add(new Page0(window)); //template
         }};
     }
 }

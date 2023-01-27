@@ -8,7 +8,7 @@ import graphicsEngineExtension.input.SimpleButtonListener;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.page1.Page1;
-import graphics.devMode.page2.Page2;
+import graphics.devMode.page0_template.Page0;
 
 /**
  * TODO: add javadocs
@@ -35,8 +35,8 @@ public class SelectionPageButtonListener extends SimpleButtonListener {
         switch (e.getActionCommand()) {
             case Button_Page1.ACTION_COMMAND ->
                     getCommonWindow().setActivePage(Page1.getStaticPageKey());
-            case Button_Page2.ACTION_COMMAND ->
-                    getCommonWindow().setActivePage(Page2.getStaticPageKey());
+            case Button_Page0.ACTION_COMMAND ->
+                    getCommonWindow().setActivePage(Page0.getStaticPageKey());
             //add new button actions here
             default -> {
                 return false;

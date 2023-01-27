@@ -77,7 +77,7 @@ public class SelectionPage extends SimpleStartingPage {
                         public void addComponents(@Nullable ActionListener actionListener) {
                             add(new SimpleLabel("Selection page", getPanelColors().getSecondaryColor()));
                             add(new Button_Page1(actionListener));
-                            add(new Button_Page2(actionListener));
+                            add(new Button_Page0(actionListener));
                             //Add more parts to body here
                         }
                     };
