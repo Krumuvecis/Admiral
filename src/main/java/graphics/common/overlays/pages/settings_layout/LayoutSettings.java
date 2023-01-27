@@ -31,7 +31,10 @@ public class LayoutSettings extends OverlayPage {
             //TODO: add javadoc
             @Override
             public void addComponents(@Nullable ActionListener actionListener) {
+                add(new Button_Header(actionListener));
+                add(new Button_Footer(actionListener));
                 add(new Button_LeftPanel(actionListener));
+                add(new Button_RightPanel(actionListener));
                 //TODO: add more buttons here
                 add(new Button_Back(actionListener));
             }

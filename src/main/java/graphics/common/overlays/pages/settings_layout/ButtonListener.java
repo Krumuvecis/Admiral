@@ -26,18 +26,23 @@ class ButtonListener extends OverlayButtonListener {
     @Override
     public boolean actionCheck(@NotNull ActionEvent e) {
         switch (e.getActionCommand()) {
-            case Button_LeftPanel.ACTION_COMMAND -> {
-                try {
-                    getPaneledPage().togglePanelVisibilityByPanelLocation(PanelLocation.WEST);
-                } catch (NullPointerException ignored) {}
-            }
-            //TODO: add other button actions here
+            case Button_Header.ACTION_COMMAND -> togglePanel(PanelLocation.NORTH);
+            case Button_Footer.ACTION_COMMAND -> togglePanel(PanelLocation.SOUTH);
+            case Button_LeftPanel.ACTION_COMMAND -> togglePanel(PanelLocation.WEST);
+            case Button_RightPanel.ACTION_COMMAND -> togglePanel(PanelLocation.EAST);
+            //add more button actions here
             case Button_Back.ACTION_COMMAND -> switchPage(OverlayPageType.SETTINGS);
             default -> {
                 return false;
             }
         }
         return true;
+    }
+
+    private void togglePanel(@NotNull PanelLocation panelLocation) {
+        try {
+            getPaneledPage().togglePanelVisibilityByPanelLocation(panelLocation);
+        } catch (NullPointerException ignored) {}
     }
 
     private @NotNull SimplePaneledPage getPaneledPage() throws NullPointerException {
