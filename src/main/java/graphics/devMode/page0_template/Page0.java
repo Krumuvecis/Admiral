@@ -14,6 +14,7 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.pages.panels.AbstractLeftPanel;
+import graphicsEngine.pages.panels.AbstractRightPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
@@ -56,6 +57,15 @@ public class Page0 extends DevPage {
     @Override
     public final @Nullable AbstractLeftPanel getLeftPanel(@Nullable SimpleColorScheme colors,
                                                           @Nullable BorderProperties borderProperties) {
+        return null;
+    }
+
+    /**
+     * TODO: finish this javadoc
+     */
+    @Override
+    public final @Nullable AbstractRightPanel getRightPanel(@Nullable SimpleColorScheme colors,
+                                                            @Nullable BorderProperties borderProperties) {
         return null;
     }
 

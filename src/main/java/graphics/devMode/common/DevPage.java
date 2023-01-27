@@ -10,7 +10,6 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.pages.panels.AbstractHeader;
 import graphicsEngine.pages.panels.AbstractFooter;
-import graphicsEngine.pages.panels.AbstractRightPanel;
 
 import graphics.common.CommonWindow;
 import graphics.common.pages.SimplePaneledPage;
@@ -59,15 +58,6 @@ public abstract class DevPage extends SimplePaneledPage {
     @Override
     public final @Nullable AbstractFooter getFooter(@Nullable SimpleColorScheme footerColors,
                                                     @Nullable BorderProperties borderProperties) {
-        return null;
-    }
-
-    /**
-     * TODO: finish this javadoc
-     */
-    @Override
-    public final @Nullable AbstractRightPanel getRightPanel(@Nullable SimpleColorScheme colors,
-                                                            @Nullable BorderProperties borderProperties) {
         return null;
     }
 }

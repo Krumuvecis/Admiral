@@ -14,11 +14,13 @@ import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.pages.panels.AbstractLeftPanel;
+import graphicsEngine.pages.panels.AbstractRightPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.common.DevPage;
 import graphics.devMode.page1.leftPanel.LeftPanel;
+import graphics.devMode.page1.rightPanel.RightPanel;
 
 //TODO: add javadocs
 public class Page1 extends DevPage {
@@ -62,6 +64,20 @@ public class Page1 extends DevPage {
             return null;
         } else {
             return new LeftPanel(getCommonWindow(), colors, borderProperties);
+        }
+    }
+
+    /**
+     * TODO: finish this javadoc
+     */
+    @Override
+    public final @Nullable AbstractRightPanel getRightPanel(@Nullable SimpleColorScheme colors,
+                                                            @Nullable BorderProperties borderProperties) {
+        @Nullable CommonWindow commonWindow = getCommonWindow();
+        if (commonWindow == null) {
+            return null;
+        } else {
+            return new RightPanel(getCommonWindow(), colors, borderProperties);
         }
     }
 
