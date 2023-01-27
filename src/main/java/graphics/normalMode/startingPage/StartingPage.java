@@ -1,8 +1,8 @@
 package graphics.normalMode.startingPage;
 
-import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;

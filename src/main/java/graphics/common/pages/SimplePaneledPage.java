@@ -1,42 +1,22 @@
 package graphics.common.pages;
 
 import java.util.List;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.ColorUtilities;
-import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.pages.FullyPaneledPage;
 import graphicsEngine.pages.panels.PanelLocation;
 import graphicsEngine.panels.SimplePanel;
 
 import graphics.common.CommonWindow;
+import graphics.common.StaticColors;
 
 /**
  * TODO: finish this and add javadocs
  */
 public abstract class SimplePaneledPage extends FullyPaneledPage {
-    private static final @NotNull Color COMMON_BACKGROUND_COLOR = ColorUtilities.defaultColorByOpacity(true);
-    private static final int HEADER_AND_FOOTER_BACKGROUND_VALUE = 50, SIDE_PANEL_BACKGROUND_VALUE = 100;
-    private static final @NotNull SimpleColorScheme
-            COMMON_HEADER_AND_FOOTER_COLORS = new SimpleColorScheme(
-                    new Color(
-                            HEADER_AND_FOOTER_BACKGROUND_VALUE,
-                            HEADER_AND_FOOTER_BACKGROUND_VALUE,
-                            HEADER_AND_FOOTER_BACKGROUND_VALUE
-                    ),
-                    null),
-            COMMON_SIDE_PANEL_COLORS = new SimpleColorScheme(
-                    new Color(
-                            SIDE_PANEL_BACKGROUND_VALUE,
-                            SIDE_PANEL_BACKGROUND_VALUE,
-                            SIDE_PANEL_BACKGROUND_VALUE
-                    ),
-                    null);
-
     private final @Nullable CommonWindow window;
 
     /**
@@ -44,11 +24,14 @@ public abstract class SimplePaneledPage extends FullyPaneledPage {
      */
     public SimplePaneledPage(@Nullable CommonWindow window,
                              @Nullable List<@Nullable ActionListener> actionListenerList) {
-        super(actionListenerList, COMMON_BACKGROUND_COLOR);
+        super(actionListenerList, StaticColors.PAGE_BACKGROUND_COLOR);
         this.window = window;
 
         if (window != null) {
-            initializePanels(COMMON_HEADER_AND_FOOTER_COLORS, COMMON_SIDE_PANEL_COLORS, null);
+            initializePanels(
+                    StaticColors.PAGE_HEADER_AND_FOOTER_COLORS,
+                    StaticColors.PAGE_SIDE_PANEL_COLORS,
+                    null);
         }
     }
 
