@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
+import graphicsEngine.pages.panels.AbstractLeftPanel;
 
 import graphicsEngineExtension.windows.KeyboardListenableWindow;
 
@@ -16,7 +17,7 @@ import graphics.normalMode.playPage.leftPanel.sliders.SliderPanel;
 import graphics.normalMode.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
 
 //TODO: add javadocs
-public class LeftPanel extends graphicsEngine.pages.panels.AbstractLeftPanel {
+public class LeftPanel extends AbstractLeftPanel {
     private static final int PANEL_WIDTH = 200;
 
     //TODO: add javadoc
