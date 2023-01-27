@@ -61,7 +61,7 @@ public class PlayPage extends NormalPage {
         if (commonWindow == null) {
             return null;
         } else {
-            return new LeftPanel(getCommonWindow());
+            return new LeftPanel(getCommonWindow(), colors, borderProperties);
         }
     }
 

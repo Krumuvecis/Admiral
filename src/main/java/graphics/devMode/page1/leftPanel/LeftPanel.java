@@ -1,4 +1,4 @@
-package graphics.normalMode.playPage.leftPanel;
+package graphics.devMode.page1.leftPanel;
 
 import java.awt.LayoutManager;
 import javax.swing.BoxLayout;
@@ -11,10 +11,6 @@ import graphicsEngine.panels.BorderProperties;
 
 import graphicsEngineExtension.windows.KeyboardListenableWindow;
 
-import graphics.normalMode.playPage.leftPanel.labelSection.LabelSection;
-import graphics.normalMode.playPage.leftPanel.sliders.SliderPanel;
-import graphics.normalMode.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
-
 //TODO: add javadocs
 public class LeftPanel extends graphicsEngine.pages.panels.AbstractLeftPanel {
     private static final int PANEL_WIDTH = 200;
@@ -26,8 +22,8 @@ public class LeftPanel extends graphicsEngine.pages.panels.AbstractLeftPanel {
         super(colors, PANEL_WIDTH, borderProperties);
         LayoutManager layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
-        add(new LabelSection(getPanelColors()), layout);
-        add(new SliderPanel(getPanelColors()), layout);
-        add(new LeftDrawPanel(window), layout);
+        //add(new LabelSection(getPanelColors()), layout);
+        //add(new SliderPanel(getPanelColors()), layout);
+        //add(new LeftDrawPanel(window), layout);
     }
 }

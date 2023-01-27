@@ -12,7 +12,7 @@ public class StaticColors {
     public static final @NotNull Color PAGE_BACKGROUND_COLOR = ColorUtilities.defaultColorByOpacity(true); //black
     private static final int
             HEADER_AND_FOOTER_BACKGROUND_LIGHTNESS_VALUE = 50,
-            SIDE_PANEL_BACKGROUND_LIGHTNESS_VALUE = 100;
+            SIDE_PANEL_BACKGROUND_LIGHTNESS_VALUE = 80;
     public static final @NotNull SimpleColorScheme
             PAGE_HEADER_AND_FOOTER_COLORS = new SimpleColorScheme(
                     getGray(HEADER_AND_FOOTER_BACKGROUND_LIGHTNESS_VALUE),

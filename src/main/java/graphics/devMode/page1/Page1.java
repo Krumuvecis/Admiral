@@ -18,6 +18,7 @@ import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.common.DevPage;
+import graphics.devMode.page1.leftPanel.LeftPanel;
 
 //TODO: add javadocs
 public class Page1 extends DevPage {
@@ -57,7 +58,12 @@ public class Page1 extends DevPage {
     public final @Nullable AbstractLeftPanel getLeftPanel(
             @Nullable SimpleColorScheme colors,
             @Nullable BorderProperties borderProperties) {
-        return null;
+        @Nullable CommonWindow commonWindow = getCommonWindow();
+        if (commonWindow == null) {
+            return null;
+        } else {
+            return new LeftPanel(getCommonWindow(), colors, borderProperties);
+        }
     }
 
     /**
