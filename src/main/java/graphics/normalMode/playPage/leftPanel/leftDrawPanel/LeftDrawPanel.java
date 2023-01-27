@@ -1,25 +1,24 @@
 package graphics.normalMode.playPage.leftPanel.leftDrawPanel;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.DynamicPanel;
 
 import graphicsEngineExtension.windows.KeyboardListenableWindow;
+import graphicsEngineExtension.ExtendedDynamicPanel;
 
 //TODO: add javadocs
-public class LeftDrawPanel extends DynamicPanel {
+public class LeftDrawPanel extends ExtendedDynamicPanel {
     private static final int BACKGROUND_BRIGHTNESS = 50;
     private static final @Nullable Color
             BACKGROUND_COLOR = new Color(
-            BACKGROUND_BRIGHTNESS,
-            BACKGROUND_BRIGHTNESS,
-            BACKGROUND_BRIGHTNESS),
+                    BACKGROUND_BRIGHTNESS,
+                    BACKGROUND_BRIGHTNESS,
+                    BACKGROUND_BRIGHTNESS),
             TEXT_COLOR = null; // default - white
 
     private final @NotNull AbstractSection
@@ -37,25 +36,12 @@ public class LeftDrawPanel extends DynamicPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Dimension drawSize = this.getSize();
-
-        drawTestLines(g, drawSize);
+        drawTestLines(g, null);
 
         @NotNull Color textColor = getPanelColors().getSecondaryColor();
         fieldInfoSection.draw(g, textColor, 0);
         pressedKeySection.draw(g, textColor, fieldInfoSection.getSectionEnd());
 
         //paint other stuff here
-    }
-
-    private void drawTestLines(@NotNull Graphics g,
-                               @NotNull Dimension drawSize) {
-        g.setColor(Color.red);
-        g.drawLine(
-                0, 0,
-                drawSize.width, drawSize.height);
-        g.drawLine(
-                drawSize.width, 0,
-                0, drawSize.height);
     }
 }

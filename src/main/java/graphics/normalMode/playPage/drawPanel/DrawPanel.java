@@ -20,7 +20,10 @@ public class DrawPanel extends ObservableDynamicPanel {
                     BACKGROUND_BRIGHTNESS,
                     BACKGROUND_BRIGHTNESS,
                     BACKGROUND_BRIGHTNESS),
-            TEXT_COLOR = null; // default - white
+            TEXT_COLOR = null, // default - white
+            CENTER_MARKER_COLOR = new Color(0, 80, 60);
+
+    private static final int CENTER_MARKER_SIZE = 20;
 
     //TODO: add javadoc
     public DrawPanel(@NotNull Observer observer) {
@@ -32,40 +35,14 @@ public class DrawPanel extends ObservableDynamicPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         @NotNull Dimension drawCenter = getPanelCenter();
-        drawTestLines(g, this.getSize());
+        drawTestLines(g, null);
         int zoom = observer.zoom.getZoom();
         int @NotNull []
                 observerPos = observer.location.getLocation(),
                 mousePos = observer.mousePos;
         FieldPainter.drawField(g, drawCenter, observerPos, zoom);
         ClickPointPainter.drawClickPoints(g, drawCenter, observerPos, zoom);
-        drawCenterMarker(g, drawCenter);
+        drawCenterMarker(g, CENTER_MARKER_COLOR, CENTER_MARKER_SIZE);
         ObserverInfoPainter.drawMouseInfo(g, mousePos, zoom, getPanelColors().getSecondaryColor());
-    }
-
-    private void drawTestLines(@NotNull Graphics g,
-                               @NotNull Dimension drawSize) {
-        g.setColor(Color.red);
-        g.drawLine(
-                0, 0,
-                drawSize.width, drawSize.height);
-        g.drawLine(
-                drawSize.width, 0,
-                0, drawSize.height);
-    }
-
-    private void drawCenterMarker(@NotNull Graphics g,
-                                  @NotNull Dimension drawCenter) {
-        g.setColor(new Color(0, 80, 60));
-        int markerSize = 20;
-        int[] center = new int[] {drawCenter.width, drawCenter.height};
-        g.drawLine( // vertical line
-                center[0], center[1] - markerSize / 2,
-                center[0], center[1] + markerSize / 2
-        );
-        g.drawLine( // horizontal line
-                center[0] - markerSize / 2, center[1],
-                center[0] + markerSize / 2, center[1]
-        );
     }
 }
