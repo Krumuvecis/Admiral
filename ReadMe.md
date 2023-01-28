@@ -20,6 +20,10 @@ by [Krumuvecis](https://github.com/Krumuvecis)
 * [GraphicsEngine](https://github.com/KruMF/GraphicsEngine) : 0.8.12
 * [MathUtils](https://github.com/KruMF/MathUtils) : 0.2
 
+## Instructions
+
+Run `target/Admiral-0.3.jar`
+
 
 ## Notes
 
