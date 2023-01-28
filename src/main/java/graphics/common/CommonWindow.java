@@ -1,5 +1,7 @@
 package graphics.common;
 
+import java.util.Objects;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -9,8 +11,6 @@ import graphicsEngine.windows.WindowManager;
 import graphicsEngineExtension.windows.ExtendedMultiPageWindow;
 
 import graphics.common.overlays.PagedOverlay;
-
-import java.util.Objects;
 
 /**
  * The window for this application
