@@ -17,12 +17,12 @@ public abstract class AbstractCoordinatePainter {
     }
 
     //TODO: make abstract and add javadoc
-    public void paint(@NotNull Graphics g, int @NotNull [] observerPos, int scale) {
-        /*@NotNull Dimension
+    public abstract void paint(@NotNull Graphics g, int @NotNull [] observerPos, int scale); /*{
+        @NotNull Dimension
                 drawSize = getDrawSize(),
                 drawCenter = getDrawCenter();
-        int @NotNull [] @NotNull [] drawableCoordinateLimits;*/
-    }
+        int @NotNull [] @NotNull [] drawableCoordinateLimits;
+    }*/
 
     //
     public @NotNull ExtendedDynamicPanel getPanel() {
@@ -37,5 +37,34 @@ public abstract class AbstractCoordinatePainter {
     //
     public @NotNull Dimension getDrawCenter() {
         return getPanel().getPanelCenter();
+    }
+
+    //
+    public static int scaleDown(int value, int scale) {
+        return value / scale;
+    }
+
+    //
+    @SuppressWarnings("unused")
+    public static int scaleUp(int value, int scale) {
+        return value * scale;
+    }
+
+    //
+    public static int @NotNull [] getActualOffset(int @NotNull [] observerPos,
+                                                  int @NotNull [] referencePos) {
+        return new int[] {
+                referencePos[0] - observerPos[0],
+                referencePos[1] - observerPos[1]
+        };
+    }
+
+    //
+    public static int @NotNull [] getDrawOffset(int @NotNull [] actualOffset,
+                                                int scale) {
+        return new int[] {
+                scaleDown(actualOffset[0], scale),
+                scaleDown(actualOffset[1], scale)
+        };
     }
 }

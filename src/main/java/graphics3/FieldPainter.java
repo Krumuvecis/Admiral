@@ -12,7 +12,7 @@ import staticData.StaticData;
 import cells.CellContainer;
 
 public class FieldPainter extends AbstractCoordinatePainter {
-    private static final Color
+    private static final @NotNull Color
             FIELD_COLOR = new Color(50, 100, 150),
             GRID_COLOR = new Color(100, 80, 60);
 
@@ -23,18 +23,15 @@ public class FieldPainter extends AbstractCoordinatePainter {
     //
     @Override
     public void paint(@NotNull Graphics g, int @NotNull [] observerPos, int scale) {
-        @NotNull Dimension
-                /*drawSize = getDrawSize(),*/
-                drawCenter = getDrawCenter();
-        //int @NotNull [] @NotNull [] drawableCoordinateLimits;
+        @NotNull Dimension drawCenter = getDrawCenter();
 
         int @NotNull []
                 fieldStart = new int[] {
-                drawCenter.width - observerPos[0] / scale,
-                drawCenter.height - observerPos[1] / scale},
+                        drawCenter.width - scaleDown(observerPos[0], scale),
+                        drawCenter.height - scaleDown(observerPos[1], scale)},
                 fieldSize = new int[] {
-                        CellContainer.fieldSize[0] / scale,
-                        CellContainer.fieldSize[1] / scale};
+                        scaleDown(CellContainer.fieldSize[0], scale),
+                        scaleDown(CellContainer.fieldSize[1], scale)};
         fillBackground(g, fieldStart, fieldSize);
         drawGridAndCells(g, fieldStart, fieldSize, scale);
     }
@@ -51,8 +48,8 @@ public class FieldPainter extends AbstractCoordinatePainter {
     private static void drawGridAndCells(@NotNull Graphics g,
                                          int @NotNull [] fieldStart,
                                          int @NotNull [] fieldSize,
-                                         int zoom) {
-        int cellSize = CellContainer.cellSize / zoom;
+                                         int scale) {
+        int cellSize = scaleDown(CellContainer.cellSize, scale);
         int @NotNull [] cellCount = StaticData.cells.getCellCount();
         for(int i = 0; i <= cellCount[0]; i++) {
             int cellX = fieldStart[0] + i * cellSize;
@@ -62,7 +59,7 @@ public class FieldPainter extends AbstractCoordinatePainter {
                 drawHorizontalLine(g, fieldStart[0], fieldSize[0], cellY);
                 if (i != cellCount[0] && j != cellCount[1]) {
                     CellPainter.drawCell(
-                            g, zoom,
+                            g, scale,
                             cellX, cellY, cellSize,
                             i, j);
                 }

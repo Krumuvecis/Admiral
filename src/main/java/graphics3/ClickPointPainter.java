@@ -12,7 +12,7 @@ import staticData.StaticData;
 
 //TODO: add javadoc
 public class ClickPointPainter extends AbstractCoordinatePainter {
-    private static final Color COLOR = new Color(220, 170, 20);
+    private static final Color POINT_COLOR = new Color(220, 170, 20);
     private static final int RADIUS_UNSCALED = 30;
 
     public ClickPointPainter(@NotNull ExtendedDynamicPanel panel) {
@@ -22,39 +22,36 @@ public class ClickPointPainter extends AbstractCoordinatePainter {
     //
     @Override
     public void paint(@NotNull Graphics g, int @NotNull [] observerPos, int scale) {
-        @NotNull Dimension
-                /*drawSize = getDrawSize(),*/
-                drawCenter = getDrawCenter();
-        //int @NotNull [] @NotNull [] drawableCoordinateLimits;
+        @NotNull Dimension drawCenter = getDrawCenter();
+        int radius = scaleDown(RADIUS_UNSCALED, scale);
 
-        int radius = getScaledRadius(scale);
-
-        g.setColor(COLOR);
+        g.setColor(POINT_COLOR);
         for (int @NotNull [] point : StaticData.clickPoints) {
-            int @NotNull [] circleCenter = getCircleCenter(drawCenter, point, observerPos, scale);
-            drawSinglePoint(g, circleCenter, radius);
+            int @NotNull [] circleDrawPos = getCircleDrawPos(drawCenter, point, observerPos, scale);
+            drawSinglePoint(g, circleDrawPos, radius);
         }
     }
 
-    private static int getScaledRadius(int zoom) {
-        return RADIUS_UNSCALED / zoom;
-    }
+    private static int @NotNull [] getCircleDrawPos(@NotNull Dimension drawCenter,
+                                                    int @NotNull [] point,
+                                                    int @NotNull [] observerPos,
+                                                    int scale) {
+        int @NotNull []
+                actualOffset = getActualOffset(observerPos, point),
+                drawOffset = getDrawOffset(actualOffset, scale);
 
-    private static int @NotNull [] getCircleCenter(@NotNull Dimension drawCenter,
-                                                   int @NotNull [] point,
-                                                   int @NotNull [] observerPos,
-                                                   int zoom) {
         return new int[] {
-                drawCenter.width + (point[0] - observerPos[0]) / zoom,
-                drawCenter.height + (point[1] - observerPos[1]) / zoom};
+                drawCenter.width + drawOffset[0],
+                drawCenter.height + drawOffset[1]
+        };
     }
 
     private static void drawSinglePoint(@NotNull Graphics g,
-                                        int @NotNull [] circleCenter,
+                                        int @NotNull [] circleDrawPos,
                                         int radius) {
         g.fillOval(
-                circleCenter[0] - radius / 2,
-                circleCenter[1] - radius / 2,
+                circleDrawPos[0] - radius / 2,
+                circleDrawPos[1] - radius / 2,
                 radius,
                 radius);
     }
