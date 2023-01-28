@@ -1,4 +1,4 @@
-package graphics.normalMode.playPage.drawPanel;
+package graphics3;
 
 import java.awt.Graphics;
 import java.awt.Color;
@@ -15,12 +15,12 @@ class CellPainter {
     private static final boolean DRAW_BAROKINETIC_INFO = false;
 
     //TODO: add javadoc
-    static void drawCell(@NotNull Graphics g, int zoom,
+    static void drawCell(@NotNull Graphics g, int scale,
                          int cellX, int cellY, int cellSize,
                          int i, int j) {
         @NotNull Cell cell = StaticData.cells.getCell(i, j);
         drawPressureColor(g, cellX, cellY, cellSize, cell);
-        drawWind(g, cellX, cellY, cellSize, zoom, cell);
+        drawWind(g, cellX, cellY, cellSize, scale, cell);
         if (DRAW_BAROKINETIC_INFO) {
             drawBarokineticInfo(g, cellX, cellY, cell);
         }
@@ -50,7 +50,7 @@ class CellPainter {
     }
 
     private static void drawWind(@NotNull Graphics g,
-                                 int cellX, int cellY, int cellSize, int zoom,
+                                 int cellX, int cellY, int cellSize, int scale,
                                  @NotNull Cell cell) {
         int[] cellCenter = new int[] {
                 cellX + cellSize / 2,
@@ -62,8 +62,8 @@ class CellPainter {
                 circleRadius, circleRadius);
         int
                 lengthCoefficient = 100,
-                dx = (int) (lengthCoefficient * cell.windAmount * Math.cos(cell.windDirection) / zoom),
-                dy = (int) (lengthCoefficient * cell.windAmount * Math.sin(cell.windDirection) / zoom);
+                dx = (int) (lengthCoefficient * cell.windAmount * Math.cos(cell.windDirection) / scale),
+                dy = (int) (lengthCoefficient * cell.windAmount * Math.sin(cell.windDirection) / scale);
         g.drawLine(
                 cellCenter[0], cellCenter[1],
                 cellCenter[0] + dx, cellCenter[1] + dy);

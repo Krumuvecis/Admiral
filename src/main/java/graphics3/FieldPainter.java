@@ -1,4 +1,4 @@
-package graphics.normalMode.playPage.drawPanel;
+package graphics3;
 
 import java.awt.Dimension;
 import java.awt.Color;
@@ -6,27 +6,37 @@ import java.awt.Graphics;
 
 import org.jetbrains.annotations.NotNull;
 
+import graphicsEngineExtension.ExtendedDynamicPanel;
+
 import staticData.StaticData;
 import cells.CellContainer;
 
-class FieldPainter {
+public class FieldPainter extends AbstractCoordinatePainter {
     private static final Color
             FIELD_COLOR = new Color(50, 100, 150),
             GRID_COLOR = new Color(100, 80, 60);
 
-    protected static void drawField(@NotNull Graphics g,
-                                    @NotNull Dimension drawCenter,
-                                    int @NotNull [] observerPos,
-                                    int zoom) {
+    public FieldPainter(@NotNull ExtendedDynamicPanel panel) {
+        super(panel);
+    }
+
+    //
+    @Override
+    public void paint(@NotNull Graphics g, int @NotNull [] observerPos, int scale) {
+        @NotNull Dimension
+                /*drawSize = getDrawSize(),*/
+                drawCenter = getDrawCenter();
+        //int @NotNull [] @NotNull [] drawableCoordinateLimits;
+
         int @NotNull []
                 fieldStart = new int[] {
-                        drawCenter.width - observerPos[0] / zoom,
-                        drawCenter.height - observerPos[1] / zoom},
+                drawCenter.width - observerPos[0] / scale,
+                drawCenter.height - observerPos[1] / scale},
                 fieldSize = new int[] {
-                        CellContainer.fieldSize[0] / zoom,
-                        CellContainer.fieldSize[1] / zoom};
+                        CellContainer.fieldSize[0] / scale,
+                        CellContainer.fieldSize[1] / scale};
         fillBackground(g, fieldStart, fieldSize);
-        drawGridAndCells(g, fieldStart, fieldSize, zoom);
+        drawGridAndCells(g, fieldStart, fieldSize, scale);
     }
 
     private static void fillBackground(@NotNull Graphics g,

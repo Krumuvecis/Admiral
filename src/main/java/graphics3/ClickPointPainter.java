@@ -1,4 +1,4 @@
-package graphics.normalMode.playPage.drawPanel;
+package graphics3;
 
 import java.awt.Dimension;
 import java.awt.Color;
@@ -6,22 +6,32 @@ import java.awt.Graphics;
 
 import org.jetbrains.annotations.NotNull;
 
+import graphicsEngineExtension.ExtendedDynamicPanel;
+
 import staticData.StaticData;
 
 //TODO: add javadoc
-class ClickPointPainter {
+public class ClickPointPainter extends AbstractCoordinatePainter {
     private static final Color COLOR = new Color(220, 170, 20);
     private static final int RADIUS_UNSCALED = 30;
 
-    //TODO: add javadoc
-    protected static void drawClickPoints(@NotNull Graphics g,
-                                          @NotNull Dimension drawCenter,
-                                          int @NotNull [] observerPos,
-                                          int zoom) {
-        int radius = getScaledRadius(zoom);
+    public ClickPointPainter(@NotNull ExtendedDynamicPanel panel) {
+        super(panel);
+    }
+
+    //
+    @Override
+    public void paint(@NotNull Graphics g, int @NotNull [] observerPos, int scale) {
+        @NotNull Dimension
+                /*drawSize = getDrawSize(),*/
+                drawCenter = getDrawCenter();
+        //int @NotNull [] @NotNull [] drawableCoordinateLimits;
+
+        int radius = getScaledRadius(scale);
+
         g.setColor(COLOR);
         for (int @NotNull [] point : StaticData.clickPoints) {
-            int @NotNull [] circleCenter = getCircleCenter(drawCenter, point, observerPos, zoom);
+            int @NotNull [] circleCenter = getCircleCenter(drawCenter, point, observerPos, scale);
             drawSinglePoint(g, circleCenter, radius);
         }
     }
