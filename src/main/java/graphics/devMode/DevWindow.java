@@ -19,7 +19,7 @@ import graphics.devMode.page0_template.Page0;
  */
 public class DevWindow extends CommonWindow {
     private static final int @NotNull []
-            STARTING_SIZE = new int[] {1000, 600},
+            STARTING_SIZE = new int[] {1200, 600},
             STARTING_LOCATION = new int[] {200, 30};
 
     //TODO: add javadoc
