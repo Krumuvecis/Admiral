@@ -31,6 +31,11 @@ by [Krumuvecis](https://github.com/Krumuvecis)
 * [MathUtils](https://github.com/KruMF/MathUtils) : 0.2
 
 
+## Instructions
+
+Run `Admiral-0.5.jar`
+
+
 ## Functionality
 
 Currently only simulates pressure-wind relationship.
