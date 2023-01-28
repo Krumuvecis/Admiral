@@ -62,7 +62,7 @@ public class Page1 extends DevPage {
         if (commonWindow == null) {
             return null;
         } else {
-            return new LeftPanel(getCommonWindow(), colors, borderProperties);
+            return new LeftPanel(colors, borderProperties);
         }
     }
 
@@ -76,7 +76,7 @@ public class Page1 extends DevPage {
         if (commonWindow == null) {
             return null;
         } else {
-            return new RightPanel(getCommonWindow(), colors, borderProperties);
+            return new RightPanel(colors, borderProperties);
         }
     }
 

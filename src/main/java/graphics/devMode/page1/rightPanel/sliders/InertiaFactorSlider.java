@@ -1,4 +1,4 @@
-package graphics.normalMode.playPage.leftPanel.sliders;
+package graphics.devMode.page1.rightPanel.sliders;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

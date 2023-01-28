@@ -1,4 +1,4 @@
-package graphics.normalMode.playPage.leftPanel.labelSection;
+package graphics.devMode.page1.rightPanel.labelSection;
 
 import java.awt.Dimension;
 import java.awt.Color;
@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.HorizontalPanel;
-import graphicsEngine.parts.labels.SimpleLabel;
 
 //TODO: add javadocs
 public class LabelSection extends HorizontalPanel {
@@ -22,14 +21,12 @@ public class LabelSection extends HorizontalPanel {
         // Prevents left-side alignment flickering; TODO: needs better solution
         setMinimumSize(new Dimension(Integer.MAX_VALUE, HEIGHT));
 
-        @SuppressWarnings("unused") @NotNull Color
+        @NotNull Color
                 textColor = getPanelColors().getSecondaryColor(),
                 background = getPanelColors().getBaseColor(); //prevents flickering for dynamic labels
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        add(new SimpleLabel(
-                "Play page",
-                textColor));
+        add(new TotalPressureLabel(textColor, background));
         // add more labels here
     }
 }

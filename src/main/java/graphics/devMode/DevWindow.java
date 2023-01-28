@@ -18,15 +18,13 @@ import graphics.devMode.page0_template.Page0;
  * TODO: finish javadocs
  */
 public class DevWindow extends CommonWindow {
-    private static final int @NotNull []
-            STARTING_SIZE = new int[] {1200, 600},
-            STARTING_LOCATION = new int[] {200, 30};
+    private static final int @NotNull [] STARTING_SIZE = new int[] {1200, 600};
 
     //TODO: add javadoc
     public DevWindow(@NotNull WindowManager windowManager) {
         super(
                 windowManager, "dev mode",
-                STARTING_SIZE, STARTING_LOCATION,
+                STARTING_SIZE, null,
                 SelectionPage.getStaticPageKey());
     }
 

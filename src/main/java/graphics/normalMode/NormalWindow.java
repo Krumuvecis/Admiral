@@ -17,15 +17,13 @@ import graphics.normalMode.playPage.PlayPage;
  * TODO: finish javadocs
  */
 public class NormalWindow extends CommonWindow {
-    private static final int @NotNull []
-            STARTING_SIZE = new int[] {1000, 600},
-            STARTING_LOCATION = new int[] {200, 30};
+    private static final int @NotNull [] STARTING_SIZE = new int[] {1000, 600};
 
     //TODO: add javadoc
     public NormalWindow(@NotNull WindowManager windowManager) {
         super(
                 windowManager, null,
-                STARTING_SIZE, STARTING_LOCATION,
+                STARTING_SIZE, null,
                 StartingPage.getStaticPageKey());
     }
 

@@ -10,11 +10,14 @@ import graphicsEngineExtension.windows.ExtendedMultiPageWindow;
 
 import graphics.common.overlays.PagedOverlay;
 
+import java.util.Objects;
+
 /**
  * The window for this application
  * TODO: finish javadocs
  */
 public abstract class CommonWindow extends ExtendedMultiPageWindow {
+    private static final int @NotNull [] DEFAULT_STARTING_LOCATION = new int[] {30, 30};
     private static final @NotNull String //for title purposes
             APPLICATION_NAME = "Admiral",
             VERSION_NUMBER = "0.7",
@@ -24,7 +27,7 @@ public abstract class CommonWindow extends ExtendedMultiPageWindow {
     public CommonWindow(@NotNull WindowManager windowManager,
                         @Nullable String titleModeSuffix,
                         int @NotNull [] size,
-                        int @NotNull [] location,
+                        int @Nullable [] location,
                         @Nullable String mainPageKey) {
         super(
                 windowManager,
@@ -40,11 +43,11 @@ public abstract class CommonWindow extends ExtendedMultiPageWindow {
      */
     private static @NotNull WindowConfig config(@Nullable String titleModeSuffix,
                                                 int @NotNull [] size,
-                                                int @NotNull [] location) {
+                                                int @Nullable [] location) {
         @NotNull WindowConfig config = new WindowConfig(
                 generateTitle(titleModeSuffix),
                 size,
-                location);
+                Objects.requireNonNullElse(location, DEFAULT_STARTING_LOCATION));
         config.closeOperation = EXIT_ON_CLOSE;
         return config;
     }

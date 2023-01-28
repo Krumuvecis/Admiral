@@ -13,7 +13,6 @@ import graphicsEngine.pages.panels.AbstractLeftPanel;
 import graphicsEngineExtension.windows.KeyboardListenableWindow;
 
 import graphics.normalMode.playPage.leftPanel.labelSection.LabelSection;
-import graphics.normalMode.playPage.leftPanel.sliders.SliderPanel;
 import graphics.normalMode.playPage.leftPanel.leftDrawPanel.LeftDrawPanel;
 
 //TODO: add javadocs
@@ -28,7 +27,6 @@ public class LeftPanel extends AbstractLeftPanel {
         LayoutManager layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
         add(new LabelSection(getPanelColors()), layout);
-        add(new SliderPanel(getPanelColors()), layout);
         add(new LeftDrawPanel(window), layout);
     }
 }
