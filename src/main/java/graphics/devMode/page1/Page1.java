@@ -2,25 +2,24 @@ package graphics.devMode.page1;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.Color;
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.ColorUtilities;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.pages.panels.AbstractLeftPanel;
 import graphicsEngine.pages.panels.AbstractRightPanel;
-import graphicsEngine.parts.labels.SimpleLabel;
+
+import graphics2.Observer;
 
 import graphics.common.CommonWindow;
 import graphics.devMode.common.DevPage;
 import graphics.devMode.page1.leftPanel.LeftPanel;
 import graphics.devMode.page1.rightPanel.RightPanel;
+import graphics.devMode.page1.centralPanel.DrawPanel;
 
 //TODO: add javadocs
 public class Page1 extends DevPage {
@@ -84,16 +83,15 @@ public class Page1 extends DevPage {
     /**
      * TODO: finish this javadoc
      */
-    public final @NotNull DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
-        return new DynamicPanel(
-                null,
-                new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
-                null) {
-            {
-                setLayout(new BorderLayout(0, 0));
-                add(new SimpleLabel("Page 1", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
-                //Add parts to body here
-            }
-        };
+    @Override
+    public final @Nullable DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
+        @Nullable CommonWindow commonWindow = getCommonWindow();
+        if (commonWindow == null) {
+            return null;
+        } else {
+            @NotNull Observer observer = new Observer();
+            new KeyboardActions(commonWindow, observer).start();
+            return new DrawPanel(observer);
+        }
     }
 }

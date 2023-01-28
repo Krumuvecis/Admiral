@@ -33,7 +33,7 @@ public class PlayPage extends NormalPage {
 
     //TODO: add javadoc
     @Override
-    public @NotNull String getPageKey() {
+    public final @NotNull String getPageKey() {
         return "playPage";
     }
 
@@ -67,6 +67,7 @@ public class PlayPage extends NormalPage {
     /**
      * TODO: finish this javadoc
      */
+    @Override
     public final @Nullable DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
         @Nullable CommonWindow commonWindow = getCommonWindow();
         if (commonWindow == null) {

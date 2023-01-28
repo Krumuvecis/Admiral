@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
 import graphicsEngine.pages.panels.AbstractLeftPanel;
+import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphicsEngineExtension.windows.KeyboardListenableWindow;
 
@@ -23,6 +24,7 @@ public class LeftPanel extends AbstractLeftPanel {
         super(colors, PANEL_WIDTH, borderProperties);
         LayoutManager layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
+        add(new SimpleLabel("Page 1", getPanelColors().getSecondaryColor()));
         //add(new LabelSection(getPanelColors()), layout);
         //add(new SliderPanel(getPanelColors()), layout);
         //add(new LeftDrawPanel(window), layout);
