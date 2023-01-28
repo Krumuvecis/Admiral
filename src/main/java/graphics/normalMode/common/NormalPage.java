@@ -8,26 +8,31 @@ import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.presets.panels.AbstractHeader;
+import graphicsEngine.pages.panels.AbstractHeader;
+import graphicsEngine.pages.panels.AbstractFooter;
+import graphicsEngine.pages.panels.AbstractRightPanel;
 
 import graphics.common.CommonWindow;
-import graphics.common.CommonPage;
-import graphics.normalMode.common.header.CommonHeader;
-import graphics.normalMode.common.header.HeaderButtonListener;
+import graphics.common.pages.SimplePaneledPage;
+import graphics.normalMode.common.header.*;
 
 /**
  * TODO: finish this and add javadocs
  */
-public abstract class NormalPage extends CommonPage {
+public abstract class NormalPage extends SimplePaneledPage {
     private HeaderButtonListener headerButtonListener;
 
     /**
      * TODO: finish this javadoc
      */
     public NormalPage(@Nullable CommonWindow window,
-                      @Nullable List<ActionListener> actionListenerList,
-                      @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+                      @Nullable List<ActionListener> actionListenerList) {
+        super(window, actionListenerList);
+    }
+
+    //TODO: add javadoc
+    public static @NotNull HeaderButtonListener getNewHeaderListener(@NotNull CommonWindow window) {
+        return new HeaderButtonListener(window);
     }
 
     //TODO: add javadoc
@@ -46,6 +51,25 @@ public abstract class NormalPage extends CommonPage {
     @Override
     public @NotNull AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
                                              @Nullable BorderProperties borderProperties) {
-        return new CommonHeader(headerColors, borderProperties, headerButtonListener);
+        return new Header(headerColors, borderProperties, headerButtonListener);
+    }
+
+
+    /**
+     * TODO: finish this javadoc
+     */
+    @Override
+    public final @Nullable AbstractFooter getFooter(@Nullable SimpleColorScheme footerColors,
+                                                    @Nullable BorderProperties borderProperties) {
+        return null;
+    }
+
+    /**
+     * TODO: finish this javadoc
+     */
+    @Override
+    public final @Nullable AbstractRightPanel getRightPanel(@Nullable SimpleColorScheme colors,
+                                                            @Nullable BorderProperties borderProperties) {
+        return null;
     }
 }

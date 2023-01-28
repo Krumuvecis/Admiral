@@ -7,13 +7,9 @@ import javax.swing.BoxLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import consoleUtils.NumberFormatter;
-
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.parts.labels.*;
-import graphicsEngine.presets.panels.HorizontalPanel;
-
-import staticData.StaticData;
+import graphicsEngine.panels.HorizontalPanel;
+import graphicsEngine.parts.labels.SimpleLabel;
 
 //TODO: add javadocs
 public class LabelSection extends HorizontalPanel {
@@ -26,24 +22,14 @@ public class LabelSection extends HorizontalPanel {
         // Prevents left-side alignment flickering; TODO: needs better solution
         setMinimumSize(new Dimension(Integer.MAX_VALUE, HEIGHT));
 
-        @NotNull Color
+        @SuppressWarnings("unused") @NotNull Color
                 textColor = getPanelColors().getSecondaryColor(),
-                background = getPanelColors().getBaseColor();
+                background = getPanelColors().getBaseColor(); //prevents flickering for dynamic labels
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(new SimpleLabel(
                 "Play page",
                 textColor));
-        add(new DynamicLabel(textColor, background) {
-            //TODO: add javadoc
-            @Override
-            public @NotNull String getLabelText() {
-                return "Total pressure: "
-                        + NumberFormatter.doubleToString(
-                                StaticData.cells.getTotalPressure(),
-                                3);
-            }
-        });
         // add more labels here
     }
 }

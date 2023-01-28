@@ -27,8 +27,21 @@ by [Krumuvecis](https://github.com/Krumuvecis)
 ### Dependencies
 
 * [JetBrains Java Annotations](https://mvnrepository.com/artifact/org.jetbrains/annotations): 23.0.0
-* [GraphicsEngine](https://github.com/KruMF/GraphicsEngine) : 0.8.13
+* [GraphicsEngine](https://github.com/KruMF/GraphicsEngine) : 0.8.15
 * [MathUtils](https://github.com/KruMF/MathUtils) : 0.2
+
+
+## Launch instructions
+
+1. Ensure you have the correct version of Java installed _(see requirements above)_.
+2. Get a release of Admiral [here](https://github.com/Krumuvecis/Admiral/releases).
+3. Launch desired mode:
+   1. Normal mode:
+      * _(Windows)_ run `run.bat`.
+      * _(other OS)_ run `.jar` argumentless.
+   2. Dev mode:
+       * _(Windows)_ run `runDev.bat`.
+       * _(other OS)_ run `.jar` with argument `dev`.
 
 
 ## Functionality

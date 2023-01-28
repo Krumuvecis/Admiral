@@ -1,6 +1,5 @@
 package graphics.normalMode.playPage.drawPanel;
 
-import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -8,80 +7,50 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.DynamicPanel;
 
-import graphics.normalMode.playPage.observer.Observer;
-import graphics.normalMode.playPage.observer.MouseListeners;
+import graphics2.observablePanels.ObservableDynamicPanel;
+import graphics2.Observer;
+
+import graphics3.AbstractCoordinatePainter;
+import graphics3.FieldPainter;
+import graphics3.ClickPointPainter;
 
 //TODO: add javadocs
-public class DrawPanel extends DynamicPanel {
+public class DrawPanel extends ObservableDynamicPanel {
     private static final int BACKGROUND_BRIGHTNESS = 30;
     private static final @Nullable Color
             BACKGROUND_COLOR = new Color(
                     BACKGROUND_BRIGHTNESS,
                     BACKGROUND_BRIGHTNESS,
                     BACKGROUND_BRIGHTNESS),
-            TEXT_COLOR = null; // default - white
-    private final @NotNull ObserverInfoPainter observerInfoPainter;
-    private final @NotNull FieldPainter fieldPainter;
-    public boolean panelActive = false;
+            TEXT_COLOR = null, // default - white
+            CENTER_MARKER_COLOR = new Color(0, 80, 60);
+
+    private static final int CENTER_MARKER_SIZE = 20;
+
+    private final @NotNull AbstractCoordinatePainter
+            fieldPainter,
+            clickPointPainter;
 
     //TODO: add javadoc
     public DrawPanel(@NotNull Observer observer) {
-        super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR));
-        MouseListeners.addListeners(this, observer);
-
-        observerInfoPainter = new ObserverInfoPainter(observer);
-        fieldPainter = new FieldPainter(observer);
-    }
-
-    public void setPanelActive(boolean state) {
-        panelActive = state;
-    }
-
-    public @NotNull Dimension getPanelCenter() {
-        @NotNull Dimension panelSize = this.getSize();
-        return new Dimension(
-                panelSize.width / 2,
-                panelSize.height / 2);
+        super(new SimpleColorScheme(BACKGROUND_COLOR, TEXT_COLOR), observer);
+        fieldPainter = new FieldPainter(this);
+        clickPointPainter = new ClickPointPainter(this);
     }
 
     //TODO: add javadoc
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        @NotNull Dimension drawCenter = getPanelCenter();
-        drawTestLines(g, this.getSize());
-
-        fieldPainter.drawField(g, drawCenter);
-        observerInfoPainter.drawClickPoints(g, drawCenter);
-        drawCenterMarker(g, drawCenter);
-        observerInfoPainter.drawMouseInfo(g, getPanelColors().getSecondaryColor());
-    }
-
-    private void drawTestLines(@NotNull Graphics g,
-                               @NotNull Dimension drawSize) {
-        g.setColor(Color.red);
-        g.drawLine(
-                0, 0,
-                drawSize.width, drawSize.height);
-        g.drawLine(
-                drawSize.width, 0,
-                0, drawSize.height);
-    }
-
-    private void drawCenterMarker(@NotNull Graphics g,
-                                  @NotNull Dimension drawCenter) {
-        g.setColor(new Color(0, 80, 60));
-        int markerSize = 20;
-        int[] center = new int[] {drawCenter.width, drawCenter.height};
-        g.drawLine( // vertical line
-                center[0], center[1] - markerSize / 2,
-                center[0], center[1] + markerSize / 2
-        );
-        g.drawLine( // horizontal line
-                center[0] - markerSize / 2, center[1],
-                center[0] + markerSize / 2, center[1]
-        );
+        drawTestLines(g, null);
+        int zoom = observer.zoom.getZoom();
+        int @NotNull []
+                observerPos = observer.location.getLocation(),
+                mousePos = observer.mousePos;
+        fieldPainter.paint(g, observerPos, zoom);
+        clickPointPainter.paint(g, observerPos, zoom);
+        drawCenterMarker(g, CENTER_MARKER_COLOR, CENTER_MARKER_SIZE);
+        ObserverInfoPainter.drawMouseInfo(g, mousePos, zoom, getPanelColors().getSecondaryColor());
     }
 }

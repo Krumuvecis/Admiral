@@ -11,7 +11,7 @@ import graphicsEngine.windows.WindowManager;
 import graphicsEngine.windows.windowTypes.MultiPageWindow;
 import graphicsEngine.presets.SimpleOverlay;
 
-import graphicsEngineExtension.KeyboardListener;
+import graphicsEngineExtension.input.keyboard.KeyboardListener;
 
 //TODO: incorporate these features into AbstractWindow
 public abstract class KeyboardListenableWindow extends MultiPageWindow {
@@ -19,7 +19,7 @@ public abstract class KeyboardListenableWindow extends MultiPageWindow {
 
     public KeyboardListenableWindow(@NotNull WindowManager windowManager,
                                     @NotNull WindowConfig config,
-                                    @Nullable List<ActionListener> actionListenerList,
+                                    @Nullable List<@Nullable ActionListener> actionListenerList,
                                     @Nullable SimpleOverlay overlay) {
         super(
                 windowManager,

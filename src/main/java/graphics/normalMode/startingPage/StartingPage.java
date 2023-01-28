@@ -1,33 +1,32 @@
 package graphics.normalMode.startingPage;
 
 import java.util.List;
-import java.awt.Color;
-import java.awt.Component;
+import java.util.ArrayList;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.colors.ColorUtilities;
-import graphicsEngine.colors.SimpleColorScheme;
-import graphicsEngine.panels.StaticPanel;
+import graphicsEngine.panels.BorderProperties;
+import graphicsEngine.panels.DynamicPanel;
 import graphicsEngine.parts.labels.SimpleLabel;
 
 import graphics.common.CommonWindow;
-import graphics.normalMode.common.NormalPage;
+import graphics.common.pages.SimpleStartingPage;
+import graphics.normalMode.startingPage.buttons.*;
 
 //TODO: add javadocs
-public class StartingPage extends NormalPage {
+public class StartingPage extends SimpleStartingPage {
+    private @Nullable StartingPageButtonListener buttonListener;
+
     private StartingPage() {
-        this(null, null, null);
+        this(null);
     }
 
     //TODO: add javadoc
-    public StartingPage(@Nullable CommonWindow window,
-                        @Nullable List<ActionListener> actionListenerList,
-                        @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+    public StartingPage(@Nullable CommonWindow window) {
+        super(window, getNewListeners(window));
     }
 
     //TODO: add javadoc
@@ -41,23 +40,39 @@ public class StartingPage extends NormalPage {
         return (new StartingPage()).getPageKey();
     }
 
-    //TODO: add javadoc
-    @Override
-    public void setBodyParameters() {
-        //TODO: set body parameters here
+    private static @NotNull List<@NotNull ActionListener> getNewListeners(@Nullable CommonWindow window) {
+        return new ArrayList<>() {{
+            if (window != null) {
+                add(new StartingPageButtonListener(window));
+                //Add more listeners here
+            }
+        }};
     }
 
     //TODO: add javadoc
     @Override
-    public @Nullable Component getPageBody() {
-        return new StaticPanel(
+    public final boolean addParticularListener(@Nullable ActionListener listener) {
+        if (listener instanceof StartingPageButtonListener) {
+            buttonListener = (StartingPageButtonListener) listener;
+            return true;
+        }
+        //Check for other listener types here
+        return false;
+    }
+
+    /**
+     * TODO: finish this javadoc
+     */
+    public final @NotNull DynamicPanel getCentralPanel(@Nullable BorderProperties borderProperties) {
+        return new DynamicPanel(
                 null,
-                new SimpleColorScheme(ColorUtilities.DEFAULT_COLOR_TRANSPARENT, Color.white),
-                null) {
+                null,
+                borderProperties) {
             {
                 setLayout(new BorderLayout(0, 0));
                 add(new SimpleLabel("Starting page", getPanelColors().getSecondaryColor()), BorderLayout.NORTH);
-                //Add parts to body here
+                add(new Button_Play(buttonListener));
+                //Add more parts to body here
             }
         };
     }

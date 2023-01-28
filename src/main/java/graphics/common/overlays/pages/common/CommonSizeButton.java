@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import graphicsEngine.presets.SimpleJButton;
+import graphicsEngine.parts.SimpleJButton;
 
 //TODO: add javadocs
 public abstract class CommonSizeButton extends SimpleJButton {

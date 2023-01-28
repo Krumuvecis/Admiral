@@ -3,30 +3,34 @@ package graphics.devMode.common;
 import java.util.List;
 import java.awt.event.ActionListener;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import graphicsEngine.colors.SimpleColorScheme;
 import graphicsEngine.panels.BorderProperties;
-import graphicsEngine.presets.panels.AbstractHeader;
+import graphicsEngine.pages.panels.AbstractHeader;
+import graphicsEngine.pages.panels.AbstractFooter;
 
 import graphics.common.CommonWindow;
-import graphics.common.CommonPage;
-import graphics.devMode.common.header.CommonHeader;
-import graphics.devMode.common.header.HeaderButtonListener;
+import graphics.common.pages.SimplePaneledPage;
+import graphics.devMode.common.header.*;
 
 /**
  * TODO: finish this and add javadocs
  */
-public abstract class DevPage extends CommonPage {
+public abstract class DevPage extends SimplePaneledPage {
     private HeaderButtonListener headerButtonListener;
 
     /**
      * TODO: finish this javadoc
      */
     public DevPage(@Nullable CommonWindow window,
-                   @Nullable List<ActionListener> actionListenerList,
-                   @Nullable SimpleColorScheme colors) {
-        super(window, actionListenerList, colors);
+                   @Nullable List<ActionListener> actionListenerList) {
+        super(window, actionListenerList);
+    }
+
+    public static @NotNull ActionListener getNewHeaderListener(@NotNull CommonWindow window) {
+        return new HeaderButtonListener(window);
     }
 
     //TODO: add javadoc
@@ -45,6 +49,15 @@ public abstract class DevPage extends CommonPage {
     @Override
     public @Nullable AbstractHeader getHeader(@Nullable SimpleColorScheme headerColors,
                                               @Nullable BorderProperties borderProperties) {
-        return new CommonHeader(headerColors, borderProperties, headerButtonListener);
+        return new Header(headerColors, borderProperties, headerButtonListener);
+    }
+
+    /**
+     * TODO: finish this javadoc
+     */
+    @Override
+    public final @Nullable AbstractFooter getFooter(@Nullable SimpleColorScheme footerColors,
+                                                    @Nullable BorderProperties borderProperties) {
+        return null;
     }
 }

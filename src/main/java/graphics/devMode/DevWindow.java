@@ -2,32 +2,29 @@ package graphics.devMode;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.awt.event.ActionListener;
 
 import org.jetbrains.annotations.NotNull;
 
-import graphicsEngine.windows.AbstractPage;
 import graphicsEngine.windows.WindowManager;
+import graphicsEngine.pages.AbstractPage;
 
 import graphics.common.CommonWindow;
-import graphics.devMode.common.header.HeaderButtonListener;
 import graphics.devMode.selectionPage.SelectionPage;
 import graphics.devMode.page1.Page1;
+import graphics.devMode.page0_template.Page0;
 
 /**
  * The window for this application
  * TODO: finish javadocs
  */
 public class DevWindow extends CommonWindow {
-    private static final int @NotNull []
-            STARTING_SIZE = new int[] {1000, 600},
-            STARTING_LOCATION = new int[] {200, 30};
+    private static final int @NotNull [] STARTING_SIZE = new int[] {1200, 600};
 
     //TODO: add javadoc
     public DevWindow(@NotNull WindowManager windowManager) {
         super(
                 windowManager, "dev mode",
-                STARTING_SIZE, STARTING_LOCATION,
+                STARTING_SIZE, null,
                 SelectionPage.getStaticPageKey());
     }
 
@@ -36,27 +33,13 @@ public class DevWindow extends CommonWindow {
      * @return
      */
     @Override
-    public @NotNull List<AbstractPage> getInitialPages() {
-        DevWindow window = this;
+    public final @NotNull List<AbstractPage> getInitialPages() {
+        @NotNull CommonWindow window = this;
         return new ArrayList<>() {{
-            add(new SelectionPage(window, getListenerList_SelectionPage(), null));
-            add(new Page1(window, getListenerList_Page1(), null));
+            add(new SelectionPage(window));
+            add(new Page1(window));
+            //add more pages here
+            add(new Page0(window)); //template
         }};
-    }
-
-    private @NotNull List<ActionListener> getListenerList_SelectionPage() {
-        return new ArrayList<>() {{
-            add(getHeaderListener());
-        }};
-    }
-
-    private @NotNull List<ActionListener> getListenerList_Page1() {
-        return new ArrayList<>() {{
-            add(getHeaderListener());
-        }};
-    }
-
-    private @NotNull ActionListener getHeaderListener() {
-        return new HeaderButtonListener(this);
     }
 }
