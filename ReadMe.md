@@ -21,6 +21,11 @@ by [Krumuvecis](https://github.com/Krumuvecis)
 * [MathUtils](https://github.com/KruMF/MathUtils) : 0.2
 
 
+## Instructions
+
+Run `target/Admiral-0.4.jar`
+
+
 ## Notes
 
 UI needs some polishing, but it'll do for now.
